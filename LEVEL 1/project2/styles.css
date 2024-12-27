@@ -1,0 +1,296 @@
+ /*  meri jan ke tote css boiler plate ko mt bhulna */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#main {
+    height: 100%;
+    width: 100%;
+}
+
+#intro {
+    height: 34%;
+    width: 100%;
+    background-color: rgb(238, 235, 235);
+    padding: 40px;
+}
+
+#intro h1 {
+    font-size: 140px;
+    letter-spacing: -3px;
+    line-height: 110px;
+    transition: all 0.2s ease-in;
+}
+
+#intro h1:hover {
+
+    text-shadow: 0 0 20px rgb(255, 196, 0), 0 0 30px rgb(255, 196, 0), 0 0 40px rgb(255, 196, 0);
+
+}
+
+#nav {
+    position: fixed;
+    display: flex;
+    margin-top: 40px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px 30px;
+    transition: all 0.24s ease-in;
+
+
+}
+
+#nav h3 {
+    background-color: black;
+    font-size: 20px;
+    color: white;
+    padding: 14px 30px;
+    margin-left: 4px;
+    border-radius: 50px;
+    transition: all 0.29s ease-in;
+
+}
+
+#nav h3:hover {
+    color: black;
+    background-color: gold;
+
+}
+
+nav:hover {
+    text-shadow: 0 0 20px rgb(150, 115, 0), 0 0 30px rgb(255, 196, 0), 0 0 40px rgb(255, 196, 0);
+
+}
+
+#place {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#place h3,
+#place h4 {
+
+    font-size: 28px;
+    font-weight: 600;
+    transition: all 0.1s ease-in;
+}
+
+#place h4 i:hover {
+    font-size: 30px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(216, 141, 1);
+}
+
+#place h4:hover {
+    font-size: 30px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(216, 141, 1);
+}
+
+#heroimage {
+    height: 87%;
+    width: 100%;
+    background-image: url(hero2.jpg);
+    background-size: cover;
+}
+
+#about {
+    height: 35%;
+    width: 100%;
+    background-color: azure;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 60px;
+}
+
+#about h2 {
+    width: 60%;
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: 630;
+    letter-spacing: -5px;
+    transition: all 0.22s ease;
+}
+
+#about h2:hover {
+    padding: 20px;
+    text-shadow: 0 40px 0 rgb(255, 196, 0), 0 0 60px rgb(255, 196, 0), 0 0 60px rgb(255, 196, 0);
+
+}
+
+#aboutpart2 {
+    width: 30%;
+    height: 100%;
+    border-left: 3px solid black;
+    padding: 0px 30px;
+    display: flex;
+    /* the above moves it to rows  */
+    flex-direction: column;
+    /* now its changed to colunms */
+
+    /* now align items will work in x axius and justufy content will work on y axis */
+    justify-content: space-between;
+    padding-bottom: 40px;
+    transition: all 0.3s ease-in;
+
+
+}
+
+#aboutpart2:hover {
+    padding: 0px 60px 40px;
+}
+
+#aboutpart2 h3 {
+    font-size: 33px;
+    font-weight: 600;
+}
+
+#aboutpart2 i {
+    background-color: black;
+    color: white;
+    padding: 9px;
+
+    margin: 2px;
+    font-size: 30px;
+    border-radius: 24px;
+    transition: all 0.3s ease-in;
+
+}
+
+#aboutpart2 i:hover {
+    font-size: 40px;
+    border-radius: 28px;
+    text-shadow: 0 0 10px rgb(255, 196, 0), 0 0 20px rgb(255, 196, 0);
+}
+
+#work {
+    height: 45%;
+    width: 100%;
+    padding: 40px;
+    border-top: 2px solid black;
+    display: flex;
+}
+
+#work1 {
+    width: 35%;
+    height: 100%;
+    border-right: 2px solid black;
+    display: flex;
+    padding-right: 60px;
+    justify-content: space-between;
+}
+
+#work1 h3 {
+    font-size: 33px;
+    height: 20%;
+    transition: all 0.2s ease;
+}
+
+#work1 h3:hover {
+    border-bottom: 5px solid black;
+    font-size: 34px;
+    text-shadow: 0 30px 0 rgb(255, 196, 0), 0 0 30px rgb(255, 196, 0), 0 0 30px rgb(255, 196, 0);
+
+}
+
+#work1 i {
+    font-size: 40px;
+    color: white;
+    height: 11%;
+    border-radius: 50px;
+    background-color: black;
+}
+
+#work1 i:hover {
+    font-size: 45px;
+    text-shadow: 0 0 10px rgb(255, 196, 0), 0 0 20px rgb(255, 196, 0);
+
+}
+
+#work2 {
+    height: 100%;
+    width: 65%;
+    padding: 0 40px;
+}
+
+.work2part {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 10px;
+}
+
+.work2part:nth-child(1) {
+    padding-top: 16px;
+    /* ye usko pkrega smjho first child ko work part 2 jo class he usme jakr ye 1st child ko pkrega*/
+    /* background-color: red; */
+    border-bottom: 2px solid black;
+}
+
+.work2part .ellem {
+    width: 50%;
+    height: 100%;
+}
+
+.work2part .ellem:nth-child(1) {
+    border-right: 2px solid black;
+    padding-right: 60px;
+}
+
+.work2part .ellem:nth-child(2) {
+    padding-left: 60px;
+}
+
+.work2part .ellem h4 {
+    font-size: 45px;
+    font-weight: 620;
+    margin-bottom: 40px;
+    letter-spacing: -2px;
+    line-height: 1px;
+    transition: all 0.3s ease-in;
+
+}
+
+.work2part .ellem h4:hover {
+    border-bottom: 2px solid black;
+    padding: 30px;
+
+}
+
+.work2part .ellem p {
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.work2part .ellem p:hover {
+    font-size: 20.5px;
+    text-shadow: 0 0 10px rgb(255, 196, 0), 0 0 20px rgb(255, 196, 0);
+
+
+}
+
+#scroller {
+    transform: u;
+    margin-top: 63%;
+    font-size: 170px;
+    color: transparent;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgb(255, 196, 0), 0 0 20px rgb(255, 196, 0);
+
+}
