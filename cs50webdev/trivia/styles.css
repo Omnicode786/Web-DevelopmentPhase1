@@ -1,0 +1,47 @@
+.header {
+    background-color: coral;
+    height: 100px;
+    border-radius: 13px;
+}
+
+h1 {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#buttons {
+    width: 50%;
+
+    color: white;
+
+}
+
+button {
+    background-color: lightblue;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    width: 80px;
+    transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+    background-color: rgb(226, 219, 219);
+}
+
+p {
+    transition: all 0.1s ease-in-out;
+}
+
+* {
+    transition: all 0.4s ease-in-out;
+
+}
+
+#obtained2 {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+}

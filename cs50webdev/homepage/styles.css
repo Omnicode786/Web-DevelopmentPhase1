@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+   
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+#main{
+    width: 100%;
+    height: 100%;
+}
+#nav{
+    width: 100%;
+    height: 53px;
+    position: fixed;
+    background-color: red;
+    
+}
+#navelem{
+    display: flex;
+    margin-left: 40px;
+    align-items: center;
+    color: black;
+    font-size: 29px;
+}
+#navelem>a{
+    padding-right: 40px;
+    transition: all 0.1s eas;
+}
+#navelem:hover{
+  
+    text-shadow: 0 40px 0 rgb(0, 0, 0), 0 0 60px rgb(255, 196, 0), 0 0 60px rgb(255, 196, 0);
+
+}
+#intro{
+    padding: 54px;
+    font-size: 70px;
+    background-color: whitesmoke;
+}
+#intro>h2{
+    border-right: 5px solid black;
+    margin-top: 10px;
+    width: 60%;
+    border-radius: 30px;
+    transition: all 0.6s ease-in-out;
+}
+#intro>h2:hover{
+    width: 100%;
+    text-shadow: 0 0 20px rgb(255, 196, 0), 0 0 30px rgb(255, 196, 0), 0 0 40px rgb(255, 196, 0);
+
+}
+
+#home{
+    padding: 30px;
+    font-size: 30px;
+}
+#navelem>a{
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 20px;
+    padding-left: 50px;
+    font-size: 20px;
+    padding-bottom: 3px;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(233, 102, 102);
+    transition: all 0.1s ease-in ;
+}
+#navelem>a:hover{
+
+    background-color: rgb(189, 94, 94);
+}
+#part1{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.1s ease-in ;
+
+}
+#part1-1{
+    width: 30%;
+    height: 1%;
+    padding: 40px;
+    font-size: 40px;
+    border-right: 2px solid black;
+    transition: all 0.1s ease-in ;
+
+}
+#part1-1>h3{
+    width: 230px;
+    transition: all 0.3s ease; 
+}
+#part1-1>h3:hover{
+    padding: 30px;
+    text-shadow: 0 40px 0 rgb(255, 196, 0), 0 0 60px rgb(255, 196, 0), 0 0 60px rgb(255, 196, 0);
+
+}
+#part1-2{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    font-size: 30px;
+    transition: all 0.1s ease-in ;
+
+}
+.ellem{
+    padding: 40px;
+    transition: all 0.1s ease-in ;
+
+}
+#contact{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    border-bottom: 2px solid black;
+    align-items: center;
+    border-top: 2px solid black;
+
+    justify-content: space-between;
+}
+#contact1{
+    width: 30%;
+    height: 40%;
+    font-size: 30px;
+    border-right: 2px solid black;
+    padding: 40px;
+    transition: all 0.3s ease;
+}
+#contact1>h2{
+    transition: all 0.3s ease;
+
+}
+#contact1>h2:hover{
+    text-shadow: 0 40px 0 rgb(255, 196, 0), 0 0 60px rgb(255, 196, 0), 0 0 60px rgb(255, 196, 0);
+line-height: 100px;
+}
+#contact2{
+    width: 70%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    line-height: 13px ;
+}
+.input{
+    padding-left: 30px;
+    height: 50px;
+    
+}
+
+
+#icons>a>i{
+    width: 20px;
+    font-size: 38px;
+    color: black;
+    border-radius: 50px;
+    transition: all 0.5s ease;
+    
+}
+a{
+    text-decoration: none;
+
+}
+#icons>a>i:hover{
+    text-shadow: 0 0 10px rgb(255, 196, 0), 0 0 20px rgb(255, 196, 0);
+    font-size: 60px;
+
+}
+#wayto{
+    display: flex;
+}
+@media (max-width: 768px) {
+    #nav {
+        height: auto;
+    }
+    #navelem {
+        flex-direction: column;
+        margin-left: 0;
+    }
+    #intro h2 {
+        font-size: 40px;
+    }
+    #part1-2 {
+        flex-direction: column;
+    }
+}
