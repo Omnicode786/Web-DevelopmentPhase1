@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <!-- using cdn remix icon remember and unsplash meri jan ke tote-->
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 247, 247);
+}
+#nav{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between ;
+    padding: 0px 40px;
+}
+#navpart1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+
+#nav h3{
+    font-size: 16px;
+    border: 1.5px solid black;
+    padding: 4px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease-in-out;
+
+
+}
+#nav h3:hover
+{
+    background-color: orangered;
+    color: white;
+}
+
+
+#nav i{
+    font-size: 16px;
+    border: 1.5px solid black;
+    padding: 4px;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+}
+#nav i:hover
+{
+    background-color: orangered;
+    color: white;
+}
+#navpart2 h1{
+    font-weight: 100;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+
+}
+#navpart2 h1:hover
+{
+    font-size: 23px;
+    color: white;
+    text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px black;
+}
+#navpart3 button{
+    padding: 7px 12px;
+    border-radius: 400px;
+    border: 1.5px solid black;
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+#btn2{
+    border: none !important;
+    background-color: orangered;
+    color: rgb(247, 247, 247);
+}
+#main>h1{
+    font: 1em sans-serif;
+    color: rgb(0, 0, 0) ;
+    font-size: 140px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+
+}
+#main>h1:hover
+{
+    font-size: 150px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px rgb(255, 166, 0), 0 0 20px rgb(255, 166, 0), 0 0 30px rgb(255, 166, 0);
+
+}
+
+img{
+    height: 400px;
+    width: 280px;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+#imges:hover>img{
+    height: 420px;
+    width: 320px;
+}
+#img1{
+    transform: translate(-50%, -50%) rotate();
+}
+#img2{
+    transform: translate(-50%, -50%) rotate(-30deg);
+}
+#img2:hover{
+    transform: translate(-50%, -50%) rotate(30deg);
+
+}
+#img3{
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+#img3:hover{
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+#img4{
+    transform: translate(-50%, -50%) rotate(-10deg);
+}
+#img4:hover{
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+
+#btmleft{
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+    font-size: 17px;
+}
+#main>i{
+    font-size: 63px;
+
+    position: absolute;
+    bottom: 0%;
+    left: 48%;
+    border: 2px solid black;
+    border-radius: 40px 40px 0px 0px;
+    transition: all 0.1s ease-out;
+}
+#main>i:hover{
+
+    background-color:orangered;
+    color: white;
+}
+    </style>
+</head>
+<body>
+        <div id="main">
+            <div id="nav">
+                <div id="navpart1">
+                    <h3>Menu</h3>
+                    <i class="ri-menu-line"></i>
+                </div>
+                <div id="navpart2">
+                    <h1>Muzammil</h1>
+                </div>
+                <div id="navpart3">
+                    <button>Log In</button>
+                    <button id="btn2">Sign Up</button>
+
+                </div>
+            </div>
+            <h1>Muzammil X Beast</h1>
+            <div id="imges">
+                <img id="img2"src="img2.jpg" alt="model2">
+                <img id="img3" src="img3.jpg" alt="model3">
+                <img id="img4" src="img4.jpg" alt="model4">
+                <img id="img1" src="img1.jpg" alt="model1">
+            </div>
+
+            <h4 id="btmleft">Your wories, My problems. </h4>
+            <i class="ri-arrow-down-double-line"></i>
+
+        </div>
+    
+
+
+</body>
+</html>
