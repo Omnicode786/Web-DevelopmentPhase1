@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms Visualization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .array-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .array-bar {
+            width: 30px;
+            margin: 0 5px;
+            background-color: #007bff;
+            position: relative;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .array-bar span {
+            position: absolute;
+            bottom: -25px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .time-display {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sorting Algorithms Visualization</h1>
+        <div class="controls">
+            <button onclick="startSorting('bubble')">Bubble Sort</button>
+            <button onclick="startSorting('selection')">Selection Sort</button>
+            <button onclick="startSorting('merge')">Merge Sort</button>
+            <button onclick="generateArray('random')">Randomize Array</button>
+            <button onclick="generateArray('sorted')">Generate Sorted Array</button>
+        </div>
+        <div class="array-container" id="array-container"></div>
+        <p class="description">
+            Select a sorting algorithm to visualize how it works. Choose to randomize the array or generate a pre-sorted one.
+        </p>
+        <div class="time-display" id="time-display"></div>
+    </div>
+    <script>
+        const arrayContainer = document.getElementById('array-container');
+        const timeDisplay = document.getElementById('time-display');
+        let array = [];
+        const arraySize = 20;
+
+        function generateArray(type = 'random') {
+            array = [];
+            arrayContainer.innerHTML = '';
+            for (let i = 0; i < arraySize; i++) {
+                let value;
+                if (type === 'random') {
+                    value = Math.floor(Math.random() * 100) + 1;
+                } else if (type === 'sorted') {
+                    value = Math.floor((i / arraySize) * 100) + 1;
+                }
+                array.push(value);
+                const bar = document.createElement('div');
+                bar.classList.add('array-bar');
+                bar.style.height = `${value * 3}px`;
+                bar.innerHTML = `<span>${value}</span>`;
+                arrayContainer.appendChild(bar);
+            }
+            timeDisplay.innerHTML = '';
+        }
+
+        function swap(el1, el2) {
+            return new Promise((resolve) => {
+                const tempHeight = el1.style.height;
+                const tempText = el1.innerHTML;
+                el1.style.height = el2.style.height;
+                el1.innerHTML = el2.innerHTML;
+                el2.style.height = tempHeight;
+                el2.innerHTML = tempText;
+
+                window.requestAnimationFrame(function() {
+                    setTimeout(() => {
+                        resolve();
+                    }, 100);
+                });
+            });
+        }
+
+        async function bubbleSort() {
+            const bars = document.getElementsByClassName('array-bar');
+            const startTime = performance.now();
+            for (let i = 0; i < arraySize - 1; i++) {
+                for (let j = 0; j < arraySize - i - 1; j++) {
+                    bars[j].style.backgroundColor = '#ff5733';
+                    bars[j + 1].style.backgroundColor = '#ff5733';
+
+                    if (array[j] > array[j + 1]) {
+                        await swap(bars[j], bars[j + 1]);
+                        [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                    }
+
+                    bars[j].style.backgroundColor = '#007bff';
+                    bars[j + 1].style.backgroundColor = '#007bff';
+                }
+                bars[arraySize - i - 1].style.backgroundColor = '#28a745';
+            }
+            bars[0].style.backgroundColor = '#28a745';
+            const endTime = performance.now();
+            displayTime(startTime, endTime);
+        }
+
+        async function selectionSort() {
+    const bars = document.getElementsByClassName('array-bar');
+    const startTime = performance.now();
+    for (let i = 0; i < arraySize - 1; i++) {
+        let minIndex = i;
+        bars[i].style.backgroundColor = '#ff5733'; // meri jan ke tote yad rkhna ye wali bat color wali
+    
+        for (let j = i + 1; j < arraySize; j++) {
+            bars[j].style.backgroundColor = '#ff5733'; // if youre not going to compare then obv that theyll not change
+            
+            // simple algorithm of selectrion sortr
+            if (array[j] < array[minIndex]) {
+                minIndex = j;
+            }
+            // changing color
+            bars[j].style.backgroundColor = '#007bff';
+        }
+        
+        // using algortithm to Swap the found minimum element with the first element
+        if (minIndex !== i) {
+            await swap(bars[i], bars[minIndex]);
+            [array[i], array[minIndex]] = [array[minIndex], array[i]];
+        }
+
+        // Mark the sorted part
+        bars[i].style.backgroundColor = '#28a745';
+    }
+    bars[arraySize - 1].style.backgroundColor = '#28a745'; // Mark the last element as sorted
+    const endTime = performance.now();
+    displayTime(startTime, endTime);
+}
+
+        async function mergeSort(start = 0, end = arraySize - 1) {
+            if (start >= end) return;
+
+            const mid = Math.floor((start + end) / 2);
+            await mergeSort(start, mid);
+            await mergeSort(mid + 1, end);
+            await merge(start, mid, end);
+        }
+
+        async function merge(start, mid, end) {
+            const bars = document.getElementsByClassName('array-bar');
+            let n1 = mid - start + 1;
+            let n2 = end - mid;
+
+            let leftArray = [];
+            let rightArray = [];
+
+            for (let i = 0; i < n1; i++) {
+                leftArray[i] = array[start + i];
+                bars[start + i].style.backgroundColor = '#ff5733';
+            }
+            for (let j = 0; j < n2; j++) {
+                rightArray[j] = array[mid + 1 + j];
+                bars[mid + 1 + j].style.backgroundColor = '#ff5733';
+            }
+
+            await new Promise(resolve =>
+                setTimeout(() => {
+                    resolve();
+                }, 500)
+            );
+
+            let i = 0, j = 0, k = start;
+
+            while (i < n1 && j < n2) {
+                if (leftArray[i] <= rightArray[j]) {
+                    array[k] = leftArray[i];
+                    bars[k].style.height = `${leftArray[i] * 3}px`;
+                    bars[k].innerHTML = `<span>${leftArray[i]}</span>`;
+                    bars[k].style.backgroundColor = '#28a745';
+                    i++;
+                } else {
+                    array[k] = rightArray[j];
+                    bars[k].style.height = `${rightArray[j] * 3}px`;
+                    bars[k].innerHTML = `<span>${rightArray[j]}</span>`;
+                    bars[k].style.backgroundColor = '#28a745';
+                    j++;
+                }
+                k++;
+            }
+
+            while (i < n1) {
+                array[k] = leftArray[i];
+                bars[k].style.height = `${leftArray[i] * 3}px`;
+                bars[k].innerHTML = `<span>${leftArray[i]}</span>`;
+                bars[k].style.backgroundColor = '#28a745';
+                i++;
+                k++;
+            }
+
+            while (j < n2) {
+                array[k] = rightArray[j];
+                bars[k].style.height = `${rightArray[j] * 3}px`;
+                bars[k].innerHTML = `<span>${rightArray[j]}</span>`;
+                bars[k].style.backgroundColor = '#28a745';
+                j++;
+                k++;
+            }
+        }
+
+        async function startSorting(algorithm) {
+            switch (algorithm) {
+                case 'bubble':
+                    await bubbleSort();
+                    break;
+                case 'selection':
+                    await selectionSort();
+                    break;
+                case 'merge':
+                    const startTime = performance.now();
+                    await mergeSort();
+                    const endTime = performance.now();
+                    displayTime(startTime, endTime);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function displayTime(startTime, endTime) {
+            const timeTaken = (endTime - startTime) / 1000;
+            timeDisplay.innerHTML = `Time taken: ${timeTaken.toFixed(2)} seconds`;
+        }
+
+        generateArray();
+    </script>
+</body>
+</html>

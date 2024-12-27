@@ -1,0 +1,22 @@
+h1 {
+    font-size: 2.5rem;
+    color: navy;
+}
+
+p {
+    font-size: 1.25rem;
+    text-align: justify;
+}
+
+ul {
+    list-style-type: circle;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}

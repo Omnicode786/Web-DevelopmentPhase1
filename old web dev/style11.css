@@ -1,0 +1,24 @@
+h1{
+
+    color: antiquewhite;
+    background-color: aquamarine;
+}   
+body {
+    color: white;
+    background-color: black;
+    transition: background-color 0.5s, color 0.5s;
+}
+.light-mode {
+    color: black;
+    background-color: white;
+}
+#modeToggle {
+    border: none; /* Remove border */
+    background: none; /* Remove background */
+  /* Remove padding */
+}
+
+#modeToggle img {
+    width: 22px;
+}
+
