@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muzammil Alam - Modern Resume</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Hides the default cursor */
+       *{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       }
+        body {
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background: linear-gradient(135deg, #f3f4f6, #ffffff);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            cursor: none; /* Hide the default cursor */
+        }
+
+        /* Custom Animated Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff8a00;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            animation: glow 1s infinite alternate;
+            z-index: 10000;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px #ff8a00; }
+            100% { box-shadow: 0 0 30px #ff8a00; }
+        }
+
+        header {
+            height: 100vh;
+            background: linear-gradient(135deg, #e52e71, #ff8a00);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease-out;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        header h3 {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Animated Profile Picture */
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            z-index: 1000;
+            animation: photoShrink 1s ease-out forwards;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes photoShrink {
+            0% {
+                top: 80%;
+                transform: translateX(-50%) scale(1);
+            }
+            100% {
+                top: 20px;
+                transform: translateX(-50%) scale(0.5);
+            }
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            color: #e52e71;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ff8a00;
+        }
+
+        section {
+            padding: 60px 20px;
+            margin-bottom: 50px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        section:hover {
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Header -->
+    <header>
+        <h1 data-aos="fade-down">Muzammil Alam</h1>
+        <h3 data-aos="fade-up">Electronics Engineer | Web Developer | AI Enthusiast</h3>
+    </header>
+
+    <!-- Profile Picture -->
+    <!-- Replace 'your-photo.jpg' with the actual image file path -->
+    <img src="WhatsApp Image 2024-07-24 at 20.30.26_6f38444a.jpg" alt="Muzammil Alam" class="profile-photo" id="profile-photo">
+    <!-- NOTE: Add your photo in place of 'your-photo.jpg' -->
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Sections -->
+    <section id="about" data-aos="fade-up">
+        <h2>About Me</h2>
+        <p>
+            I am a passionate electronics engineering student with a keen interest in web development, artificial
+            intelligence, and embedded systems. I enjoy learning new technologies and building projects that make a
+            difference in people’s lives.
+        </p>
+    </section>
+
+    <section id="experience" data-aos="fade-left">
+        <h2>Experience</h2>
+        <ul>
+            <li>Intern - Hash Outsourcing, Karachi (2023-2024)</li>
+            <li>Volunteer - Robotics Society, NED University</li>
+        </ul>
+    </section>
+
+    <section id="projects" data-aos="fade-right">
+        <h2>Projects</h2>
+        <ul>
+            <li>Self-Driving Car Simulator</li>
+            <li>AI-Powered Personal Assistant</li>
+            <li>Sorting Algorithm Visualizer</li>
+        </ul>
+    </section>
+
+    <section id="contact" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Email: muzammilalam408@gmail.com</p>
+        <p>Phone: +92 340 221 1076</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Muzammil Alam | All Rights Reserved</p>
+    </footer>
+
+    <!-- AOS Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000 });
+
+        // Animated Cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+    </script>
+</body>
+</html>

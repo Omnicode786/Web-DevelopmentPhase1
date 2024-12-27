@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BULB JS</title>
+    <style>
+       *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+    #bulb{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        height:  300px;
+        width: 400px;
+        border-radius: 340px 340px 0 0;
+        border: 4px solid black;
+        background-color: yellow;
+        transition: all 0.3s ease-in-out;
+    }
+    #button{
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+cursor: pointer;
+    }
+
+
+    </style>
+
+</head>
+<body>
+    <div id="bulb">
+    </div>
+    <div id="button">
+        <button id="btn1">ON</button>
+        <button id="btn2">OFF</button>
+
+    </div>
+
+    <script>
+         /* var bulbs = document.querySelector("div")
+        var on = true
+        bulbs.addEventListener("click", function(){
+            if(on){
+            bulbs.style.backgroundColor = "gray"
+                on = false
+                bulbs.style.border = "none"
+        }
+            else{
+            bulbs.style.backgroundColor = "yellow"
+            on = true
+bulbs.style.border = "4px solid black"
+            }
+        }) */
+// maza agya janu
+var on = document.querySelector("#btn1")
+var bulb = document.querySelector("div")
+on.addEventListener("click", function(){
+    bulb.style.backgroundColor = "yellow"
+}) 
+var off = document.querySelector("#btn2")
+off.addEventListener("click", function(){
+    bulb.style.backgroundColor = "gray"
+})
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!-- Element hawa me utha diya and now element can be shifterd anywwhere -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position absolute</title>
+    <style>
+        div{
+            background-color: lightcyan;
+            height: 600px;
+            width: 600px;
+            position: absolute;
+            /* abhi ye basically hawa me uth gya he agr padding wgera se krte to table pr abht sari chizen hen to usko direct move krayen ge to wo aik dusre se tkreae gin mgr jab hawa me uth jayega to wo kese tkraye gin smjhe */
+            /* now special atributes like top left right down will be activated once i wrote position absolute */
+            top: 50%;
+            left: 50%;
+            /* if we want perfect center */
+            transform: translate(-50%, -50%);
+
+        }
+        h1{
+            color: lightseagreen;
+            font-size: 60px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            stroke: black;
+            stroke-width: 3px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div></div>
+    <h1>Centerred h1</h1></h1>
+</body>
+</html>
