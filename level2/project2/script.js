@@ -19,7 +19,7 @@ var popular = [
 ];
 function addProd(){
     var clutter = "";
-products.forEach(function(product){
+products.forEach(function(product, index){
     clutter += `  <div class="product w-fit rounded-xl p-2 bg-white">
                 <div class="image w-[14rem] h-[13rem] bg-zinc-200 rounded-xl overflow-hidden">
                 <img class "w-full h-full object-scale-down" src = "${product.image}" />
@@ -31,8 +31,8 @@ products.forEach(function(product){
                             <h3 class="font-semibold opacity-20">${product.headline}.</h3>
                             <h4 class="font-semibold mt-2">RS ${product.price}</h4>
                         </div>
-                        <button class=" buttons w-10 h-10 rounded-full shader text-yellow-400"><i
-                                class="ri-add-line"></i></button>
+                        <button data-index= ${index} class=" buttons w-10 h-10 rounded-full shader text-yellow-400"><i
+                              data-index=${index}  class=" buttons ri-add-line"></i></button>
                     </div>
                 </div>
             </div>`;
@@ -63,15 +63,62 @@ function addPopular(){
 function addCart(){
     // note that how you did this is wrong just slector will select only the first parent child for this youneed to do All
     // var button  = document.querySelector(".buttons");
-    var button  = document.querySelectorAll(".buttons");
+    var button  = document.querySelector(".products");
 
-    button.forEach(function(btn){
-        btn.addEventListener("click", function(){
-            alert("Added to cart!")
+
+        button.addEventListener("click", function(details){
+            if(details.target.classList.contains('buttons')){
+                console.log(details.target.dataset.index)
+
+                Cart.push(products[details.target.dataset.index])
+                console.log(Cart);
+                
+            }
         })
-    })
+    }
+function showCart() {
+    var cartplace = document.querySelector(".cartexpnd");
+    var carticon = document.querySelector(".carticon");
+    var click = false; // Used to track if the cart is open or closed
+
+    carticon.addEventListener("click", function () {
+        var clutter = "";
+        Cart.forEach(function (prod) {
+            clutter += `<div class="flex gap-2 bg-white p-2 rounded-lg">
+                            <img src="${prod.image}" class="w-12 h-12 object-cover rounded-lg">
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">${prod.name}</h3>
+                            <h5 class="text-sm font-semibold opacity-80">${prod.price}</h5>
+                        </div>`;
+        });
+
+        cartplace.innerHTML = clutter;
+
+        if (!click) {
+            cartplace.style.display = "block";
+            click = true; // Set click to true since the cart is now open
+        } else {
+            cartplace.style.display = "none";
+            click = false; // Reset click to false since the cart is now closed
+        }
+    });
+
+    document.addEventListener("click", function (event) {
+        // Close the cart if the user clicks outside of it and the cart is open
+        if (
+            click &&
+            !cartplace.contains(event.target) &&
+            event.target !== carticon
+        ) {
+            cartplace.style.display = "none";
+            click = false; // Reset click to false
+        }
+    });
 }
+
 
 addProd();
 addCart();
 addPopular();
+showCart();
