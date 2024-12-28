@@ -4,10 +4,10 @@
 // on click of produc t add button add it to the card
 var Cart = [];
 var products = [
-    {name: "White Chair", headline: "Soft like cloud", price: "15,000", image: "https://images.unsplash.com/photo-1519947486511-46149fa0a254?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
-    {name: "Yellow Chair", headline: "Soft like the sun", price: "10,000", image: "https://images.unsplash.com/photo-1486946255434-2466348c2166?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
-    {name: "Luxury Chair", headline: "Great for office work", price: "20,000", image: "https://images.unsplash.com/photo-1541533260371-b8fc9b596d84?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
-    {name: "Pink Chair", headline: "Ladies attention", price: "24,000", image: "https://images.unsplash.com/photo-1518051870910-a46e30d9db16?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+    {name: "White Chair", headline: "Soft like cloud", price: "15000", image: "https://images.unsplash.com/photo-1519947486511-46149fa0a254?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+    {name: "Yellow Chair", headline: "Soft like the sun", price: "10000", image: "https://images.unsplash.com/photo-1486946255434-2466348c2166?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+    {name: "Luxury Chair", headline: "Great for office work", price: "20000", image: "https://images.unsplash.com/photo-1541533260371-b8fc9b596d84?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+    {name: "Pink Chair", headline: "Ladies attention", price: "24000", image: "https://images.unsplash.com/photo-1518051870910-a46e30d9db16?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
 
 
 ];
@@ -45,14 +45,14 @@ function addPopular(){
     var clutter = "";
     popular.forEach(function(populars){
         clutter += `   <div class="popular bg-white p-2 rounded-2xl flex items-start gap-3 w-[60%] flex-shrink-0">
-                    <div class="w-20 h-20 bg-red-500 flex-shrink-0 rounded-2xl border-4 border-white overflow-hidden">
+                    <div class="image w-[14rem] h-[14rem] bg-zinc-200 rounded-xl overflow-hidden flex justify-center items-center">
                         <img class="w-full h-full object-cover"
                             src="${populars.image}"
                             alt="">
                     </div>
                     <div class="data py-2 w-full">
                         <h1 class="leading-none font-semibold">${populars.name}</h1>
-                        <h4 class="leading-none mt-2 text-sm font-semibold opacity-20">${populars.hea}</h4>
+                        <h4 class="leading-none mt-2 text-sm font-semibold opacity-20">${populars.headline}</h4>
                         <h4 class="mt-3 font-semibold text-zinc-500">${populars.price}</h4>
                     </div>
                 </div>`
@@ -71,25 +71,25 @@ function addCart(){
                 console.log(details.target.dataset.index)
 
                 Cart.push(products[details.target.dataset.index])
-                console.log(Cart);
-                
+                alert("Added to the Cart!!")                
             }
         })
     }
 function showCart() {
     var cartplace = document.querySelector(".cartexpnd");
     var carticon = document.querySelector(".carticon");
-    var click = false; // Used to track if the cart is open or closed
-
+    var click = false;
     carticon.addEventListener("click", function () {
         var clutter = "";
         Cart.forEach(function (prod) {
-            clutter += `<div class="flex gap-2 bg-white p-2 rounded-lg">
+            clutter += `<div class ="cartarea">
+            <div class="flex gap-2 bg-white p-2 rounded-lg">
                             <img src="${prod.image}" class="w-12 h-12 object-cover rounded-lg">
                         </div>
-                        <div>
+                        <div >
                             <h3 class="font-semibold">${prod.name}</h3>
                             <h5 class="text-sm font-semibold opacity-80">${prod.price}</h5>
+                        </div>
                         </div>`;
         });
 
@@ -105,9 +105,23 @@ function showCart() {
     });
 
 }
-
+function totalcalc(){
+    var box = document.querySelector(".totalbox");
+    var tot = document.querySelector(".Total");
+    tot.addEventListener("click",function(){
+    var total = 0;
+        Cart.forEach(function(item){
+            total += parseFloat(item.price);
+        })
+        box.style.display = "block";
+        box.innerHTML = total;
+        console.log(total);
+    })
+    
+}
 
 addProd();
 addCart();
 addPopular();
 showCart();
+totalcalc();
