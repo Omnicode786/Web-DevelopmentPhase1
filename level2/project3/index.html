@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>Music Player by Muzammil Alam</title>
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"
@@ -35,12 +35,18 @@
         </div>
 
     </div>
+    <div id="song-seeker" class="">
+        <input id="song-slider" type="range" min="0" value="0" step="1" class="" />
+        <div id="time-info" class="">
+            <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+        </div>
+    </div>
     <div id="player">
         <h3 id="backward"><i class="ri-skip-back-line"></i></h3>
         <h3 id="play"><i class="ri-play-fill"></i></h3>
         <h3 id="forward"><i class="ri-skip-forward-line"></i></h3>
     </div>
-
+    
 </body>
 <script src="scripting.js"></script>
 </html>

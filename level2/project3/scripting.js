@@ -9,8 +9,6 @@ var array = [
     {songName: "We Don't Talk Anymore", url: "Charlie Puth - We Don't Talk Anymore (feat. Selena Gomez) [Official Video].mp3", image: "https://cdn-images.dzcdn.net/images/cover/948200588c813c1afd10f29b56e0ce50/1900x1900-000000-80-0-0.jpg"},
     {songName: "PUSH 2 START", url: "Tyla - PUSH 2 START (Official Audio).mp3", image: "https://i1.sndcdn.com/artworks-m7I1qhX0C53zReln-JmhURw-t500x500.jpg"},
     {songName: "FEVER", url: "SpotifyMate.com - FEVER - ENHYPEN.mp3", image: "https://i1.sndcdn.com/artworks-5dne7Z52wJyiBfKH-1y02CQ-t1080x1080.jpg"},
-
-
 ]
 var audio =  new Audio()
 var selectedSong = 0;
@@ -19,7 +17,9 @@ var playbutton = document.querySelector("#play")
 var backwardbutton = document.querySelector("#backward")
 var forwardbutton = document.querySelector("#forward")
 var clicked = false;
-
+const songSlider = document.getElementById("song-slider");
+const currentTimeDisplay = document.getElementById("current-time");
+const totalTimeDisplay = document.getElementById("total-time");
 
 function addsongs(){
     var clutter = "";
@@ -35,8 +35,6 @@ function addsongs(){
                             <h4>${elem.songName}</h4>
                         </div>
                     </div>
-                    <div id="part2">
-                        <h5>3:09</h5>
                     </div>
                 </div>`
     })
@@ -140,6 +138,40 @@ function createHearts(event) {
     }
 }
 
+audio.addEventListener("timeupdate", () => {
+    // Set the value of the slider based on the current time
+    songSlider.value = audio.currentTime;
+
+    // Format the time to show minutes:seconds
+    const currentTimeFormatted = formatTime(audio.currentTime);
+    currentTimeDisplay.textContent = currentTimeFormatted;
+
+    const totalTimeFormatted = formatTime(audio.duration);
+    totalTimeDisplay.textContent = totalTimeFormatted;
+});
+
+// Format the time as minutes:seconds
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secondsFormatted = Math.floor(seconds % 60);
+    return `${minutes}:${secondsFormatted < 10 ? '0' + secondsFormatted : secondsFormatted}`;
+}
+
+// Update the song's current time when the slider is moved
+songSlider.addEventListener("input", (event) => {
+    audio.currentTime = event.target.value;
+});
+
+// Update the slider max value once the song is loaded (on metadata loaded)
+audio.addEventListener("loadedmetadata", () => {
+    songSlider.max = audio.duration;
+});
+
+// When the song ends, reset the slider
+audio.addEventListener("ended", () => {
+    songSlider.value = 0;
+    currentTimeDisplay.textContent = "0:00";
+});
 
 
 
