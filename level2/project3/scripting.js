@@ -8,7 +8,7 @@ var array = [
     {songName: "Heat Waves", url: "Glass Animals - Heat Waves.mp3", image: "https://i.scdn.co/image/ab67616d0000b2739e495fb707973f3390850eea"},
     {songName: "We Don't Talk Anymore", url: "Charlie Puth - We Don't Talk Anymore (feat. Selena Gomez) [Official Video].mp3", image: "https://cdn-images.dzcdn.net/images/cover/948200588c813c1afd10f29b56e0ce50/1900x1900-000000-80-0-0.jpg"},
     {songName: "PUSH 2 START", url: "Tyla - PUSH 2 START (Official Audio).mp3", image: "https://i1.sndcdn.com/artworks-m7I1qhX0C53zReln-JmhURw-t500x500.jpg"},
-    {songName: "FEVER", url: "ENHYPEN (엔하이픈) 'FEVER' Official MV.mp3", image: "https://i1.sndcdn.com/artworks-5dne7Z52wJyiBfKH-1y02CQ-t1080x1080.jpg"},
+    {songName: "FEVER", url: "SpotifyMate.com - FEVER - ENHYPEN.mp3", image: "https://i1.sndcdn.com/artworks-5dne7Z52wJyiBfKH-1y02CQ-t1080x1080.jpg"},
 
 
 ]
