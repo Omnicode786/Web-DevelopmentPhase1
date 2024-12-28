@@ -104,17 +104,6 @@ function showCart() {
         }
     });
 
-    document.addEventListener("click", function (event) {
-        // Close the cart if the user clicks outside of it and the cart is open
-        if (
-            click &&
-            !cartplace.contains(event.target) &&
-            event.target !== carticon
-        ) {
-            cartplace.style.display = "none";
-            click = false; // Reset click to false
-        }
-    });
 }
 
 
