@@ -22,8 +22,7 @@ html, body{
     background-color: rgb(46, 46, 46);
     border-left: 1px solid rgb(219, 209, 209);
 }
-#poster{
-}
+
 #heading{
     padding: 20px;
     color: white;
@@ -121,3 +120,148 @@ padding-bottom: 10px;
 #inside img:active{
     transform: scale(0.99);
 }
+#player i:hover {
+    background-color: #3f3d3d;
+}
+
+
+/* CHAT GPT code */
+
+
+/* Heart Floating Animation */
+@keyframes floatHeart {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-50px) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+    }
+}
+
+/* Style for the heart elements */
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff69b4;  /* Pink color for hearts */
+    animation: floatHeart 2s ease-in-out forwards;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Additional style for heart to scale slightly */
+.heart:before {
+    content: '❤️';
+    font-size: 30px;
+    animation: floatHeart 2s ease-in-out forwards;
+}
+
+
+
+@media (max-width: 1200px) {
+    #main {
+        flex-direction: row;  /* Keep horizontal layout */
+    }
+
+    #coverphoto {
+        padding: 50px;
+    }
+
+    #inside {
+        padding: 60px;
+    }
+
+    #inside img {
+        width: 250px;
+        height: 250px;
+    }
+
+    #list {
+        width: 35%;  /* Adjust list width */
+    }
+
+    #heading h1 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    #coverphoto {
+        padding: 30px;
+    }
+
+    #inside {
+        padding: 20px;
+    }
+
+    #inside img {
+        width: 200px;
+        height: 200px;
+    }
+
+    #list {
+        width: 40%;  /* Adjust list width */
+    }
+
+    #heading h1 {
+        font-size: 20px;
+    }
+
+    .songslist {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    #player i {
+        font-size: 28px;
+    }
+
+    #player h3 {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    #main {
+        flex-direction: row;  /* Keep horizontal layout */
+    }
+
+    #coverphoto {
+        padding: 20px;
+    }
+
+    #inside {
+        padding: 10px;
+    }
+
+    #inside img {
+        width: 150px;
+        height: 150px;
+    }
+
+    #list {
+        width: 50%;  /* Adjust list width */
+    }
+
+    #heading h1 {
+        font-size: 18px;
+    }
+
+    .songslist {
+        font-size: 12px;
+    }
+
+    #player i {
+        font-size: 25px;
+    }
+
+    #player h3 {
+        padding: 5px;
+    }
+}
+

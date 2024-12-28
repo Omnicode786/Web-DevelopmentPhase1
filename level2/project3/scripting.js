@@ -107,6 +107,39 @@ backwardbutton.addEventListener("click", function(){
 
 })
 
+// CHAT GPT
+
+function createHearts(event) {
+    const heartCount = 1;  // Number of hearts to create at each click
+    const heartContainer = event.currentTarget;  // This will refer to the cover photo div
+    
+    for (let i = 0; i < heartCount; i++) {
+        // Create a heart element
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        
+        // Randomize the size of each heart slightly for effect
+        heart.style.fontSize = `${Math.random() * 109 + 20}px`;
+        
+        // Get the click position relative to the #coverphoto container
+        const rect = heartContainer.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const clickY = event.clientY - rect.top;
+
+        // Position the heart near the click position within the cover photo
+        heart.style.left = `${clickX - 15 + Math.random() * 10}px`;  // Adding slight randomness
+        heart.style.top = `${clickY - 15 + Math.random() * 40}px`;
+
+        // Append the heart to the #coverphoto container
+        heartContainer.appendChild(heart);
+
+        // Remove the heart after animation completes (2s)
+        setTimeout(() => {
+            heart.remove();
+        }, 2000);
+    }
+}
+
 
 
 
