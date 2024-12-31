@@ -1,0 +1,36 @@
+/* Breakpoints in bootstraps
+Extra Small  <576px
+
+small >=576px sm
+medium  >=768px md
+Large >=992px lg
+Extra large >=1200 xl
+Extra extra large >= 1400px xxl
+
+Extra small is defult
+
+
+modifiers in bootstrap aler
+PRimary
+secondary
+success 
+info
+warning 
+danger l
+light
+dark
+
+alert is used to see warning and such ways
+
+bootstrap alerts
+primary = blue 
+danger = red
+
+bootstrap bootsystem uses a 12 colunm grid system that can be fluid or fixed
+
+container is root of grid it always starts fromit
+
+
+
+
+*/
