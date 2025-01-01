@@ -31,6 +31,6 @@ bootstrap bootsystem uses a 12 colunm grid system that can be fluid or fixed
 container is root of grid it always starts fromit
 
 
-
+ Modifiers are used for components. Infixes are used for the responsive breakpoints.
 
 */
