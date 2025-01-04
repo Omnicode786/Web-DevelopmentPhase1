@@ -23,17 +23,19 @@ body {
     transform: translate(-50%, -50%);
 }
 #img2{
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     font-size: 80px;
     position: absolute;
     top: 54%;
-    left: 35%;
+    left: 32%;
     transform: translate(-50%, -50%);
 
 
 }
 #searchengine {
+    box-sizing: border-box;
+
     width: 45%;
     height: 6%;
     position: absolute;
@@ -61,17 +63,24 @@ body {
     background-color: rgb(241, 230, 230);
     text-decoration: none;
     border-radius: 5px;
+    box-sizing: border-box;
+
+}
+button:hover{
+    background-color: rgb(5, 117, 214);
 }
 #btn2{
-    width: 190px;
+    min-width: 190px;
     height: 50px;
     font-size: 20px;
     position: absolute;
     top: 54%;
-    left: 55%;
+    left: 58%;
     transform: translate(-50%, -50%);
     background-color: rgb(241, 230, 230);
     text-decoration: none;
     border-radius: 5px;
+    box-sizing: border-box;
+
 
 }

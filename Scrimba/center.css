@@ -1,0 +1,22 @@
+img{
+    display: block;
+  margin: auto;
+  /* display: block: By default, img is an inline element. Changing it to a block element allows the margin property to work as expected.
+margin: auto: Centers the image horizontally within its parent container, but only if the container has a defined width. */
+ /* this will center it fromthe margon but it isnt floating */
+
+ /* The img is still within the document's normal flow and is only horizontally centered. */
+}
+div{
+    /* this wil also center it but its basically sort of floating in the air */
+    /* position: absolute: The div is removed from the normal document flow and positioned relative to its nearest positioned ancestor (or the viewport if no ancestor is positioned).
+top: 50%; left: 50%: Moves the top-left corner of the div to the center of the parent container (or viewport).
+transform: translate(-50%, -50%): Adjusts the position so that the div's center aligns with the center of the container, rather than its top-left corner. */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+/* meri jan ke tote position absolute basically aisa krdeta he ke ye element kisi or ki image like width etc element se disturn ni hota */
+
+/* The div is fully centered (both horizontally and vertically) but is positioned absolutely, so it's not part of the normal flow and might "float" over other elements. */
+}

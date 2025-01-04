@@ -21,7 +21,7 @@ entersearch.addEventListener("keydown",function(){
 click = false;
 toggle.addEventListener("click", function(){
     if (!click){
-        toggle.innerHTML = `<i class="ri-sun-line"></i>`
+        toggle.src = "light.png"
         click = true
     wholepage.style.backgroundColor = "rgb(45, 46, 46)"
     searchbutton.style.backgroundColor = "#383535"
@@ -33,7 +33,7 @@ toggle.addEventListener("click", function(){
     }
     else{
         click = false
-        toggle.innerHTML = `<i class="ri-moon-fill"></i>`
+        toggle.src = "night.png"
         wholepage.style.backgroundColor = "white"
         searchbutton.style.backgroundColor = "rgb(241, 230, 230)"
         searchbutton.style.color = "black"
