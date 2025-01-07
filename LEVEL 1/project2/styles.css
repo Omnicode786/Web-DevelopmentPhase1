@@ -30,7 +30,17 @@ body {
     line-height: 110px;
     transition: all 0.2s ease-in;
 }
-
+#toggle{
+    width: 60px;
+transition: all 0.4s ease-out;
+margin-left: 25px;
+    display: block;
+    
+}
+#toggle:hover{
+width: 80px;
+transition: all 0.4s ease-in-out;
+}
 #intro h1:hover {
 
     text-shadow: 0 0 20px rgb(255, 196, 0), 0 0 30px rgb(255, 196, 0), 0 0 40px rgb(255, 196, 0);
@@ -38,6 +48,7 @@ body {
 }
 
 #nav {
+    background-color: transparent;
     position: fixed;
     display: flex;
     margin-top: 40px;
@@ -293,4 +304,191 @@ nav:hover {
     text-transform: uppercase;
     text-shadow: 0 0 10px rgb(255, 196, 0), 0 0 20px rgb(255, 196, 0);
 
+}
+
+
+@media (max-width: 1200px) {
+    #intro h1 {
+        font-size: 5vw;
+    }
+
+    #about h2 {
+        font-size: 2rem;
+    }
+
+    #aboutpart2 {
+        width: 45%;
+    }
+
+    .work2part {
+        flex-direction: column;
+    }
+
+    .ellem {
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    #intro h1 {
+        font-size: 6vw;
+    }
+
+    #about h2 {
+        font-size: 1.8rem;
+    }
+
+    #aboutpart2 {
+        width: 50%;
+    }
+
+    #nav h3 {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .work2part {
+        flex-direction: column;
+    }
+
+    .ellem {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #intro h1 {
+        font-size: 6.5vw;
+    }
+
+    #about h2 {
+        font-size: 1.6rem;
+    }
+
+    #aboutpart2 {
+        width: 60%;
+    }
+
+    #work1 h3 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #intro h1 {
+        font-size: 7vw;
+    }
+
+    #about h2 {
+        font-size: 1.5rem;
+    }
+
+    #aboutpart2 {
+        width: 70%;
+    }
+
+    #work1 h3 {
+        font-size: 1.4rem;
+    }
+
+    .work2part {
+        flex-direction: column;
+    }
+
+    .ellem {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #intro h1 {
+        font-size: 8vw;
+    }
+
+    #about h2 {
+        font-size: 1.5rem;
+    }
+
+    #aboutpart2 {
+        width: 100%;
+    }
+
+    #nav h3 {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    #place h3 {
+        font-size: 1.2rem;
+    }
+
+    .work2part {
+        flex-direction: column;
+    }
+
+    .ellem {
+        width: 100%;
+    }
+}
+
+@media (max-width: 375px) {
+    #intro h1 {
+        font-size: 9vw;
+    }
+
+    #about h2 {
+        font-size: 1.4rem;
+    }
+
+    #aboutpart2 {
+        width: 90%;
+    }
+
+    #nav h3 {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+    }
+
+    #place h3 {
+        font-size: 1.1rem;
+    }
+
+    .work2part {
+        flex-direction: column;
+    }
+
+    .ellem {
+        width: 100%;
+    }
+}
+
+@media (max-width: 320px) {
+    #intro h1 {
+        font-size: 10vw;
+    }
+
+    #about h2 {
+        font-size: 1.3rem;
+    }
+
+    #aboutpart2 {
+        width: 80%;
+    }
+
+    #nav h3 {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+
+    #place h3 {
+        font-size: 1rem;
+    }
+
+    .work2part {
+        flex-direction: column;
+    }
+
+    .ellem {
+        width: 100%;
+    }
 }
