@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+
+    margin: 20px;
+}
+
+img{
+    width: 120px;
+    display: block;
+    object-fit: cover;
+    border-radius: 2.5px;
+
+}
+.card{
+    width: 600px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 20px;
+    margin: 150px auto;
+}
+.italic{
+    line-height: 38px;
+    color: #2b2839;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.border{
+border-bottom: 4px solid #d8cefe;
+background-color: #ddebf8;
+border-radius: 5px;
+}
+/* these are basically known as utility classes */
+.nametags{
+background-color: #dfe7ee;
+padding: 5px;
+}
+.card>div:active{
+    transform: scale(0.991);
+}
