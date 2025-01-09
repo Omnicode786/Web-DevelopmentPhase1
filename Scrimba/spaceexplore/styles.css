@@ -1,0 +1,11 @@
+body{
+    background-image: url(greg-rakozy-oMpAz-DN-9I-unsplash.jpg);
+    color: white;
+    background-size: cover;
+    text-align: center;
+}
+.btn{
+    background-color: white;
+    padding: 15px 20px;
+    border: none;
+}
