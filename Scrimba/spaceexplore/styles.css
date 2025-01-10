@@ -3,9 +3,16 @@ body{
     color: white;
     background-size: cover;
     text-align: center;
+    font-family: "Orbitron", serif;
+
+    /* buttons dont inherit font families */
 }
 .btn{
     background-color: white;
-    padding: 15px 20px;
+    padding: 9px 18px;
     border: none;
+    font-family: inherit;
+}
+.btn:active{
+    transform: scale(0.99);
 }
