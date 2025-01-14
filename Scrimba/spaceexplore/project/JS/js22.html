@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Events in JavaScript</h1>
+        <p>Events in JavaScript are actions or occurrences that happen in the browser, such as user interactions, loading of documents, or actions triggered by the browser itself. Events provide a way to react to these occurrences, allowing developers to create interactive and dynamic web pages. Common examples include clicking a button, hovering over an element, submitting a form, or resizing the window.</p>
+        <h2>1. Understanding Events</h2>
+        <p>Events are an integral part of the JavaScript language and are essential for creating responsive and interactive user interfaces. When an event occurs, it triggers an event handler (a function) that executes the code you define.</p>
+        <h2>2. Event Handling</h2>
+        <p>To respond to events, you need to attach an event handler to an element. There are several ways to handle events in JavaScript:</p>
+        <h3>a. Inline Event Handlers</h3>
+        <p>You can add an event handler directly within an HTML element's tag:</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>&lt;button onclick="alert('Button clicked!')"&gt;Click Me&lt;/button&gt;</code></pre>
+        <h3>b. Event Handler Properties</h3>
+        <p>You can assign a function to an element's event handler property using JavaScript:</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>const button = document.getElementById('myButton');
+button.onclick = function() {
+    alert('Button clicked!');
+};</code></pre>
+
+        <h3>c. addEventListener() Method</h3>
+        <p>The recommended way to attach event handlers is by using the "addEventListener()" method. This method allows you to attach multiple event handlers to a single element and works for most events.</p>
+        <pre class="lang-javascript"><code>const button = document.getElementById('myButton');
+button.addEventListener('click', function() {
+    alert('Button clicked!');
+});</code></pre>
+        <h3>Example with multiple events:</h3>
+        <pre class="lang-javascript"><code>button.addEventListener('mouseover', function() {
+    button.style.backgroundColor = 'yellow';
+});
+
+button.addEventListener('mouseout', function() {
+    button.style.backgroundColor = '';
+});</code></pre>
+        <h2>3. Event Object</h2>
+        <p>When an event occurs, an event object is automatically passed to the event handler. This object contains useful information about the event, such as the type of event, the target element, and details about the user interaction.</p>
+        <h3>Common Properties of the Event Object:</h3>
+        <ul>
+            <li><span>"type":</span> The type of the event (e.g., "click", "keydown").</li>
+            <li><span>"target":</span> The element that triggered the event.</li>
+            <li><span>"currentTarget":</span> The element to which the event handler is attached.</li>
+            <li><span>"preventDefault()":</span> Prevents the default action associated with the event.</li>
+            <li><span>"stopPropagation()":</span> Stops the event from bubbling up to parent elements.</li>
+        </ul>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>button.addEventListener('click', function(event) {
+    console.log('Event type:', event.type);
+    console.log('Event target:', event.target);
+});</code></pre>
+        <h2>4. Event Bubbling and Capturing</h2>
+        <p>When an event occurs in the DOM, it does not trigger only on the target element but also on all its parent elements in a process called event propagation. There are two phases of event propagation:</p>
+        <ul>
+            <li><span>Event Bubbling:</span> The event starts at the target element and bubbles up to the root of the DOM tree.</li>
+            <li><span>Event Capturing (Trickling):</span> The event starts from the root and trickles down to the target element.</li>
+        </ul>
+        <p>By default, events bubble up, but you can capture them during the capturing phase by setting the third parameter of "addEventListener()" to "true".</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>const div = document.getElementById('myDiv');
+const button = document.getElementById('myButton');
+
+div.addEventListener('click', function() {
+    alert('Div clicked!');
+}, true); // Capturing phase
+
+button.addEventListener('click', function() {
+    alert('Button clicked!');
+});</code></pre>
+            <h2>5. Removing Event Handlers</h2>
+            <p>You can remove an event handler using the "removeEventListener()" method. This is useful when you no longer want a specific event to trigger the associated handler.</p>
+            <h3>Example:</h3>
+            <pre class="lang-javascript"><code>function handleClick() {
+    alert('Button clicked!');
+}
+
+button.addEventListener('click', handleClick);
+
+// Later in your code
+button.removeEventListener('click', handleClick);</code></pre>
+            <h2>6. Common Use Cases of Events</h2>
+            <ul>
+                <li><span>Form Validation:</span> Validating user input before submission and providing feedback..</li>
+                <li><span>Dynamic Content Update:</span> Changing content based on user actions, like showing or hiding elements.</li>
+                <li><span>Interactive UI Components:</span> Creating menus, modals, sliders, and other interactive elements.</li>
+                <li><span>Tracking User Behavior:</span> Monitoring clicks, key presses, and other interactions for analytics.</li>
+                <li><span>Handling Keyboard Shortcuts:</span> Implementing custom keyboard shortcuts for improved user experience.</li>
+            </ul>
+            <h2>Conclusion</h2>
+            <p>Events are a powerful tool in JavaScript that allow you to make your web pages interactive and responsive to user actions. By understanding how to handle events effectively, you can create dynamic, user-friendly web applications that react to user inputs in real time.</p>
+        </main>
+        <script src="../common/common.js"></script>
+        <script src="commonjs.js"></script>
+    </body>
+</html>

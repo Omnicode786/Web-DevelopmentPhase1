@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Functions in JavaScript</h1>
+        <p>Functions are one of the fundamental building blocks in JavaScript. A function is a reusable block of code designed to perform a specific task. It allows you to write modular, organized, and maintainable code by breaking down complex problems into smaller, manageable parts.</p>
+
+        <h2>1. Defining a Function</h2>
+        <p>A function is defined using the "function" keyword, followed by a name, a list of parameters (optional), and a block of code to be executed when the function is called.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>function functionName(parameters) {
+    // Code to be executed
+}</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>function greet(name) {
+    console.log("Hello, " + name + "!");
+}
+
+greet("Alice"); // Output: "Hello, Alice!"</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>"function greet(name)" defines a function named "greet" with one parameter "name".</li>
+            <li>"console.log" outputs a greeting message to the console.</li>
+            <li>"greet("Alice")" calls the function, passing "Alice" as an argument.</li>
+        </ul>
+    
+        <h2>2. Function Parameters and Arguments</h2>
+        <p>Functions can accept parameters (also called arguments) that allow you to pass information to them. You can define a function with multiple parameters and provide corresponding arguments when calling the function.</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>function add(a, b) {
+    return a + b;
+}
+
+let sum = add(5, 3); // Output: 8
+console.log(sum);</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The "add" function takes two parameters, "a" and "b".</li>
+            <li>"return a + b" returns the sum of "a" and "b".</li>
+            <li>The "add(5, 3)" call returns "8", which is then stored in the "sum" variable.</li>
+        </ul>
+
+        <h2>3. Function Return Values</h2>
+        <p>Functions can return a value using the "return" statement. The returned value can be used in the program wherever needed.</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>function multiply(x, y) {
+    return x * y;
+}
+
+let result = multiply(4, 5);
+console.log(result); // Output: 20</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The "multiply" function returns the product of "x" and "y".</li>
+            <li>The returned value "20" is stored in the "result" variable.</li>
+        </ul>
+
+        <h2>4. Function Expressions</h2>
+        <p>In JavaScript, functions can also be defined as expressions. A function expression is a function stored in a variable.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>let variableName = function(parameters) {
+    // Code to be executed
+};</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>let square = function(num) {
+    return num * num;
+};
+
+console.log(square(4)); // Output: 16</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The function is assigned to the "square" variable.</li>
+            <li>"square(4)" calls the function, returning "16".</li>
+        </ul>
+        
+        <h2>5. Anonymous Functions</h2>
+        <p>Anonymous functions are functions without a name. They are often used in places where a function is needed for a short period, such as in event handlers or callbacks.</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>setTimeout(function() {
+    console.log("This message appears after 2 seconds");
+}, 2000);</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The anonymous function is passed as an argument to setTimeout, and it runs after 2 seconds.</li>
+        </ul>
+        
+        <h2>6. IIFE (Immediately Invoked Function Expression)</h2>
+        <p>An IIFE is a function that runs as soon as it is defined. It’s often used to create a private scope and avoid polluting the global namespace.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>(function() {
+    // Code to be executed immediately
+})();</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>(function() {
+    let message = "Hello, World!";
+    console.log(message);
+})();</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The function is defined and immediately executed, printing "Hello, World!" to the console.</li>
+        </ul>
+
+        <h2>7. Higher-Order Functions</h2>
+        <p>Higher-order functions are functions that take other functions as arguments or return functions as their result. They are a powerful feature in JavaScript, often used in functional programming.</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>function greetUser(name) {
+    return function(greeting) {
+        console.log(greeting + ", " + name);
+    };
+}
+
+let greet = greetUser("Bob");
+greet("Hello"); // Output: "Hello, Bob"
+greet("Good morning"); // Output: "Good morning, Bob"</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The "greetUser" function returns a function that accepts a "greeting".</li>
+            <li>The returned function is stored in "greet" and can be used to greet "Bob" with different messages..</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Functions in JavaScript are essential for structuring your code in a clear, reusable, and modular way. Whether you’re creating simple functions or leveraging advanced concepts like higher-order functions, understanding how to use functions effectively will make you a more proficient JavaScript developer.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

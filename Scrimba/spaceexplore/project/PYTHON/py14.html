@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonPython.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Tuple methods in Python</h1>
+        <p>Tuples in Python are immutable, ordered collections of elements, which means they cannot be changed after creation. Due to this immutability, tuples have a limited set of methods compared to mutable data types like lists. However, the methods they do have can be quite useful for certain operations.</p>
+        <h2>
+            Common methods of tuple:
+        </h2>
+        <ul>
+            <li><span>count():</span>
+                The count() method is used to count how many times a specified element appears in the tuple. This can be useful when you want to determine the frequency of an item within a tuple.</li>
+        </ul>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code>my_tuple = (10, 20, 30, 20, 40, 20)
+count_20 = my_tuple.count(20)
+print(count_20)  # Output: 3
+</code></pre>
+        <ul>
+            <li><span>index():</span>
+                The index() method is used to find the index of the first occurrence of a specified element in the tuple. If the element is not found, a ValueError is raised.</li>
+        </ul>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code>my_tuple = ('apple', 'banana', 'cherry', 'apple')
+index_apple = my_tuple.index('apple')
+print(index_apple)  # Output: 0
+</code></pre>
+        <h2>Example with Error Handling</h2>
+        <pre class="lang-python"><code>try:
+    index_orange = my_tuple.index('orange')
+except ValueError:
+    print("Element not found in tuple.")
+</code></pre>
+        
+        <h2>Conclusion</h2>
+        <p>Tuples in Python, being immutable, offer only a couple of built-in methods: count() to determine how many times an element appears, and index() to find the position of an element's first occurrence. Although limited, these methods, along with the in operator for checking membership, provide essential functionality for working with tuples effectively.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonPython.js"></script>
+</body>
+</html>

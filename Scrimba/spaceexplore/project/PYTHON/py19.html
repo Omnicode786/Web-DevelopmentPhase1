@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="commonPython.css">
+      <link rel="stylesheet" href="../common/common.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+</head>
+<body>
+      <main>
+            <h1>File handling</h1>
+            <p>File handling in Python involves reading from and writing to files on your computer. Python provides built-in functions and methods that allow you to manipulate files easily.</p>
+
+            <h2>Opening a file:</h2>
+            <p>In Python, the 'open()' function is used to open a file.</p> 
+            <h2>Syntax:</h2>
+            <pre class="lang-python"><code>file_object = open(filename, mode)</code></pre>
+            <h2>Explanation:</h2>
+       
+                  <ul>
+                        <li><span>filename:</span>The name (and path) of the file to open.</li>
+                        <li><span>mode:</span>
+                              A string that specifies the mode in which the file is opened. Common modes include:</li>
+                        <ul>
+                              <li><span>'r':</span>Read (default mode) - opens the file for reading.</li>
+                              
+                              <li><span>'w':</span>Write - opens the file for writing (creates a new file or truncates an existing file).</li>
+                              <li><span>'a':</span>Append - opens the file for writing, appending to the end of the file if it exists.</li>
+                              <li><span>'b':</span>Binary mode - opens the file in binary mode (e.g., 'rb' or 'wb').</li>
+                              <li><span>'+':</span>Update mode - allows both reading and writing (e.g., 'r+', 'w+').</li>
+                        </ul>
+                  </ul>
+
+                  <h2>Reading from a file:</h2>
+                  <p>You can read the contents of a file using several methods:</p>
+                  <ul>
+                        <li><span>read():</span>
+                        Reads the entire file</li>
+                        <h2>Example:</h2>
+                        <pre class="lang-python"><code>with open('example.txt', 'r') as file:
+content = file.read()
+print(content)
+</code></pre>
+                        <li><span>readline():</span>
+                        Reads one line at a time</li>
+                        <h2>Example:</h2>
+                        <pre class="lang-python"><code>with open('example.txt', 'r') as file:
+line = file.readline()
+while line:
+print(line, end='')
+line = file.readline()                          
+</code></pre>           
+                        <li><span>readlines():</span>
+                        Reads all lines into a list.</li>
+                        <h2>Example:</h2>
+                        <pre class="lang-python"><code>with open('example.txt', 'r') as file:
+lines = file.readlines()
+for line in lines:
+print(line, end='')
+                        </code></pre>    
+
+                  </ul>
+                  <h2>Writing to a File</h2>
+                  <p>To write to a file, you use the 'write()' method or the 'writelines()' method:</p>
+                  <ul>
+                        <li><span>write()</span>
+                        Writes a string to the file.</li>
+                        <h2>Example:</h2>
+                        <pre class="lang-python"><code>with open('example.txt', 'w') as file:
+file.write('This is a line of text.\n')
+                        </code></pre>
+                        <li><span>writelines()</span>
+                        Writes a list of strings to the file.</li>
+                        <h2>Example:</h2>
+                        <pre class="lang-python"><code>with open('example.txt', 'w') as file:
+lines = ['First line.\n', 'Second line.\n', 'Third line.\n']
+file.writelines(lines)
+                        </code></pre>
+
+                  </ul>
+                  <h2>Appending to a file</h2>
+                  <p>If you want to add content to the end of a file without overwriting it, you can open the file in append mode ('a'):</p>
+                  <h2>Example:</h2>
+                  <pre class="lang-python"><code>with open('example.txt', 'a') as file:
+file.write('This will be added to the end of the file.\n')
+                  </code></pre>
+                  <h2>Closing a file:</h2>
+                  <p>While Python automatically closes the file when using the with statement, you can also manually close a file using the close() method:</p>
+                  <pre class="lang-python"><code>file = open('example.txt', 'r')
+content = file.read()
+file.close()
+                  </code></pre>
+                  <h2>Working with binary files:</h2>
+                  <p>To read or write binary files (such as images or executables), use the 'b' mode:</p>
+                  <h2>Example:</h2>
+                  <pre class="lang-python"><code>with open('image.png', 'rb') as file:
+data = file.read()
+with open('new_image.png', 'wb') as file:
+file.write(data)
+                  </code></pre>
+            <h2>Conclusion</h2>
+            <p>File handling in Python allows for efficient reading, writing, and appending to files using the open() function with different modes. The with statement ensures files are safely closed after operations, and exception handling prevents errors. This makes Python's file handling both simple and robust for managing data.</p>
+
+      </main>
+      <script src="../common/common.js"></script>
+      <script src="commonPython.js"></script>
+</body>
+</html>

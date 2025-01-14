@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+            <h1>Declaring Variables</h1>
+            <p>Variables are fundamental to any programming language as they store data that can be used and manipulated throughout your code. In JavaScript, variables are declared using three main keywords: "var", "let", and "const". Each has its own scope and use case.</p>
+            <h2>Using "var"</h2>
+            <p class="history">The "var" keyword is the traditional way to declare variables in JavaScript. However, its usage has become less common with the introduction of let and const in ES6.</p>
+            <pre class="lang-javascript"><code>var name = "John";
+var age = 30;</code></pre>
+            <h2>Characteristics:</h2>
+            <ul>
+                  <li><span>Function Scope:</span>
+                    "var" is function-scoped, meaning it is accessible within the function it is declared in.
+                    <pre class="lang-javascript"><code>function greet() {
+      var message = "Hello, world!";
+      console.log(message); // Accessible here
+}
+
+greet();
+console.log(message); // Error: message is not defined</code></pre>
+                  </li>
+
+                  <li><span>Hoisting:</span>
+                    Variables declared with var are hoisted to the top of their scope, meaning they can be used before they are declared without causing an error (though this can lead to unexpected behavior).</li>
+            </ul>
+            <h2>Using "let"</h2>
+            <p class="history">The "let" keyword is used to declare block-scoped variables, which means the variable is only accessible within the block (e.g., a loop or an if statement) it is declared in.</p>
+            <pre class="lang-javascript"><code>let city = "New York";
+let isSunny = true; </code></pre>
+            <h2>Characteristics:</h2>
+            <ul>
+                  <li><span>Block Scope:</span>
+                        "let" is block-scoped, providing better control over variable visibility and reducing the chances of errors.
+                  <pre class="lang-javascript"><code>if (true) {
+      let greeting = "Hello, block scope!";
+      console.log(greeting); // Accessible here
+}
+
+console.log(greeting); // Error: greeting is not defined</code></pre></li>
+                  <li><span>Reassignment:</span>
+                        Variables declared with let can be reassigned new values.</li>
+            </ul>
+            <h2>Using "const"</h2>
+            <p class="history">The "const" keyword is used to declare variables that are intended to remain constant throughout the program. Once a const variable is assigned a value, it cannot be reassigned.</p>
+            <pre class="lang-javascript"><code>const pi = 3.14159;
+const apiUrl = "https://api.example.com";</code></pre>
+            <h2>Characteristics:</h2>
+            <ul>
+                  <li><span>Block Scope:</span>
+                        Like "let", "const" is also block-scoped.</li>
+                  <li><span>Immutable:</span>
+                         Variables declared with const cannot be reassigned. However, if the variable holds an object or array, the contents of the object or array can still be modified.
+                         <pre class="lang-javascript"><code>const numbers = [1, 2, 3];
+numbers.push(4); // This is allowed
+numbers = [5, 6, 7]; // This will cause an error.</code></pre></li>
+            </ul>
+            <h2>Choosing the Right Keyword</h2>
+            <ul>
+                  <li><span>var:</span>
+                        Use sparingly, mainly in legacy code or where function scope is specifically needed</li>
+                  <li><span>let:</span>
+                        Use when you need a variable that may change and is limited to the scope of a block.</li>
+                  <li><span>const:</span>
+                        Use for variables that should not be reassigned after their initial value is set. This is the preferred choice for constants and for objects and arrays that will be mutated but not reassigned.</li>
+            </ul>
+            <h2>Conclusion</h2>
+            <p>Understanding how to declare variables properly is crucial for writing clean, maintainable, and error-free JavaScript code. Choosing the right keyword (var, let, or const) based on the scope and mutability requirements will help you manage your variables effectively.</p>
+      </main>
+      <script src="../common/common.js"></script>
+      <script src="commonjs.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Closures in JavaScript</h1>
+        <p>A closure is a fundamental concept in JavaScript that allows a function to access variables from its outer (enclosing) scope, even after that outer function has finished executing. Closures are created every time a function is created, at function creation time.</p>
+        <h2>1. Understanding Closures</h2>
+        <p>When a function is defined inside another function, it has access to the outer function's variables. Even when the inner function is executed outside of the outer function, it still "remembers" the variables from the outer function. This ability to remember and access the outer scope is what makes closures powerful.</p>
+        <h2>Example of a Closure:</h2>
+        <pre class="lang-javascript"><code>function outerFunction() {
+    let outerVar = "I'm outside!";
+
+    function innerFunction() {
+        console.log(outerVar);  // Accesses the outer function's variable
+    }
+
+    return innerFunction;
+}
+
+const closureFunc = outerFunction();
+closureFunc();  // Output: "I'm outside!"</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>In the example above, "innerFunction" is defined within "outerFunction".</li>
+            <li>Even after "outerFunction" has finished executing, "innerFunction" retains access to "outerVar" because of the closure.</li>
+            <li>When "closureFunc" (which is the returned "innerFunction") is called, it still has access to "outerVar".</li>
+        </ul>
+        
+        <h2>2. Practical Use Cases of Closures</h2>
+        <p>Closures are useful in a variety of situations:</p>
+        <h3>a. Data Privacy:</h3>
+        <p>Closures can be used to create private variables that cannot be accessed directly from outside the function.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>function createCounter() {
+let count = 0;
+
+return function() {
+    count++;
+    return count;
+};
+}
+
+const counter = createCounter();
+console.log(counter());  // Output: 1
+console.log(counter());  // Output: 2
+console.log(counter());  // Output: 3</code></pre>
+        <h3>Explanation:</h3>
+        <ul>
+            <li>The variable "count" is private to the "createCounter" function and cannot be accessed directly from the outside.</li>
+            <li>Each call to "counter()" increments the count and returns the updated value.</li>
+        </ul>
+        <h3>b. Function Factories</h3>
+        <p>Closures can be used to create functions that are pre-configured with certain values.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>function createMultiplier(multiplier) {
+return function(value) {
+    return value * multiplier;
+};
+}
+
+const double = createMultiplier(2);
+const triple = createMultiplier(3);
+
+console.log(double(5));  // Output: 10
+console.log(triple(5));  // Output: 15</code></pre>
+        <h3>Explanation:</h3>
+        <ul>
+            <li>"createMultiplier" returns a function that multiplies a given value by a specific "multiplier".</li>
+            <li>The functions "double" and "triple" are configured with multipliers 2 and 3, respectively, and retain these values through closures.</li>
+        </ul>
+        </ol>
+        <h2>3. Lexical Scoping and Closures</h2>
+        <p>Closures rely on the concept of lexical scoping, where the scope of a variable is determined by its position in the source code. In a closure, the inner function "remembers" the lexical environment in which it was created, even if it's executed outside that environment.</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>function greet(name) {
+    return function(message) {
+        console.log(`${message}, ${name}!`);
+    };
+}
+
+const greetJohn = greet("John");
+greetJohn("Hello");  // Output: "Hello, John!"
+greetJohn("Goodbye");  // Output: "Goodbye, John!"</code></pre>
+        <h3>Explanation:</h3>
+        <ul>
+            <li>The inner function returned by "greet" remembers the "name" variable from its lexical environment, allowing "greetJohn" to correctly greet "John" with different messages.</li>
+        </ul>
+    
+        <h2>4. Common Pitfalls with Closures</h2>
+        <p>While closures are powerful, they can sometimes lead to unexpected behavior if not used carefully. For example, closures within loops can capture the same variable, leading to unintended results.</p>
+        <h2>Example of Potential Pitfall:</h2>
+        <pre class="lang-javascript"><code>for (var i = 1; i <= 3; i++) {
+    setTimeout(function() {
+        console.log(i);
+    }, 1000);
+}
+
+// Output after 1 second: 4, 4, 4 (instead of 1, 2, 3)</code></pre>
+        <h2>Solution:</h2>
+        <p>Use "let" instead of "var" to ensure that each iteration of the loop has its own scope.</p>
+        <pre class="lang-javascript"><code>for (let i = 1; i <= 3; i++) {
+    setTimeout(function() {
+        console.log(i);
+    }, 1000);
+}
+
+// Output after 1 second: 4, 4, 4 (instead of 1, 2, 3)</code></pre>
+        
+        <h2>Conclusion</h2>
+        <p>Closures are a powerful feature in JavaScript that allow functions to retain access to their outer scope even after that scope has finished executing. They are essential for data privacy, function factories, and many other advanced programming techniques. Understanding and leveraging closures can lead to more flexible and maintainable code.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

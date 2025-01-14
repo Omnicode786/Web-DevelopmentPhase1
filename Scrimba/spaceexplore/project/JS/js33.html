@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Optional Chaining in JavaScript</h1>
+        <p>Optional Chaining "(?.)" is a feature introduced in ES2020 that allows you to safely access deeply nested object properties without having to explicitly check if each reference in the chain is valid. If a reference is "null" or "undefined", the expression will short-circuit and return undefined instead of throwing an error.</p>
+        <h2>1. Why Use Optional Chaining?</h2>
+        <p>When working with nested objects, it's common to access properties or methods that may not exist. Normally, you would need to check if each part of the chain is defined to avoid runtime errors.</p>
+        <h3>Without Optional Chaining:</h3>
+        <pre class="lang-javascript"><code>let user = {
+    profile: {
+        name: 'Alice'
+    }
+};
+
+console.log(user.profile.name);  // "Alice"
+console.log(user.address.city);  // Error: Cannot read property 'city' of undefined</code></pre>
+        <p>In the example above, accessing "user.address.city" throws an error because address is "undefined".</p>
+        <p>To prevent this, you’d normally check if each part of the chain exists:</p>
+        <pre class="lang-javascript"><code>console.log(user.address && user.address.city);  // undefined</code></pre>
+        <p>This can get cumbersome for deeply nested structures.</p>
+        <h2>2. How Optional Chaining Works</h2>
+        <p>With optional chaining, you can avoid these manual checks. The "?." operator checks if the value before it is "null" or "undefined". If it is, the operation short-circuits, and "undefined" is returned.</p>
+        <h3>Example with Optional Chaining:</h3>
+        <pre class="lang-javascript"><code>let user = {
+    profile: {
+        name: 'Alice'
+    }
+};
+
+console.log(user?.profile?.name);     // "Alice"
+console.log(user?.address?.city);     // undefined (no error)</code></pre>
+        <p>Here, "user?.address?.city" doesn’t throw an error even though address is undefined. Instead, it safely returns "undefined".</p>
+        
+        <h2>3. Accessing Methods with Optional Chaining</h2>
+        <p>Optional chaining can also be used to call methods that may not exist. If the method is "undefined", it will return "undefined" instead of throwing an error.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let user = {
+    greet() {
+        return 'Hello!';
+    }
+};
+
+console.log(user.greet?.());      // "Hello!"
+console.log(user.farewell?.());   // undefined (no error)</code></pre>
+        <p>In this case, "user.greet?.()" safely calls the greet method, while "user.farewell?.()" returns undefined because "farewell" does not exist.</p>
+    
+        <h2>4. Combining with Nullish Coalescing Operator</h2>
+        <p>Optional chaining is often used with the Nullish Coalescing Operator "(??)" to provide a default value if the optional chaining results in undefined.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let user = {
+    profile: {
+        name: 'Alice'
+    }
+};
+
+let city = user?.address?.city ?? 'Unknown City';
+console.log(city);  // "Unknown City"</code></pre>
+        <p>Here, if "user.address.city" is "undefined", 'Unknown City' will be used as the default value.</p>
+        <h2>5. Optional Chaining with Arrays</h2>
+        <p>Optional chaining can also be applied when working with arrays. You can use it to safely access elements or properties within an array.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let users = [{ name: 'Alice' }, null, { name: 'Bob' }];
+
+console.log(users[0]?.name);   // "Alice"
+console.log(users[1]?.name);   // undefined (no error)
+console.log(users[2]?.name);   // "Bob"</code></pre>
+        <p>In this case, "users[1]?.name" safely returns "undefined" because "users[1]" is "null".</p>
+        <h2>6. Limitations of Optional Chaining</h2>
+        <p>While optional chaining is a powerful tool, it has a few limitations:</p>
+        <ul>
+            <li>It will only return "undefined" if the value before the "?." is "null" or "undefined". If a property exists but has some other falsy value (like 0, false, or an empty string), optional chaining will not short-circuit.</li>
+        </ul>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let data = { count: 0 };
+
+console.log(data?.count);   // 0 (does not return undefined)</code></pre>
+        <p>Here, "data?.count" returns "0" because count exists and is not "null" or "undefined".</p>
+        <h2>Conclusion</h2>
+        <p>Optional chaining simplifies accessing nested properties or methods, especially when you're not sure if every reference in the chain exists. It helps avoid errors and makes the code more readable and concise. By combining it with the Nullish Coalescing Operator "(??)", you can also provide default values when certain properties are missing.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

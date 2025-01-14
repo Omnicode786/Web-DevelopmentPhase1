@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+            <h1>JavaScript Data Types</h1>
+            <p>JavaScript is a dynamically-typed language, which means you don't need to specify the data type of a variable when you declare it. However, understanding the different data types in JavaScript is crucial for writing effective and bug-free code. JavaScript has several built-in data types, which can be categorized into primitive and non-primitive types.</p>
+            <h2>Primitive Data Types</h2>
+            <p class="history">Primitive data types are the most basic types of data. They are immutable, meaning their value cannot be changed once created.</p>
+            <h2>Characteristics:</h2>
+            <ol>
+                <li><span>Number:</span>
+                    <ul>
+                        <li>Represents both integer and floating-point numbers.
+                        <pre class="lang-javascript"><code>let age = 25;
+let temperature = -10.5;</code></pre>
+                          </li>
+                    </ul>
+                </li>
+                <li><span>String:</span>
+                    <ul>
+                        <li>Represents a sequence of characters used to store text.</li>
+                        <li>Strings can be enclosed in single quotes, double quotes, or backticks (for template literals).
+                        <pre class="lang-javascript"><code>let greeting = "Hello, world!";
+let name = 'Alice';
+let message = `Welcome, ${name}!`;</code></pre></li>
+                    </ul>
+                </li>
+                <li><span>Boolean:</span>
+                    <ul>
+                        <li>Represents a logical entity and can have two values: "true" and "false".
+                        <pre class="lang-javascript"><code>let isActive = true;
+let isCompleted = false;</code></pre></li>
+                  </ul>
+                </li>
+                <li><span>Undefined:</span>
+                    <ul>
+                        <li>Represents a variable that has been declared but not yet assigned a value.
+                        <pre class="lang-javascript"><code>let uninitialized;
+console.log(uninitialized); // undefined</code></pre></li>
+                  </ul>
+                </li>
+                <li><span>Null:</span>
+                    <ul>
+                        <li>Represents the intentional absence of any object value.
+                        <pre class="lang-javascript"><code>let emptyValue = null;
+</code></pre></li>
+                  </ul>
+                </li>
+                <li><span>Symbol (introduced in ES6):</span>
+                    <ul>
+                        <li>Represents a unique and immutable identifier.</li>
+                        <li>Often used as keys for object properties to avoid naming conflicts.
+                        <pre class="lang-javascript"><code>let uniqueId = Symbol('id');
+</code></pre></li>
+                  </ul>
+                </li>
+                <li><span>BigInt (introduced in ES11):</span>
+                    <ul>
+                        <li>Represents integers with arbitrary precision.</li>
+                        <li>Used for numbers larger than "Number.MAX_SAFE_INTEGER".
+                        <pre class="lang-javascript"><code>let bigNumber = BigInt(9007199254740991);
+let anotherBigNumber = 1234567890123456789012345678901234567890n;                              
+</code></pre></li>
+                  </ul>
+                </li>
+            </ol>
+            <h2>Non-Primitive Data Types</h2>
+            <p class="history">Non-primitive data types are objects, and they can hold collections of values or more complex entities.</p>
+            <ol>
+                  <li><span>Object:</span>
+                      <ul>
+                          <li>Represents a collection of key-value pairs.</li>
+                          <li>Objects can hold other objects, primitive values, functions, and more.
+                          <pre class="lang-javascript"><code>let person = {
+      name: "Alice",
+      age: 30,
+      isStudent: true
+};</code></pre></li>
+                    </ul>
+                  </li>
+                  <li><span>Array:</span>
+                      <ul>
+                          <li>Represents an ordered list of values (elements).</li>
+                          <li>Arrays can hold any data type, including other arrays.
+                          <pre class="lang-javascript"><code>let numbers = [1, 2, 3, 4, 5];
+let mixedArray = [1, "Hello", true, null];</code></pre></li>
+                    </ul>
+                  </li>
+                  <li><span>Function:</span>
+                      <ul>
+                          <li>Represents a block of code designed to perform a particular task.</li>
+                          <li>Functions are objects in JavaScript and can be assigned to variables, passed as arguments, and returned from other functions.
+                          <pre class="lang-javascript"><code>function greet(name) {
+      return `Hello, ${name}!`;
+}</code></pre></li>
+                    </ul>
+                  </li>
+            </ol>
+            <h2>Type Checking</h2>
+            <p>You can check the data type of a variable using the "typeof" operator.</p>
+            <pre class="lang-javascript"><code>console.log(typeof 42); // "number"
+console.log(typeof "Hello"); // "string"
+console.log(typeof true); // "boolean"
+console.log(typeof undefined); // "undefined"
+console.log(typeof null); // "object" (this is a known quirk in JavaScript)
+console.log(typeof Symbol('id')); // "symbol"
+console.log(typeof {}); // "object"
+console.log(typeof []); // "object" (arrays are a type of object)
+console.log(typeof function() {}); // "function"</code></pre>
+            <h2>Conclusion</h2>
+            <p>Understanding JavaScript data types is fundamental for writing effective code. By knowing the different types and how to use them, you can avoid common pitfalls and ensure your programs handle data correctly.</p>
+      </main>
+      <script src="../common/common.js"></script>
+      <script src="commonjs.js"></script>
+</body>
+</html>

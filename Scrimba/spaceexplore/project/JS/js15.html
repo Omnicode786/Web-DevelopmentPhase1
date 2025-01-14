@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>The Event Loop in JavaScript</h1>
+        <p>JavaScript is a single-threaded, non-blocking, asynchronous programming language, which means it can handle multiple operations without stopping the execution of other code. The event loop is a fundamental concept that allows JavaScript to perform non-blocking operations, even though it is single-threaded.</p>
+        <h2>1. What is the Event Loop?</h2>
+        <p>The event loop is a mechanism that allows JavaScript to handle asynchronous operations such as "setTimeout", "setInterval", "promises", and "event handlers". It continuously checks the call stack and the message queue (or callback queue) to determine what code needs to be executed next.</p>
+        <h2>2. How Does the Event Loop Work?</h2>
+        <p>The event loop works in the following steps:</p>
+        <ul>
+            <li><span>Call Stack:</span> JavaScript has a call stack, where functions are pushed when they are called and popped when they return. The call stack is where synchronous code is executed.</li>
+            <li><span>Web APIs:</span> When JavaScript encounters asynchronous operations (like "setTimeout", HTTP requests, or DOM events), it sends these tasks to Web APIs provided by the browser. These tasks are handled outside the call stack.</li>
+            <li><span>Callback Queue:</span> Once an asynchronous operation is completed, its callback function is placed in the callback queue (also known as the message queue).</li>
+            <li><span>Event Loop:</span> The event loop continuously monitors the call stack and the callback queue. If the call stack is empty, the event loop takes the first function from the callback queue and pushes it onto the call stack for execution.</li>
+            <li><span>Execution:</span> The function in the call stack is executed, and the process repeats.</li>
+        </ul>
+        <h2>3. Understanding with an Example</h2>
+        <p>Let’s consider an example to illustrate the event loop:</p>
+        <pre class="lang-javascript"><code>console.log("Start");
+
+setTimeout(() => {
+    console.log("Timeout callback");
+}, 0);
+
+console.log("End");</code></pre>
+        <h3>Output:</h3>
+        <pre class="lang-javascript"><code>Start
+End
+Timeout callback</code></pre>
+        <h3>Explanation:</h3>
+        <ul>
+            <li>"Start" is logged immediately because it is a synchronous operation and is pushed onto the call stack.</li>
+            <li>The "setTimeout" function is encountered. The browser handles the timer, and the callback is sent to the callback queue.</li>
+            <li>"End" is logged because it's the next synchronous operation in the call stack.</li>
+            <li>Once the call stack is empty, the event loop picks the callback from the callback queue and pushes it onto the call stack, which logs "Timeout callback".</li>
+        </ul>
+        <p>Even though the timeout is set to "0", the callback function is executed only after the call stack is empty, demonstrating the asynchronous nature of the event loop.</p>
+        
+        <h2>4. Microtasks Queue</h2>
+        <p>In addition to the callback queue, there’s another queue called the microtasks queue, which has a higher priority. Promises and other microtasks (e.g., "M"utationObserver") are placed in this queue.</p>
+        <h2>Example with Promises:</h2>
+        <pre class="lang-javascript"><code>console.log("Start");
+
+setTimeout(() => {
+    console.log("Timeout callback");
+}, 0);
+
+Promise.resolve().then(() => {
+    console.log("Promise callback");
+});
+
+console.log("End");</code></pre>
+        <h3>Output:</h3>
+        <pre class="lang-javascript"><code>Start
+End
+Promise callback
+Timeout callback</code></pre>
+        <h3>Explanation:</h3>
+        <ul>
+            <li>The promise callback is placed in the microtasks queue.</li>
+            <li>The timeout callback is placed in the callback queue.</li>
+            <li>The event loop first empties the "microtasks queue" before handling the "callback queue", which is why "Promise callback" is logged before "Timeout callback".</li>
+        </ul>
+    
+        <h2>5. Real-World Applications</h2>
+        <p>Understanding the event loop is crucial for handling asynchronous operations in JavaScript, such as:</p>
+        <ul>
+            <li><span>Handling User Input:</span> The event loop allows the browser to remain responsive while waiting for user actions like clicks or keypresses.</li>
+            <li><span>Ajax Requests:</span> While waiting for responses from a server, JavaScript can continue executing other code without blocking.</li>
+            <li><span>Animations:</span> The event loop manages smooth animations by ensuring that updates are made at regular intervals without freezing the page.</li>
+        </ul>
+        
+        <h2>Conclusion</h2>
+        <p>The event loop is a key concept in JavaScript that enables non-blocking, asynchronous operations in a single-threaded environment. By managing the call stack, callback queue, and microtasks queue, the event loop ensures that JavaScript can handle multiple tasks efficiently without blocking the main thread. Understanding how the event loop works is essential for writing efficient and responsive JavaScript code.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Exceptions in JavaScript</h1>
+        <p>Exceptions are unexpected events or errors that occur during the execution of a program. These events can disrupt the normal flow of code and need to be handled gracefully to prevent the program from crashing. In JavaScript, exceptions are managed using the "try...catch" statement, which allows developers to handle errors in a controlled way.</p>
+        <h2>1. What are Exceptions?</h2>
+        <p>Exceptions typically occur when something goes wrong during the execution of a program, such as:</p>
+        <ul>
+            <li>Trying to access a variable that doesn't exist.</li>
+            <li>Calling a function that hasn't been defined.</li>
+            <li>Working with an invalid type or unexpected value.</li>
+        </ul>
+        <p>When an exception occurs, JavaScript stops executing the code and throws an error. If this error is not handled, it can crash the entire program.</p>
+        <h2>2. The try...catch Statement</h2>
+        <p>To handle exceptions in JavaScript, the try...catch statement is used. This structure allows you to "try" running some code, and if an error occurs, it "catches" that error and handles it without stopping the rest of the program.</p>
+        <h3>Syntax:</h3>
+        <pre class="lang-javascript"><code>try {
+    // Code that may throw an error
+} catch (error) {
+    // Code to handle the error
+}</code></pre>
+        <ul>
+            <li><span>"try block":</span> Contains the code that you want to execute. If an error occurs inside this block, it is caught and passed to the catch block.</li>
+            <li><span>"catch block":</span>Contains the code that will handle the error. The error object provides information about what went wrong.</li>
+        </ul>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>try {
+    let result = someUndefinedFunction(); // This will throw an error
+} catch (error) {
+    console.log('An error occurred:', error.message); // Handle the error
+}</code></pre>
+        <p>In this example, since "someUndefinedFunction()" does not exist, an error is thrown. The catch block captures this error and logs a message to the console.</p>
+        <h2>3. finally Block</h2>
+        <p>The "finally" block is optional and executes whether or not an exception occurred. It's commonly used for cleanup actions, such as closing resources or resetting variables.</p>
+        <h3>Syntax:</h3>
+        <pre class="lang-javascript"><code>try {
+    // Code that may throw an error
+} catch (error) {
+    // Handle the error
+} finally {
+    // Code that will run regardless of an error
+}</code></pre>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>try {
+    let result = someUndefinedFunction(); // Error occurs here
+} catch (error) {
+    console.log('An error occurred:', error.message);
+} finally {
+    console.log('This will always run.');
+}</code></pre>
+        <p>Even if an error occurs in the try block, the finally block will still execute.</p>
+        
+        <h2>4. Throwing Your Own Exceptions</h2>
+        <p>You can manually throw your own exceptions using the "throw" keyword. This allows you to raise an error when certain conditions in your code are not met.</p>
+        <h3>Syntax:</h3>
+        <pre class="lang-javascript"><code>throw new Error('This is a custom error message');</code></pre>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>function checkAge(age) {
+    if (age &lt; 18) {
+        throw new Error('Age must be 18 or older.');
+    }
+    return 'Access granted!';
+}
+
+try {
+    let result = checkAge(16);
+    console.log(result);
+} catch (error) {
+    console.log('Error:', error.message); // "Error: Age must be 18 or older."
+}</code></pre>
+        <p>In this example, the "checkAge" function throws a custom error if the "age" is less than 18. The "try...catch" block then catches and handles the error.</p>
+    
+        <h2>5. Error Object Properties</h2>
+        <p>When an exception is thrown, the catch block receives an error object. This object contains useful properties to describe the error:</p>
+        <ul>
+            <li><span>message:</span> A description of the error.</li>
+            <li><span>name:</span> The type of error (e.g., ReferenceError, TypeError, etc.).</li>
+            <li><span>stack: </span>A stack trace, showing where the error occurred.</li>
+        </ul>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>try {
+    let result = someUndefinedFunction(); // Throws an error
+} catch (error) {
+    console.log('Error name:', error.name);   // "ReferenceError"
+    console.log('Error message:', error.message); // "someUndefinedFunction is not defined"
+    console.log('Error stack:', error.stack); // Stack trace
+}</code></pre>
+        <h2>6. Common JavaScript Errors</h2>
+        <ul>
+            <li><span>ReferenceError:</span>Occurs when a variable or function that doesn't exist is referenced.</li>
+            <pre class="lang-javascript"><code>console.log(nonExistentVar); // ReferenceError: nonExistentVar is not defined</code></pre>
+            <li><span>TypeError:</span> Occurs when a value is not of the expected type.</li>
+            <pre class="lang-javascript"><code>let num = 5;
+num.toUpperCase(); // TypeError: num.toUpperCase is not a function</code></pre>
+            <li><span>SyntaxError:</span> Occurs when there's a syntax error in the code.</li>
+            <pre class="lang-javascript"><code>try {
+    eval('hello world'); // SyntaxError: Unexpected identifier
+} catch (error) {
+    console.log(error.message); // "Unexpected identifier"
+}</code></pre>
+            <li><span>RangeError:</span> Occurs when a number is out of its allowed range.</li>
+            <pre class="lang-javascript"><code>function factorial(num) {
+    if (num &lt; 0) throw new RangeError('Number must be positive');
+    // Factorial logic...
+}
+factorial(-5); // RangeError: Number must be positive</code></pre>       
+        </ul>
+        <h2>7. Nested try...catch Blocks</h2>
+        <p>You can nest "try...catch" blocks when handling multiple errors that may occur at different stages in the code.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>try {
+    try {
+        let data = JSON.parse('{invalid JSON}');
+    } catch (error) {
+        console.log('Inner catch:', error.message);
+        throw new Error('Parsing error occurred');
+    }
+} catch (error) {
+    console.log('Outer catch:', error.message);
+}</code></pre>
+        <p>In this example, the inner "try...catch" handles a "JSON.parse" error, but then throws another custom error, which is caught by the outer "catch" block.</p>
+        <h2>Conclusion</h2>
+        <p>Handling exceptions in JavaScript using "try...catch" is essential for writing robust code. It ensures that unexpected errors don't crash the entire application, and it provides the developer with tools to gracefully handle and resolve errors. Additionally, with the ability to throw custom errors and handle them in a controlled way, you can write more reliable and predictable code.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

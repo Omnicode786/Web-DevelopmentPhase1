@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="commonPython.css">
+      <link rel="stylesheet" href="../common/common.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+</head>
+<body>
+      <main>
+            <h1>Declaring Variables</h1>
+            <p>In Python, declaring a variable is straightforward. You simply choose a variable name and assign a value to it using the equals sign =.<br>There's no need to explicitly declare the type of the variable; Python determines the type based on the assigned value.</p>
+            <p class="history">The example is given as: </p>
+            <pre class="lang-python"><code>#Integer variable
+age = 25
+                  
+#Float variable
+height = 5.9
+                  
+#String variable
+name = "Alice"
+
+#Boolean variable
+value=True</code></pre>
+            <h2>Naming rules:</h2>
+            Must start with a letter or underscore, followed by letters, digits, or underscores.<br>Varibles in python are case-sensitive hense all the variables should be declared carefully.<br>Variables should be named in such a way that any other programmer that reads our program understands what value in that particular variable is stored.
+            <h2>Characteristics:</h2>
+            <ul>
+                  <li><span>Mutable and Immutable</span></li>
+                  <ul>
+                        <li><span>Mutable:</span></li>
+                        Values that can be changed after assignment (e.g., lists, dictionaries).
+                        <li><span>Immutable</span></li>
+                        Values that cannot be changed after assignment (e.g., integers, strings, tuples)
+                  </ul>
+                  <li><span>No Explicit Scope Declaration:</span></li>
+                  The scope of a variable depends on where it is defined:
+                  <ul>
+                        <li><span>Global:</span></li>
+                        Declared outside of functions, accessible everywhere.
+                        <li><span>Local:</span></li>
+                        Declared within a function, accessible only within that function.
+                  </ul>
+            </ul>
+            <h2>Conclusion</h2>
+            <p>Understanding how to declare variables properly is crucial for writing clean, maintainable, and error-free Python code. Choosing the right words based on the value of variables helps to maintain code and makes code more readable.</p>
+
+      </main>
+      <script src="../common/common.js"></script>
+      <script src="commonPython.js"></script>
+</body>
+</html>

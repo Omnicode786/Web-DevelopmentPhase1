@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Import and Export Statements in JavaScript</h1>
+        <p>JavaScript's import and export statements are used to share code between files, allowing for modular programming. They are part of ES6 modules, which enable you to organize code into reusable components.</p>
+        <h2>1. Exporting in JavaScript</h2>
+        <p>The export statement allows you to make variables, functions, classes, or objects available for import in other files.</p>
+        <h3>Named Exports</h3>
+        <p>Named exports allow you to export multiple items from a module by their names.</p>
+        <pre class="lang-javascript"><code>// mathUtils.js
+export const PI = 3.14159;
+
+export function add(a, b) {
+    return a + b;
+}
+
+export function subtract(a, b) {
+    return a - b;
+}</code></pre>
+        <p>In this example, "PI", "add", and "subtract" are all named exports. You can export multiple items from a single file.</p>
+        <h3>Default Exports</h3>
+        <p>A module can also have a default export, which can be a single value, function, or class. A file can only have one default export.</p>
+        <pre class="lang-javascript"><code>// greeting.js
+export default function greet(name) {
+    return `Hello, ${name}!`;
+}</code></pre>
+        <p>Here, the greet function is the default export of the file.</p>
+        <h2>2. Importing in JavaScript</h2>
+        <p>The import statement allows you to bring in functions, variables, or classes from other modules.</p>
+        <h3>Importing Named Exports</h3>
+        <p>To import named exports, use curly braces {} and match the exact names of the exported items.</p>
+        <pre class="lang-javascript"><code>// app.js
+import { PI, add, subtract } from './mathUtils.js';
+
+console.log(PI);             // 3.14159
+console.log(add(2, 3));      // 5
+console.log(subtract(5, 3)); // 2</code></pre>
+        <p>You can also rename the imported values using as:</p>
+        <pre class="lang-javascript"><code>import { add as addition, subtract as subtraction } from './mathUtils.js';
+
+console.log(addition(4, 2)); // 6
+console.log(subtraction(5, 3)); // 2</code></pre>
+        <h3>Importing Default Exports</h3>
+        <p>For default exports, simply provide a name for the imported module without curly braces:</p>
+        <pre class="lang-javascript"><code>// app.js
+import greet from './greeting.js';
+
+console.log(greet('Alice')); // "Hello, Alice!"</code></pre>
+        <h3>Importing All Exports</h3>
+        <p>You can import all exports from a module at once using the * syntax:</p>
+        <pre class="lang-javascript"><code>import * as mathUtils from './mathUtils.js';
+
+console.log(mathUtils.PI);               // 3.14159
+console.log(mathUtils.add(4, 5));        // 9
+console.log(mathUtils.subtract(10, 3));  // 7</code></pre>
+        
+        <h2>3. Combining Named and Default Exports</h2>
+        <p>It’s possible to use both named and default exports in the same file. For example:</p>
+        <pre class="lang-javascript"><code>// mathUtils.js
+export const PI = 3.14159;
+
+export default function multiply(a, b) {
+    return a * b;
+}</code></pre>
+        <p>Then you can import them like this:</p>
+        <pre class="lang-javascript"><code>// app.js
+import multiply, { PI } from './mathUtils.js';
+
+console.log(PI);            // 3.14159
+console.log(multiply(3, 5)); // 15</code></pre>
+        <h2>4. Dynamic Imports</h2>
+        <p>Dynamic imports allow you to load modules asynchronously using the import() function, which is useful for code-splitting and on-demand loading.</p>
+        <pre class="lang-javascript"><code>// app.js
+async function loadMathUtils() {
+    const { add, subtract } = await import('./mathUtils.js');
+    console.log(add(4, 5));     // 9
+    console.log(subtract(8, 3)); // 5
+}
+
+loadMathUtils();</code></pre>
+        <h2>Conclusion</h2>
+        <p>The import and export statements in JavaScript make it easy to share and organize code. Named exports, default exports, and dynamic imports provide flexibility, allowing you to use code modularly across different files in your project.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonPython.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Functions in Python</h1>
+        <p>A function in Python is a block of organized, reusable code that performs a specific task. Functions allow you to encapsulate code into manageable sections, making it easier to write, debug, and maintain. Python provides various types of functions, each serving a specific purpose:</p>
+
+        <h2>1. Defining a Function</h2>
+        <p>A function is defined using the "def" keyword, followed by a name, a list of parameters (optional), and a block of code to be executed when the function is called.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-python"><code>def functionName(parameters):
+    #Code to be executed
+</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code>def greet(name);
+    print(f"Hello, {name}!")
+
+greet("Alice"); # Output: "Hello, Alice!"</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>"def greet(name)" defines a function named "greet" with one parameter "name".</li>
+            <li>"print" outputs a greeting message to the console.</li>
+            <li>"greet("Alice")" calls the function, passing "Alice" as an argument.</li>
+        </ul><br>
+
+        <h2>2. Function Parameters and Arguments</h2>
+        <p>Functions can accept parameters (also called arguments) that allow you to pass information to them. You can define a function with multiple parameters and provide corresponding arguments when calling the function.</p>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code>def add(a, b):
+    return a + b;
+
+sum = add(5, 3) # Output: 8
+print(sum)</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The "add" function takes two parameters, "a" and "b".</li>
+            <li>"return a + b" returns the sum of "a" and "b".</li>
+            <li>The "add(5, 3)" call returns "8", which is then stored in the "sum" variable.</li>
+        </ul><br>
+
+        <h2>3. Function Return Values</h2>
+        <p>Functions can return a value using the "return" statement. The returned value can be used in the program wherever needed.</p>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code>def multiply(x, y):
+    return x * y
+
+
+result = multiply(4, 5)
+print(result) # Output: 20</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The "multiply" function returns the product of "x" and "y".</li>
+            <li>The returned value "20" is stored in the "result" variable.</li>
+        </ul><br>
+
+        <h2>4. Anonymous (Lambda) Functions</h2>
+        <p> In Python, Lambda functions are Small, unnamed functions defined using the lambda keyword. These functions are generally used for short operations that are not reused elsewhere in the code.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-python"><code>lambda arguments: expression
+</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code>add = lambda x, y: x + y
+print(add(2, 3))  # Output: 5
+</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The function is assigned to the "add" variable.</li>
+            <li>"add(2,3)" calls the function, returning "5".</li>
+        </ul><br>
+        
+        <h2>5. Recursive Functions</h2>
+        <p>Recursive functions call themselves within their own definition. They are useful for tasks that can be broken down into similar sub-tasks.</p>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code>def factorial(n):
+if n == 1:
+    return 1
+else:
+    return n * factorial(n-1)  
+# Calculating the factorial of 5
+print(factorial(5))  # Output: 120
+        </code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The function takes a single parameter 'n', which is the number for which the factorial is to be calculated.</li>
+            <li>"if n == 1: return 1" specifies base case. The base case is a condition that stops the recursion. Here, if 'n' is equal to '1', the function returns 1 without making any further recursive calls. This is crucial to prevent infinite recursion.</li>
+            <li>else statement: If n is not '1', the function enters the else block.
+                Here, the function returns n multiplied by the result of the factorial function called with n-1.
+                This is where the recursion happens: the function calls itself with a smaller value of n.</li>
+        </ul><br>
+        
+        <h2>6. Generator Functions</h2>
+        <p>These functions use the 'yield' keyword to return a value and pause the function's execution, resuming from where it left off when called again. They are used to create iterators.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-python"><code>def generator_function(arguments):
+    # Code before yield
+    yield value
+    # Code after yield (if any)</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code>def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+# Using the generator function
+for number in countdown(5):
+    print(number)</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>"def countdown(n)": The function countdown is defined with a single parameter n. This parameter represents the starting number of the countdown.</li>
+            <li>"while n&lt5": A 'while' loop is used to iterate as long as 'n' is greater than 0. This loop will keep running, decrementing 'n' by 1 in each iteration until 'n' reaches 0.</li>
+            <li>"Yelid n": The yield statement is the key feature of a generator function. Unlike return, which exits the function and sends a single value back, yield produces a value and pauses the function's execution.</li>
+            <li>"n-=1": After yielding the value of 'n', the function decreases 'n' by 1 ('n -= 1'). The loop then checks the condition 'n > 0' again and continues if the condition is true</li>
+        </ul><br>
+
+        <h2>Conclusion</h2>
+        <p>Functions in Python are essential for structuring your code in a clear, reusable, and modular way. Whether you're creating simple functions or leveraging advanced concepts,understanding how to use functions effectively will make you a more proficient python developer.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonPython.js"></script>
+</body>
+</html>

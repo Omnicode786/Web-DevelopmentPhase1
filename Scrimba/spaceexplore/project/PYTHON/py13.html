@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+      <link rel="stylesheet" href="commonPython.css">
+<body>
+      <main>
+        <h1>Tuples in Python</h1>
+        <p>A tuple is an ordered, immutable collection of elements in Python. Tuples are similar to lists but with one key difference: once a tuple is created, its elements cannot be changed (i.e., tuples are immutable).</p>
+
+        <h2>Key Characterstics:</h2>
+        <ul>
+            <li><span>Immutable:
+            </span>Once a tuple is created, its elements cannot be changed, added, or removed. This makes tuples immutable.
+        </li>
+            <li><span>Ordered:
+            </span>The elements in a tuple have a defined order. This means that the position of each element is fixed, and you can access elements using indexing.</li>
+            <li><span>Indexable:
+            </span>Each element in a tuple can be accessed using an index, starting from 0 for the first element.</li>
+        </ul>
+
+        <h2>Syntax:</h2>
+        <p> Tuples are created by placing a sequence of elements within parentheses () separated by commas.</p>
+        <pre class="lang-python"><code>my_tuple = (1, 2, 3)       
+        </code></pre>
+        
+        <h2>Accessing Tuple Elements:</h2>
+        <p>You can access elements in a tuple using indexing and slicing.</p>
+            <pre class="lang-python"><code># Accessing elements by index
+print(my_tuple[0])  # Output: 1
+print(my_tuple[3])  # Output: apple
+                
+# Slicing a tuple
+print(my_tuple[1:4])  # Output: (2, 3, 'apple')
+                
+    </code></pre>
+
+        <h2>Packing and Unpacking tuples:</h2>
+        <ul>
+            <li><span>Packing:
+                </span>Assigning multiple values to a single tuple variable. </li>
+            <li><span>Unpacking:
+            </span>Extracting values from a tuple into individual variables.</li>
+        </ul>
+        <h2>Example:</h2>
+        <pre class="lang-python"><code># Packing
+my_tuple = 1, 2, "apple"
+# Unpacking
+x, y, z = my_tuple
+print(x)  # Output: 1
+print(y)  # Output: 2
+print(z)  # Output: apple 
+        </code></pre>
+        <h2>Nested Tuples:</h2>
+        <p>Tuples can also contain other tuples as elements, allowing for nested data structures.</p>
+        <pre class="lang-python"><code>nested_tuple = (1, 2, (3, 4), 5)
+print(nested_tuple[2])  # Output: (3, 4)
+            </code></pre>
+        <h2>Conclusion</h2>
+        <p>Tuples in Python, being immutable, offer only a couple of built-in methods: count() to determine how many times an element appears, and index() to find the position of an element's first occurrence. Although limited, these methods, along with the in operator for checking membership, provide essential functionality for working with tuples effectively.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonPython.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="commonPython.css">
+      <link rel="stylesheet" href="../common/common.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+</head>
+<body>
+      <main>
+            <h1>Exceptions in Python</h1>
+            <p>In Python, exceptions are errors that occur during the execution of a program, interrupting its normal flow. They provide a way to handle unexpected situations gracefully without crashing the entire program.</p>
+
+            <h2>Types of Exceptions</h2>
+            <p>Python has several built-in exceptions, and users can also create custom exceptions. Common exceptions include:</p> 
+            <ul>
+                <li><span>Zero division error:</span>
+                Raised when division or modulo by zero occurs.</li>
+                <li><span>Type error:</span>
+                Raised when an operation or function is applied to an object of an inappropriate type.</li>
+                <li><span>value error:</span>
+                Raised when a function receives an argument of the right type but with an inappropriate value.</li>
+                <li><span>File Not Found Error:</span>
+                Raised when a file operation (like opening a file) fails because the file doesn't exist.</li>
+            </ul>
+            <h2>Handling Exceptions:</h2>
+            <p>Exceptions can be handled using the try-except block. The code that might raise an exception is placed inside a try block, and the handling code is placed inside the except block.</p>
+            <h2>Example:</h2>
+            <pre class="lang-python"><code>try:
+    number = int(input("Enter a number: "))
+    result = 10 / number
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+except ValueError:
+    print("Invalid input! Please enter a valid number.")
+            </code></pre>
+            <h2>Explanation:</h2>
+            <ul>
+                <li><span>try block:</span>
+                This block contains the code that may raise an exception.</li>
+                <li><span>except Value Error:</span>
+                If the user enters something that cannot be converted to an integer (e.g., entering text like "abc"), a ValueError is raised. </li>
+                This block catches the error and prints a message to let the user know that the input was invalid, asking them to enter a valid number. </li>
+                <li><span>except ZeroDivisionError:</span>
+                If the user enters 0, the program raises a ZeroDivisionError. This except block catches that specific exception and prints "Cannot divide by zero!" This prevents the program from crashing and informs the user of the issue.</li>
+            </ul>    
+            <h2>The "else" and "finally" clauses</h2>
+            <ul>
+                <li><span>else:</span>
+                Runs if no exception occurs.</li>
+                <li><span>finally:</span>
+                Runs regardless of whether an exception occurred or not.</li>
+            </ul>
+            <h2>Example:</h2>
+            <pre class="lang-python"><code>try:
+    f = open('example.txt', 'r')
+except FileNotFoundError:
+    print("File not found.")
+else:
+    print("File opened successfully.")
+finally:
+    print("This runs no matter what.")
+</code></pre>
+            <h2>Raising Exceptions:</h2>
+            <p>You can raise exceptions manually using the raise keyword.</p>
+            <h2>Example:</h2>
+            <pre class="lang-python"><code>x = -5
+if x < 0:
+    raise ValueError("Negative values are not allowed.")
+            </code></pre>
+            
+            <h2>Conclusion</h2>
+            <p>In Python, exceptions are errors encountered during program execution, managed using try-except blocks to handle specific issues without crashing the program. Common exceptions include ZeroDivisionError for division by zero and ValueError for invalid inputs. The else clause executes code if no exceptions occur, while the finally clause runs regardless of exceptions. Custom exceptions can be created to address unique application errors. This approach ensures robust error handling and improves user experience.</p>
+
+      </main>
+      <script src="../common/common.js"></script>
+      <script src="commonPython.js"></script>
+</body>
+</html>

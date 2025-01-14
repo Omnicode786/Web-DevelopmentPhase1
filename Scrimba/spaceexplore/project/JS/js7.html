@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Loops in JavaScript</h1>
+        <p>Loops are fundamental structures in programming that allow you to execute a block of code repeatedly, either for a specific number of times or until a certain condition is met. JavaScript provides several types of loops, each suited for different tasks.</p>
+
+        <h2>1. For loop</h2>
+        <p>The "for" loop is used when you know the number of iterations in advance. It's one of the most commonly used loops in JavaScript.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>for (initialization; condition; increment) {
+    // Code to be executed
+}</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>for (let i = 0; i &lt; 5; i++) {
+    console.log("Iteration " + i);
+}</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li><span>Initialization:</span> "let i = 0" sets the starting point.</li>
+            <li><span>Condition:</span> "i &lt; 5" checks if the loop should continue.</li>
+            <li><span>Increment:</span> "i++"" increases the counter after each iteration.</li>
+        </ul>
+        <h2>Output:</h2>
+        <pre class="lang-javascript"><code>Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4</code></pre>
+
+        <h2>2. While loop</h2>
+        <p>The "while" loop is used when you want to repeat a block of code as long as a condition is true. It’s useful when the number of iterations isn't known beforehand.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>while (condition) {
+    // Code to be executed
+}</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>let i = 0;
+while (i &lt; 5) {
+    console.log("Iteration " + i);
+    i++;
+}</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The loop continues to execute as long as "i &lt; 5" is true.</li>
+            <li>Don’t forget to increment the counter (i++) to avoid an infinite loop.</li>
+        </ul>
+        <h2>3. Do While loop</h2>
+        <p>The "do-while" loop is similar to the while loop, but it guarantees that the code block will be executed at least once, even if the condition is false.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>do {
+    // Code to be executed
+} while (condition);</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>let i = 0;
+do {
+    console.log("Iteration " + i);
+    i++;
+} while (i &lt; 5);</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The code block is executed first, then the condition is checked.</li>
+            <li>If "i &lt; 5" is true, the loop repeats.</li>
+        </ul>
+        <h2>4. For-In loop</h2>
+        <p>The "for...in" loop is used to iterate over the properties of an object (enumerable properties) or the indices of an array. It's useful when working with objects or arrays where you need to access keys or indexes.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>for (key in object) {
+    // Code to be executed
+}</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>let person = { name: "John", age: 30, city: "New York" };
+
+for (let key in person) {
+    console.log(key + ": " + person[key]);
+}</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The loop iterates over each key in the person object.</li>
+            <li>The key-value pairs are printed.</li>
+        </ul>
+        <h2>Output:</h2>
+        <pre class="lang-javascript"><code>name: John
+age: 30
+city: New York</code></pre>
+        <h2>5. For-Of loop</h2>
+        <p>The "for...of" loop is used to iterate over the values of iterable objects like arrays, strings, maps, sets, and more. It’s useful when you want to work directly with the values rather than the indices.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>for (value of iterable) {
+    // Code to be executed
+}</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>let fruits = ["apple", "banana", "cherry"];
+
+for (let fruit of fruits) {
+    console.log(fruit);
+}</code></pre>
+        <h2>Explanation:</h2>
+        <ul>
+            <li>The loop iterates over each element in the "fruits" array.</li>
+            <li>Each fruit name is printed.</li>
+        </ul>
+        <h2>Output:</h2>
+        <pre class="lang-javascript"><code>apple
+banana
+cherry</code></pre>
+        <h2>6. Nested loops</h2>
+        <p>You can nest loops within each other, creating a loop inside another loop. This is useful for working with multi-dimensional arrays or performing complex iterations.</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>for (let i = 1; i &lt;= 3; i++) {
+    for (let j = 1; j &lt;= 3; j++) {
+        console.log(`i = ${i}, j = ${j}`);
+    }
+}</code></pre>
+        <h2>Output:</h2>
+        <pre class="lang-javascript"><code>i = 1, j = 1
+i = 1, j = 2
+i = 1, j = 3
+i = 2, j = 1
+i = 2, j = 2
+i = 2, j = 3
+i = 3, j = 1
+i = 3, j = 2
+i = 3, j = 3</code></pre>
+    
+            <h2>Conclusion</h2>
+            <p>JavaScript offers various loop structures that are versatile and powerful, allowing you to handle different types of iterative tasks efficiently. Whether you're working with arrays, objects, or need to repeat code until a condition is met, there's a loop for your needs. Understanding when and how to use each loop will make your code more efficient and easier to maintain.</p>
+      </main>
+      <script src="../common/common.js"></script>
+      <script src="commonjs.js"></script>
+</body>
+</html>

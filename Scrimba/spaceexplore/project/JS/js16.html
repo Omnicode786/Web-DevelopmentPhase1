@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>"Object.seal()" and "Object.freeze()" in JavaScript</h1>
+        <p>In JavaScript, objects are mutable by default, meaning you can add, delete, or change properties after the object is created. However, there are situations where you might want to prevent further modifications to an object. JavaScript provides two methods to control the mutability of objects: "Object.seal()" and "Object.freeze()".</p>
+        <h2>1. "Object.seal()"</h2>
+        <p>"Object.seal()" seals an object, preventing new properties from being added and marking all existing properties as non-configurable. However, it does allow the modification of existing property values.</p>
+        <h3>Key Points:</h3>
+        <ul>
+            <li><span>Cannot Add New Properties:</span> Once an object is sealed, you cannot add new properties to it.</li>
+            <li><span>Cannot Delete Properties:</span> Properties cannot be deleted from a sealed object.</li>
+            <li><span>Can Modify Existing Properties:</span> You can still change the values of the existing properties.</li>
+            <li><span>Non-Configurable Properties:</span> All properties become non-configurable, meaning you cannot change their property descriptors (e.g., convert a data property to an accessor property).</li>
+        </ul>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>const user = {
+    name: "Alice",
+    age: 25
+};
+
+Object.seal(user);
+
+user.name = "Bob";  // Allowed: Existing property can be modified
+user.gender = "female";  // Not allowed: Cannot add new properties
+delete user.age;  // Not allowed: Cannot delete properties
+
+console.log(user);  // Output: { name: "Bob", age: 25 }</code></pre>
+       
+        <h2>2. "Object.freeze()"</h2>
+        <p>"Object.freeze()" freezes an object, making it immutable. This means you cannot add, delete, or modify any properties of the object.</p>
+        <h3>Key Points:</h3>
+        <ul>
+            <li><span>Cannot Add New Properties:</span> No new properties can be added to a frozen object.</li>
+            <li><span>Cannot Delete Properties:</span> Properties cannot be deleted from a frozen object.</li>
+            <li><span>Cannot Modify Existing Properties:</span> You cannot change the values of existing properties.</li>
+            <li><span>Non-Configurable and Non-Writable:</span> All properties become non-configurable and non-writable, meaning you cannot change their values or property descriptors.</li>
+        </ul>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>const settings = {
+    theme: "dark",
+    notifications: true
+};
+
+Object.freeze(settings);
+
+settings.theme = "light";  // Not allowed: Cannot modify properties
+settings.language = "en";  // Not allowed: Cannot add new properties
+delete settings.notifications;  // Not allowed: Cannot delete properties
+
+console.log(settings);  // Output: { theme: "dark", notifications: true }</code></pre>
+        <h2>3. Differences Between Object.seal() and Object.freeze()</h2>
+        <h3>Mutability of Properties:</h3>
+        <ul>
+            <li>Object.seal() allows modification of existing properties but prevents adding or deleting properties.</li>
+            <li>Object.freeze() makes the entire object immutable, preventing any changes to properties.</li>
+        </ul>
+        <h3>Configurable Properties:</h3>
+        <ul>
+            <li>Object.seal() marks properties as non-configurable but still writable.</li>
+            <li>Object.freeze() marks properties as non-configurable and non-writable.</li>
+        </ul>
+        <h2>4. How to Check if an Object is Sealed or Frozen</h2>
+        <p>You can check if an object is sealed or frozen using Object.isSealed() and Object.isFrozen() methods.</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>const obj = { a: 1 };
+Object.seal(obj);
+
+console.log(Object.isSealed(obj)); // Output: true
+console.log(Object.isFrozen(obj)); // Output: false
+
+Object.freeze(obj);
+console.log(Object.isFrozen(obj)); // Output: true</code></pre>
+
+        <h2>Conclusion</h2>
+        <p>"Object.seal()" and "Object.freeze()" are useful methods to control the mutability of objects in JavaScript. While "Object.seal()" prevents adding or deleting properties but allows modifications to existing ones, "Object.freeze()" makes an object completely immutable. Understanding the differences between these methods helps in writing more secure and predictable code.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

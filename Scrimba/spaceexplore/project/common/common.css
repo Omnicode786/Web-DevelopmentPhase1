@@ -1,0 +1,50 @@
+main {
+      padding-top: 50px;
+      width: 90vw;
+      margin: auto;
+}
+
+main p {
+      padding: 20px 0;
+}
+
+.output img {
+      padding: 20px 0;
+}
+
+.sidebar {
+      overflow-y: scroll;
+      top: 0;
+      padding: 65px 25px;
+      position: fixed;
+      z-index: 1;
+      width: 200px;
+      height: 100vh;
+      transition: transform 1s linear;
+}
+.topics {
+      padding: 10px;
+}
+.lists::marker {
+      color: white;
+}
+#close1 {
+      border: 0;
+      padding-top: 5px;
+      padding-left: 174px;
+      color: white;
+}
+.behind {
+      transition: transform 1s linear;
+      transform: translate(-325px, 0);
+}
+.whiteBack {
+      background-color: white;
+}
+
+#ham2 {
+      position: absolute;
+      z-index: 1;
+      padding: 75px 15px 0 15px;
+      border: 0;
+}

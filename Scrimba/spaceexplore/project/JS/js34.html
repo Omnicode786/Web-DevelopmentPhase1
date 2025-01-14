@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Spread Operator (...)</h1>
+        <p>The Spread Operator allows you to expand elements of an iterable (like arrays or objects) where multiple elements are expected. It's useful for copying, combining, or passing array elements as individual arguments.</p>
+        <h2>1. Expanding Arrays</h2>
+        <p>The spread operator is commonly used to copy arrays or combine multiple arrays into one.</p>
+        <h3>Copying an Array:</h3>
+        <pre class="lang-javascript"><code>let originalArray = [1, 2, 3];
+let copiedArray = [...originalArray];
+console.log(copiedArray); // [1, 2, 3]</code></pre>
+        <h3>Merging Arrays:</h3>
+        <pre class="lang-javascript"><code>let array1 = [1, 2];
+let array2 = [3, 4];
+let combinedArray = [...array1, ...array2];
+console.log(combinedArray); // [1, 2, 3, 4]</code></pre>
+        <h2>2. Spreading in Function Calls</h2>
+        <p>The spread operator can be used to pass array elements as individual arguments to a function.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>function sum(a, b, c) {
+    return a + b + c;
+}
+
+let numbers = [1, 2, 3];
+console.log(sum(...numbers)); // 6</code></pre>
+        <h2>3. Spreading in Objects</h2>
+        <p>The spread operator also works with objects, making it useful for copying or merging objects.</p>
+        <h3>Copying an Object:</h3>
+        <pre class="lang-javascript"><code>let originalObject = { name: 'Alice', age: 25 };
+let copiedObject = { ...originalObject };
+console.log(copiedObject); // { name: 'Alice', age: 25 }</code></pre>
+        <h3>Merging Objects:</h3>
+        <pre class="lang-javascript"><code>let obj1 = { name: 'Alice' };
+let obj2 = { age: 25 };
+let combinedObject = { ...obj1, ...obj2 };
+console.log(combinedObject); // { name: 'Alice', age: 25 }</code></pre>
+        <h1>Rest Parameters (...)</h1>
+        <p>The Rest Parameters syntax also uses <b>...</b>, but it functions differently. It allows a function to accept an indefinite number of arguments as an array.</p>
+        <h2>1. Using Rest Parameters in Functions</h2>
+        <p>Rest parameters collect all remaining arguments passed to a function into a single array. They must be the last parameter in a function’s argument list.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>function multiply(multiplier, ...numbers) {
+    return numbers.map(num => num * multiplier);
+}
+
+console.log(multiply(2, 1, 2, 3)); // [2, 4, 6]</code></pre>
+        <p>In this example, "...numbers" gathers all arguments after multiplier into an array.</p>
+        
+        <h2>2. Difference Between Spread Operator and Rest Parameters</h2>
+        <p>The spread operator expands elements of an iterable, while rest parameters gather arguments into an array.</p>
+        <h3>Spread Example:</h3>
+        <pre class="lang-javascript"><code>let arr = [1, 2, 3];
+console.log([...arr, 4, 5]); // [1, 2, 3, 4, 5]</code></pre>
+        <h3>Rest Example:</h3>
+        <pre class="lang-javascript"><code>function add(...args) {
+    return args.reduce((acc, curr) => acc + curr, 0);
+}
+console.log(add(1, 2, 3, 4)); // 10</code></pre>
+        <h2>3. Combining Spread Operator and Rest Parameters</h2>
+        <p>You can combine both spread and rest in your code to make functions more flexible and concise.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>function sortNumbers(...numbers) {
+    return [...numbers].sort((a, b) => a - b);
+}
+
+console.log(sortNumbers(5, 3, 8, 1)); // [1, 3, 5, 8]</code></pre>
+
+        <h2>Conclusion</h2>
+        <p>The Spread Operator and Rest Parameters provide powerful ways to work with arrays, objects, and functions. The spread operator helps expand elements, while rest parameters gather them, allowing for clean and concise code.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

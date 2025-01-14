@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Arrays in JavaScript</h1>
+        <p>Arrays are a crucial data structure in JavaScript that allow you to store and manage collections of data. An array is an ordered list of elements, where each element can be accessed by its index.</p>
+
+        <h2>1. Creating an Array</h2>
+        <p>You can create an array in JavaScript using square brackets "[]" or the "Array" constructor.</p>
+        <h2>Syntax:</h2>
+        <pre class="lang-javascript"><code>let arrayName = [element1, element2, element3];</code></pre>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>let fruits = ["Apple", "Banana", "Cherry"];</code></pre>
+        <ul>
+            <li>This creates an array named "fruits" containing three elements: "Apple", "Banana", and "Cherry".</li>
+        </ul>
+        
+        <h2>2. Accessing Array Elements</h2>
+        <p>Array elements are accessed using their index, which starts from "0".</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>let firstFruit = fruits[0]; // Access the first element
+console.log(firstFruit); // Output: "Apple"</code></pre>
+        
+        <h2>3. Array Properties</h2>
+        <ul>
+            <li><span>Length:</span> The "length" property returns the number of elements in an array.</li>
+        </ul>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>console.log(fruits.length); // Output: 3</code></pre>
+        
+        <h2>4. Modifying Arrays</h2>
+        <p>You can modify arrays by adding, removing, or changing elements.</p>
+        <h3>4.1 Adding Elements</h3>
+        <ul>
+            <li><span>push():</span> Adds one or more elements to the end of an array.</li>
+        </ul>
+        <pre class="lang-javascript"><code>fruits.push("Orange");
+console.log(fruits); // Output: ["Apple", "Banana", "Cherry", "Orange"]</code></pre>
+        <ul>
+            <li><span>unshift():</span> Adds one or more elements to the beginning of an array.</li>
+        </ul>
+        <pre class="lang-javascript"><code>fruits.unshift("Mango");
+console.log(fruits); // Output: ["Mango", "Apple", "Banana", "Cherry", "Orange"]</code></pre>
+        <h3>4.2 Removing Elements</h3>
+        <ul>
+            <li><span>pop():</span> Removes the last element from an array.</li>
+        </ul>
+        <pre class="lang-javascript"><code>let lastFruit = fruits.pop();
+console.log(lastFruit); // Output: "Orange"
+console.log(fruits); // Output: ["Mango", "Apple", "Banana", "Cherry"]</code></pre>
+        <ul>
+            <li><span>shift():</span> Removes the first element from an array.</li>
+        </ul>
+        <pre class="lang-javascript"><code>let firstFruitRemoved = fruits.shift();
+console.log(firstFruitRemoved); // Output: "Mango"
+console.log(fruits); // Output: ["Apple", "Banana", "Cherry"]</code></pre>
+
+        <h3>4.3 Changing Elements</h3>
+        <ul>
+            <li>You can change the value of an element at a specific index.</li>
+        </ul>
+        <pre class="lang-javascript"><code>fruits[1] = "Blueberry";
+console.log(fruits); // Output: ["Apple", "Blueberry", "Cherry"]</code></pre>
+        
+        <h2>5. Array Methods</h2>
+        <p>JavaScript provides a wide range of methods to manipulate arrays. Here are some of the most commonly used ones:</p>
+
+        <h3>5.1 concat()</h3>
+        <p>The "concat()" method merges two or more arrays into a new array.</p>
+        <pre class="lang-javascript"><code>let moreFruits = ["Peach", "Grapes"];
+let allFruits = fruits.concat(moreFruits);
+console.log(allFruits); // Output: ["Apple", "Blueberry", "Cherry", "Peach", "Grapes"]</code></pre>
+        <h3>5.2 slice()</h3>
+        <p>The "slice()" method returns a shallow copy of a portion of an array, without modifying the original array.</p>
+        <pre class="lang-javascript"><code>let someFruits = allFruits.slice(1, 3);
+console.log(someFruits); // Output: ["Blueberry", "Cherry"]</code></pre>
+
+        <h3>5.3 splice()</h3>
+        <p>The "splice()" method adds, removes, or replaces elements in an array.</p>
+        <pre class="lang-javascript"><code>allFruits.splice(2, 1, "Strawberry");
+console.log(allFruits); // Output: ["Apple", "Blueberry", "Strawberry", "Peach", "Grapes"]</code></pre>
+        <ul>
+            <li>In this example, "splice(2, 1, "Strawberry")" removes 1 element at index "2" and adds "Strawberry" at the same position.</li>
+        </ul>
+        <h3>5.4 indexOf()</h3>
+        <p>The "indexOf()" method returns the first index at which a given element can be found in the array, or "-1" if it is not present.</p>
+        <pre class="lang-javascript"><code>llet index = allFruits.indexOf("Peach");
+console.log(index); // Output: 3</code></pre>
+        <h3>5.5 includes()</h3>
+        <p>The "includes()" method checks if an array contains a specific element, returning "true" or "false:".</p>
+        <pre class="lang-javascript"><code>let hasBanana = allFruits.includes("Banana");
+console.log(hasBanana); // Output: false</code></pre>
+
+        <h2>6. Multi-dimensional Arrays</h2>
+        <p>JavaScript arrays can also store other arrays, creating multi-dimensional arrays.</p>
+        <h2>Example:</h2>
+        <pre class="lang-javascript"><code>let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+console.log(matrix[1][2]); // Output: 6</code></pre>
+        
+        <h2>Conclusion</h2>
+        <p>Arrays in JavaScript are powerful tools for managing and manipulating collections of data. With the variety of methods available, you can perform complex operations on arrays efficiently. Understanding arrays and how to work with them is essential for any JavaScript developer.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

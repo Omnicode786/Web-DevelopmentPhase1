@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Promises in JavaScript</h1>
+        <p>Promises in JavaScript are objects that represent the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises provide a cleaner way to handle asynchronous operations and avoid callback hell. Instead of nesting callbacks, promises allow for chaining operations, making the code more readable and maintainable.</p>
+        <h2>1. What is a Promise?</h2>
+        <p>A Promise is an object representing the eventual result of an asynchronous operation. It can be in one of three states:</p>
+        <ul>
+            <li><span>Pending: </span>The initial state, neither fulfilled nor rejected.</li>
+            <li><span>Fulfilled: </span>The operation was completed successfully, and the promise has a result.</li>
+            <li><span>Rejected: </span>The operation failed, and the promise has a reason for failure.</li>
+        </ul>
+        
+        <h2>2. Creating a Promise</h2>
+        <p>You can create a new Promise using the "Promise" constructor, which takes a function (executor) with two arguments, "resolve" and "reject". These arguments are functions that control whether the promise is fulfilled or rejected.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let myPromise = new Promise((resolve, reject) => {
+    let success = true; // Simulating a condition
+
+    if (success) {
+        resolve("The operation was successful!");
+    } else {
+        reject("The operation failed.");
+    }
+});</code></pre>
+        <h2>3. Promise Methods</h2>
+        <ul>
+            <li><span>then():</span>Attaches a callback for when the promise is fulfilled (successful).</li>
+            <li><span>catch():</span>Attaches a callback for when the promise is rejected (failure).</li>
+            <li><span>finally(): </span>Attaches a callback to be executed regardless of the promise's outcome.</li>
+        </ul>
+        <h3>Example of Handling a Promise:</h3>
+        <pre class="lang-javascript"><code>myPromise
+.then((message) => {
+    console.log(message); // If the promise is resolved
+})
+.catch((error) => {
+    console.log(error); // If the promise is rejected
+})
+.finally(() => {
+    console.log("Operation completed."); // Runs whether fulfilled or rejected
+});</code></pre>
+        <h2>4. Chaining Promises</h2>
+        <p>One of the powerful features of promises is chaining. You can chain multiple then() calls to handle asynchronous operations sequentially.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let fetchData = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Data fetched");
+    }, 1000);
+});
+
+fetchData
+.then((result) => {
+    console.log(result); // "Data fetched"
+    return "Processing data"; // Return new value to be used in the next then()
+})
+.then((nextResult) => {
+    console.log(nextResult); // "Processing data"
+})
+.catch((error) => {
+    console.log("Error:", error); // Handles any error in the promise chain
+});</code></pre>
+        <p>In this example, the first promise resolves after 1 second, and its result is passed to the next "then()" block. If any of the promises in the chain are rejected, the "catch()" block handles the error.</p>
+        
+        <h2>5. Promise States</h2>
+        <p>A promise can transition through the following states:</p>
+        <ul>
+            <li><span>Pending: </span>The promise is created and waiting for the result of the asynchronous operation.</li>
+            <li><span>Fulfilled: </span>The asynchronous operation completed successfully, and "resolve()" was called.</li>
+            <li><span>Rejected: </span>The asynchronous operation failed, and "reject()" was called.</li>
+        </ul>
+        <p>Once a promise has either resolved or rejected, it cannot change its state again.</p>
+        <h3>Example of States:</h3>
+        <pre class="lang-javascript"><code>let statePromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise is fulfilled");
+        // reject("Promise is rejected"); // You can also handle rejection
+    }, 2000);
+});
+
+statePromise.then((result) => console.log(result));</code></pre>
+        <h2>6. Promise.all()</h2>
+        <p>"Promise.all()" takes an array of promises and returns a new promise that resolves when all of the promises in the array are fulfilled. If any of the promises reject, the entire operation will be rejected.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let promise1 = Promise.resolve("First Promise");
+let promise2 = Promise.resolve("Second Promise");
+let promise3 = Promise.resolve("Third Promise");
+
+Promise.all([promise1, promise2, promise3]).then((results) => {
+    console.log(results); // ["First Promise", "Second Promise", "Third Promise"]
+});</code></pre>
+        <p>In this case, all the promises resolve, so "Promise.all()" returns a new promise that resolves with an array of the results.</p>
+        <h2>7. Promise.race()</h2>
+        <p>"Promise.race()" returns a promise that resolves or rejects as soon as one of the promises in the array resolves or rejects. It’s a “race” to see which promise settles first.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let promiseA = new Promise((resolve) => setTimeout(resolve, 1000, "A"));
+let promiseB = new Promise((resolve) => setTimeout(resolve, 500, "B"));
+
+Promise.race([promiseA, promiseB]).then((result) => {
+    console.log(result); // "B" because it resolves first
+});</code></pre>
+        <p>In this case, "promiseB" resolves first, so "Promise.race()" resolves with "B".</p>
+        <h2>8. Promise.any()</h2>
+        <p>"Promise.any()" is similar to "Promise.race()", but it resolves as soon as one of the promises in the array resolves successfully. It ignores rejected promises.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>let promiseX = Promise.reject("Failed X");
+let promiseY = new Promise((resolve) => setTimeout(resolve, 100, "Y"));
+let promiseZ = new Promise((resolve) => setTimeout(resolve, 200, "Z"));
+
+Promise.any([promiseX, promiseY, promiseZ])
+    .then((result) => {
+        console.log(result); // "Y" because it resolves successfully first
+    })
+    .catch((error) => {
+        console.log("All promises were rejected");
+    });</code></pre>
+        <p>In this case, "promiseB" resolves first, so "Promise.race()" resolves with "B".</p>
+        <h2>9. Advantages of Promises</h2>
+        <ul>
+            <li><span>Improved Readability: </span>Promises provide a cleaner, more readable alternative to callback-based code.</li>
+            <li><span>Chaining:</span> Promises allow you to chain operations in a sequential manner, avoiding deeply nested callbacks.</li>
+            <li><span>Error Handling:</span>With "catch()", promises provide a unified way to handle errors.</li>
+        </ul>
+        <h2>Conclusion</h2>
+        <p>Promises in JavaScript provide an elegant and structured way to handle asynchronous operations, avoiding the pitfalls of callback hell. By using methods like "then()", "catch()", and "finally()", developers can create more readable and maintainable code. Additionally, methods like "Promise.all()", "Promise.race()", and "Promise.any()" allow you to work with multiple promises efficiently.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

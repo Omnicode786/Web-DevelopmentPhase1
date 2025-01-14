@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Async/Await in JavaScript</h1>
+        <p>Async/Await is a modern syntax in JavaScript that allows you to handle asynchronous operations more easily and make asynchronous code look synchronous. It’s built on top of promises and provides a cleaner, more readable way to manage asynchronous tasks compared to traditional callback-based or promise-based code.</p>
+        <h2>1. What is Async/Await?</h2>
+        <ul>
+            <li><span>Async:</span>The async keyword is used to define a function that always returns a promise. If the function returns a value, the promise will be resolved with that value. If it throws an error, the promise will be rejected.</li>
+            <li><span>Await: </span>The await keyword is used inside an async function to pause the execution of the code until the promise is resolved or rejected. It allows you to work with asynchronous code as though it were synchronous.</li>
+        </ul>
+        
+        <h2>2. Basic Syntax</h2>
+        <h3>a. Async Function</h3>
+        <p>The async keyword before a function makes it return a promise:</p>
+        <pre class="lang-javascript"><code>async function fetchData() {
+    return "Data fetched successfully!";
+}
+
+fetchData().then((result) => console.log(result)); // "Data fetched successfully!"</code></pre>
+        <h3>b. Awaiting a Promise</h3>
+        <p>The await keyword is used to wait for a promise to resolve. It can only be used inside an async function.</p>
+        <pre class="lang-javascript"><code>async function getData() {
+    let result = await fetchData();
+    console.log(result); // Waits for the promise to resolve
+}
+
+getData();</code></pre>
+        <h2>3. Example of Async/Await</h2>
+        <p>Here’s a simple example where we simulate fetching data from a server using async and await:</p>
+        <pre class="lang-javascript"><code>function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Data fetched from server");
+        }, 2000);
+    });
+}
+
+async function displayData() {
+    console.log("Fetching data...");
+    let data = await fetchData(); // Wait until the promise resolves
+    console.log(data); // "Data fetched from server"
+}
+
+displayData();</code></pre>
+        <p>In this example:</p>
+        <ul>
+            <li>The async function displayData waits for the fetchData() promise to resolve.</li>
+            <li>The code after await doesn’t run until the promise is fulfilled.</li>
+        </ul>
+        <h2>4. Error Handling with Async/Await</h2>
+        <p>You can handle errors in async functions using "try...catch" blocks. This makes it easier to handle promise rejections and exceptions in asynchronous code.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>async function fetchDataWithError() {
+    try {
+        let response = await fetch('https://invalid-api.com/data');
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log("Error:", error.message); // Handles errors
+    }
+}
+
+fetchDataWithError();
+        </code></pre>
+        <p>In this case, if the promise is rejected (e.g., due to an invalid URL), the catch block will handle the error.</p>
+        
+        <h2>5. Multiple Await Statements</h2>
+        <p>You can have multiple await statements inside an async function to handle multiple asynchronous operations sequentially.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>async function fetchMultipleData() {
+    let data1 = await fetchData('https://api.example.com/data1');
+    let data2 = await fetchData('https://api.example.com/data2');
+    console.log(data1, data2);
+}
+
+fetchMultipleData();</code></pre>
+        <p>In this example, the second await will not execute until the first one has completed. However, if the tasks are independent of each other, you might want to use "Promise.all()" for parallel execution.</p>
+        <h2>6. Async/Await with "Promise.all()"</h2>
+        <p>If you want to perform multiple asynchronous tasks in parallel (rather than sequentially), you can use Promise.all() with async/await. This way, the tasks can run concurrently, improving performance.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>async function fetchDataInParallel() {
+    let [data1, data2] = await Promise.all([
+        fetchData('https://api.example.com/data1'),
+        fetchData('https://api.example.com/data2')
+    ]);
+
+    console.log(data1, data2);
+}
+
+fetchDataInParallel();</code></pre>
+        <p>In this case, both fetch operations happen in parallel, and the function only waits for both promises to resolve.</p>
+        <h2>7. Returning Values from Async Functions</h2>
+        <p>An async function always returns a promise. You can use .then() to access the returned value if needed, although using await is more common.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>async function getValue() {
+    return "Hello, Async!";
+}
+
+getValue().then((value) => console.log(value)); // "Hello, Async!"</code></pre>
+        <p>Alternatively, you can use await when calling the async function:</p>
+        <pre class="lang-javascript"><code>async function displayValue() {
+    let value = await getValue();
+    console.log(value); // "Hello, Async!"
+}
+
+displayValue();</code></pre>
+        <h2>8. Advantages of Async/Await</h2>
+        <ul>
+            <li><span>Readability:</span> Async/await makes the code look synchronous and easier to understand, reducing the complexity compared to using then() chains in promises or callback functions.</li>
+            <li><span>Error Handling:</span> With "try...catch", error handling is more intuitive compared to the traditional .catch() in promises.</li>
+            <li><span>Avoiding Callback Hell:</span>Async/await helps you avoid deeply nested callbacks, making the code more linear and maintainable.</li>
+        </ul>
+        <h2>9. Async/Await vs. Promises</h2>
+        <ul>
+            <li><span>Promises:</span> You handle promises with .then() and .catch() callbacks, often leading to promise chaining.</li>
+            <li><span>Async/Await: </span>This is syntactic sugar built on top of promises, allowing you to write asynchronous code in a synchronous style. It simplifies the handling of asynchronous operations without the need for chaining.</li>
+        </ul>
+        <p>Here’s the difference:</p>
+        <h3>Using Promises:</h3>
+        <pre class="lang-javascript"><code>fetchData()
+.then((data) => {
+    return processData(data);
+})
+.then((result) => {
+    console.log(result);
+})
+.catch((error) => {
+    console.log("Error:", error);
+});</code></pre>
+        <h3>Using Async/Await:</h3>
+        <pre class="lang-javascript"><code>async function processData() {
+    try {
+        let data = await fetchData();
+        let result = await processData(data);
+        console.log(result);
+    } catch (error) {
+        console.log("Error:", error);
+    }
+}
+
+processData();</code></pre>
+        <h2>Conclusion</h2>
+        <p>Async/await provides a powerful and cleaner way to handle asynchronous operations in JavaScript. It makes asynchronous code more readable and manageable, reduces the complexity associated with promise chaining, and offers intuitive error handling with "try...catch". It is the preferred method for handling asynchronous code in modern JavaScript development.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

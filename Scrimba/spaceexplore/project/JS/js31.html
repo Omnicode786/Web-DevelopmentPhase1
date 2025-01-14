@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Khan's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Fetch API in JavaScript</h1>
+        <p>The Fetch API is a modern and powerful way to make network requests in JavaScript. It allows you to retrieve resources (such as data from a server) asynchronously across the network. The Fetch API provides a simpler, more intuitive alternative to "XMLHttpRequest" and is widely used for handling HTTP requests and responses.</p>
+        <h2>1. What is the Fetch API?</h2>
+        <p>The "Fetch API" allows you to make HTTP requests using the "fetch()" method. This method returns a promise that resolves to the response of the request. Unlike "XMLHttpRequest", which requires multiple event handlers, the Fetch API uses promises to handle success and error cases more elegantly.</p>
+        
+        <h2>2. Basic Syntax</h2>
+        <p>The basic syntax of "fetch()" looks like this:</p>
+        <pre class="lang-javascript"><code>fetch(url, options)
+.then(response => {
+    // Process the response here
+})
+.catch(error => {
+    // Handle the error here
+});</code></pre>
+        <ul>
+            <li><span>"url":</span>The resource you want to fetch (e.g., an API endpoint).</li>
+            <li><span>"options":</span> options: An optional object that allows you to customize the request (e.g., method, headers, body).</li>
+        </ul>
+        <h2>3. Making a Simple GET Request</h2>
+        <p>By default, "fetch()" makes a "GET" request, which is used to retrieve data from the server.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>fetch('https://api.example.com/data')
+.then(response => response.json()) // Convert the response to JSON
+.then(data => console.log(data))   // Use the retrieved data
+.catch(error => console.error('Error fetching data:', error));</code></pre>
+        <p>In this example:</p>
+        <ul>
+            <li>The "fetch()" function sends a GET request to the specified URL.</li>
+            <li>The response is converted to JSON using "response.json()".</li>
+            <li>The data is logged to the console.</li>
+            <li>If there’s an error (e.g., network failure), it’s handled in the "catch()" block.</li>
+        </ul>
+        <h2>4. Handling Responses</h2>
+        <ul>
+            <li><span>ok:</span>A boolean indicating whether the request was successful (status code 200–299).</li>
+            <li><span>status:</span> The HTTP status code (e.g., 200 for OK, 404 for Not Found).</li>
+            <li><span>json(), text(), blob(), formData():</span> Methods to parse the body of the response.</li>
+        </ul>
+        <h3>Example of Handling Status Codes:</h3>
+        <pre class="lang-javascript"><code>fetch('https://api.example.com/data')
+.then(response => {
+    if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));</code></pre>
+        
+        <h2>5. Making POST Requests</h2>
+        <p>To send data to the server (e.g., when submitting a form), you can make a "POST" request. You need to pass additional options, including the HTTP method and the request body.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>fetch('https://api.example.com/data', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        name: 'John Doe',
+        age: 25
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));</code></pre>
+        <p>In this example:</p>
+        <ul>
+            <li>The "method" is set to 'POST' to indicate that data is being sent.</li>
+            <li>The "headers" object specifies that the body content is JSON.</li>
+            <li>The "body" contains the JSON data being sent to the server.</li>
+        </ul>
+        <h2>6. Handling Errors</h2>
+        <p>Fetch doesn’t automatically reject requests with HTTP error statuses (like 404 or 500). Instead, you need to manually check the response status and handle errors accordingly.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>fetch('https://api.example.com/data')
+.then(response => {
+    if (!response.ok) {
+    throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then(data => console.log(data))
+.catch(error => console.error('Fetch error:', error));</code></pre>
+        <p>Here, if the response is not OK (status code outside the 200–299 range), an error is thrown and handled in the "catch()" block.</p>
+        <h2>7. Asynchronous Fetch with Async/Await</h2>
+        <p>The Fetch API works seamlessly with async/await, making it even easier to read and handle asynchronous requests.</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>async function fetchData() {
+    try {
+        let response = await fetch('https://api.example.com/data');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+fetchData();</code></pre>
+        <p>In this example:</p>
+        <ul>
+            <li>The "await" keyword is used to pause the execution until the promise returned by "fetch()" is resolved.</li>
+            <li>The error is handled using a "try...catch" block.</li>
+        </ul>
+        <h2>8. CORS (Cross-Origin Resource Sharing)</h2>
+        <p>When making requests to a server on a different domain, the Fetch API may be subject to CORS (Cross-Origin Resource Sharing) restrictions. CORS is a security feature implemented by browsers to prevent unauthorized requests from other domains.</p>
+        <p>If the server doesn’t allow CORS, the fetch request will fail, and you’ll need to configure the server to allow cross-origin requests.</p>
+        <h2>9. Aborting Fetch Requests</h2>
+        <p>The Fetch API supports aborting requests using the "AbortController" API. This is useful when you want to cancel a fetch request before it completes (e.g., when the user navigates away from a page).</p>
+        <h3>Example:</h3>
+        <pre class="lang-javascript"><code>const controller = new AbortController();
+const signal = controller.signal;
+
+fetch('https://api.example.com/data', { signal })
+    .then(response => response.json())
+    .then(data => console.log(data)) 
+    .catch(error => {
+    if (error.name === 'AbortError') {
+        console.log('Fetch aborted');
+    } else {
+        console.error('Fetch error:', error);
+    }
+});
+
+// Abort the request after 1 second
+setTimeout(() => controller.abort(), 1000);</code></pre>
+        <p>In this example:</p>
+        <ul>
+            <li>An "AbortController" is created, and its "signal" is passed to the fetch request.</li>
+            <li>The request is aborted after 1 second using "controller.abort()".</li>
+        </ul>
+        <h2>Conclusion</h2>
+        <p>The Fetch API is a powerful and flexible way to handle HTTP requests in JavaScript. With its promise-based approach, it offers a cleaner, more modern way to interact with servers compared to older techniques like "XMLHttpRequest". Whether you’re retrieving data, sending data, or handling errors, Fetch simplifies network requests and integrates seamlessly with other modern JavaScript features like async/await.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>

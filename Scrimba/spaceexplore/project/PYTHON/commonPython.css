@@ -1,0 +1,44 @@
+span {
+    font-weight: 700;
+}
+ul li {
+    padding: 10px 0;
+} 
+.history {
+    padding: 15px;
+}
+
+.anchors {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.lists {
+    padding: 5px 0;
+}
+ol{
+    margin-left: 20px;
+    padding: 20px 0;
+}
+table {
+    margin: 20px auto;
+    text-align: center;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    width: 20vw;
+    padding: 10px;
+}
+
+@media screen and (max-width: 500px) {
+    table {
+        width: 10vw;
+    }
+    th, td {
+        font-size: 10px;
+    }
+}

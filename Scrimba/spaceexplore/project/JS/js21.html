@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alam's Scripts</title>
+      <link rel="stylesheet" href="commonJS.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../prism.css">
+      <script src="../prism.js"></script>
+      <link rel="stylesheet" href="../common/common.css">
+<body>
+      <main>
+        <h1>Document Object Model (DOM) in JavaScript</h1>
+        <p>The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the structure of a document as a tree of objects, where each object corresponds to a part of the document, such as an element, attribute, or text content. The DOM allows developers to interact with, manipulate, and update the content, structure, and style of web pages dynamically using JavaScript.</p>
+        <h2>1. Understanding the DOM</h2>
+        <p>When a web page is loaded, the browser creates a DOM of the page. This DOM is a tree-like structure where every element, attribute, and piece of content in the HTML document is represented as a node.</p>
+        <h2>Example:</h2>
+        <p>Consider the following simple HTML document:</p>
+        <pre class="lang-javascript"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to My Web Page&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>The DOM representation of this document would look like this:</p>
+        <pre class="lang-javascript"><code>- Document
+- html
+    - head
+    - title
+        - "My Web Page"
+    - body
+    - h1
+        - "Welcome to My Web Page"
+    - p
+        - "This is a paragraph."</code></pre>
+        <h2>2. DOM Nodes</h2>
+        <p>In the DOM, everything is a node. The most common types of nodes are:</p>
+        <ul>
+            <li><span>Element nodes:</span> Represent HTML elements (e.g., &lt;h1&gt;, &lt;p&gt;, &lt;div&gt;).</li>
+            <li><span>Text nodes:</span> Represent the text content within elements.</li>
+            <li><span>Attribute nodes:</span> Represent attributes of elements (e.g., class, id).</li>
+            <li><span>Document nodes:</span> Represent the entire document itself.</li>
+        </ul>
+        <h2>3. DOM Manipulation</h2>
+        <p>JavaScript provides various methods and properties to interact with and manipulate the DOM. These allow developers to dynamically change the content, structure, and style of web pages.
+        <ol>
+            <h3>a. Selecting Elements</h3>
+            <p>To manipulate an element, you first need to select it. The most common ways to select elements in the DOM are:</p>
+            <ul>
+                <li><span>"document.getElementById(id)":</span> Selects an element by its id attribute.</li>
+                <li><span>"document.getElementsByClassName(className)":</span> Selects all elements with a specific class attribute.</li>
+                <li><span>"document.getElementsByTagName(tagName)":</span> Selects all elements with a specific tag name (e.g. &lt;p&gt;, &lt;div&gt;).</li>
+                <li><span>"document.querySelector(selector)":</span> Selects the first element that matches a CSS selector.</li>
+                <li><span>"document.querySelectorAll(selector)":</span> Selects all elements that match a CSS selector.</li>
+            </ul>
+            <h2>Example:</h2>
+            <pre class="lang-javascript"><code>const heading = document.getElementById("myHeading");
+    const paragraphs = document.getElementsByClassName("myParagraph");
+    const firstDiv = document.querySelector("div");
+    const allDivs = document.querySelectorAll("div");</code></pre>
+            <h3>b. Manipulating Elements</h3>
+            <p>Once an element is selected, you can manipulate its content, attributes, and style.</p>
+            <ul>
+                <li><span>"element.innerHTML":</span> Gets or sets the HTML content inside an element.</li>
+                <li><span>"element.textContent":</span> Gets or sets the text content inside an element.</li>
+                <li><span>"element.setAttribute(attribute, value)":</span> Sets an attribute for an element.</li>
+                <li><span>"element.style.property":</span> Sets a CSS style property for an element.</li>
+            </ul>
+            <h2>Example:</h2>
+            <pre class="lang-javascript"><code>const heading = document.getElementById("myHeading");
+    heading.textContent = "New Heading Text";
+    
+    const paragraph = document.querySelector("p");
+    paragraph.style.color = "blue";</code></pre>
+
+            <h3>c. Creating and Removing Elements</h3>
+            <p>JavaScript also allows you to create new elements and remove existing ones from the DOM.
+            <ul>
+                <li><span>"document.createElement(tagName)":</span> Creates a new element node.</li>
+                <li><span>"parentNode.appendChild(newNode)":</span> Appends a new child element to a parent node.</li>
+                <li><span>"parentNode.removeChild(childNode)":</span> Removes a child node from a parent node.</li>
+            </ul>
+            <h2>Example:</h2>
+            <pre class="lang-javascript"><code>const newParagraph = document.createElement("p");
+newParagraph.textContent = "This is a new paragraph.";
+document.body.appendChild(newParagraph);
+
+const oldParagraph = document.getElementById("oldParagraph");
+document.body.removeChild(oldParagraph);</code></pre>
+
+            <h3>DOM Tree Traversal</h3>
+            <p>Sometimes, you may need to navigate through the DOM tree to access parent, child, or sibling nodes.</p>
+            <ul>
+                <li><span>"element.parentNode":</span> Returns the parent node of an element.</li>
+                <li><span>"element.childNodes":</span> Returns a collection of an element's child nodes.</li>
+                <li><span>"element.firstChild":</span> Returns the first child node of an element.</li>
+                <li><span>"element.lastChild":</span> Returns the last child node of an element.</li>
+                <li><span>"element.nextSibling":</span> Returns the next sibling node of an element.</li>
+                <li><span>"element.previousSibling":</span> Returns the previous sibling node of an element.</li>
+            </ul>
+            <h2>Example:</h2>
+            <pre class="lang-javascript"><code>const paragraph = document.querySelector("p");
+console.log(paragraph.parentNode);  // Logs the parent element of the paragraph
+console.log(paragraph.firstChild);  // Logs the first child node of the paragraph</code></pre>
+        </ol>
+        <h2>5. Common Use Cases of the DOM</h2>
+        <ul>
+            <li><span>Dynamic Content Update:</span> Changing text, images, or other content based on user interaction.</li>
+            <li><span>Form Validation:</span> Checking form inputs before submission and providing feedback to the user.</li>
+            <li><span>Interactive UI Elements:</span> Creating dropdowns, modals, carousels, and other interactive components.</li>
+            <li><span>Handling User Events:</span> Responding to clicks, hovers, key presses, and other user actions.</li>
+        </ul>
+        
+        <h2>Conclusion</h2>
+        <p>The Document Object Model (DOM) is a critical concept in web development that allows developers to interact with and manipulate the structure and content of web pages. By understanding the DOM and its various methods, properties, and events, you can create dynamic, interactive, and responsive web applications that react to user inputs and changes in real-time.</p>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="commonjs.js"></script>
+</body>
+</html>
