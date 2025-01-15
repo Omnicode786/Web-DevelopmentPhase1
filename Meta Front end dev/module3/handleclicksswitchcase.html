@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWitch case and andle cases</title>
+    <style>
+        div {
+            border: 2px solid black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 >This is an example website</h1>
+    </div>
+    <script>
+
+        let arr = ["Example Domain", "Google", "Apple", "Meta", "Samsung"]
+        let h1 = document.querySelector("h1")
+
+        function clicker() {
+            switch (h1.innerHTML) {
+                case arr[0]:
+                    h1.innerHTML = arr[1]
+                    break;
+                case arr[1]:
+                    h1.innerHTML = arr[2]
+                    break;
+                    case arr[2]:
+                    h1.innerHTML = arr[3]
+                    break;
+                case arr[3]:
+                    h1.innerHTML = arr[4]
+                    break;
+                default:
+                    h1.innerHTML = arr[0]
+                    break;
+            }
+        }
+        h1.addEventListener("click", clicker)
+    </script>
+</body>
+
+</html>
