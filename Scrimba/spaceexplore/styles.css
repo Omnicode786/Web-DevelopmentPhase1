@@ -1,18 +1,40 @@
 body{
-    background-image: url(greg-rakozy-oMpAz-DN-9I-unsplash.jpg);
-    color: white;
+ 
+    color: #a4c4e6;
     background-size: cover;
     text-align: center;
     font-family: "Orbitron", serif;
+    margin: 0;
+    text-shadow: 0 0 1px black;
 
     /* buttons dont inherit font families */
 }
+#hero{
+    background-image: url(giphy\ \(1\).gif);
+    background-position: center;
+    padding: 10px 0 40px 0;
+    height:65%;
+}
+#title{
+    text-shadow: 0 0 6px white;
+
+}
+
 .btn{
     background-color: white;
     padding: 9px 18px;
+    color: #4b6886;
     border: none;
     font-family: inherit;
+    font-weight: 800;
 }
 .btn:active{
     transform: scale(0.99);
+}
+.underline{
+    padding-bottom: 4px;
+    border-bottom: 2px solid white;
+}
+#logo{
+    width: 180px;
 }
