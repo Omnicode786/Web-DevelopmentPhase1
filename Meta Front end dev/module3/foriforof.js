@@ -19,3 +19,16 @@ for (prop of Object.keys(sportscar)){
     console.log(prop + ": " + sportscar[prop])
     // only the object own properties
 }
+// Task 1
+var dairy = ['cheese', 'sour cream', 'milk', 'yogurt', 'ice cream', 'milkshake']
+function logDairy() {
+    for (item of dairy){
+        console.log(item)
+    }
+    
+}
+logDairy();
+// Task 2
+
+// Task 3
+

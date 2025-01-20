@@ -2,4 +2,8 @@ function addFive(val){
     return val +5;
 }
 
-module.exports = addFive;
+function showconsole(keys){
+    console.log(keys);
+}
+
+module.exports = {addFive, showconsole};
