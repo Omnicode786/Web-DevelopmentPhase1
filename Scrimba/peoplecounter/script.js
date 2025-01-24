@@ -5,12 +5,16 @@ var subtractor = document.querySelector("#subtract");
 var people = 0;
 adder.addEventListener("click", function(){
     people += 1;
-    toincrement.innerHTML = people;
+    toincrement.textContent = people;
 })
 subtractor.addEventListener("click", function(){
     if (people > 0){
         people -= 1;
-        toincrement.innerHTML = people;
+        toincrement.textContent = people;
     }
     
 })
+var logger = document.querySelector("#logger");
+function save(){
+    logger.textContent+= `${people} - `
+}

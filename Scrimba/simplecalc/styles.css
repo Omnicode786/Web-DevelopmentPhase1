@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+}
+input{
+    text-align: center;
+    width: 20%;
+}
+div{
+    margin-top: 20px;
+}
+button{
+    width: auto;
+    height: 30px;
+    background-color: rgb(43, 194, 194);
+    border: none;
+    border-radius: 20px;
+    color: rgb(24, 23, 23);
+}
+button:active{
+    transform: scale(0.991);
+}

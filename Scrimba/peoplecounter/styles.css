@@ -47,3 +47,15 @@ h1{
 #subtract:active{
     transform: scale(0.91);
 }
+#save-btn{
+    background-color: rgb(4, 233, 4);
+    border: none;
+    margin-top: 20px;
+    width: 70%;
+    height: 30px;
+    border-radius: 30px;
+}
+#save-btn:active{
+    transform: scale(0.91);
+
+}
