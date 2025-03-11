@@ -1,0 +1,231 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Popins", sans-serif;
+    transition: all 0.2s ease-in-out;
+}
+html, body{
+    height: auto;
+    width: 100%;
+    background-color: #f0f8ff; 
+    color: #333;
+}
+body.active{
+    height: 100%;
+    width: 100%;
+    background-color: #050505;
+    color: rgb(236, 229, 229);
+}
+.nav{
+    width: 100%;
+    min-height: 40px;
+    height: 10%;
+    background: linear-gradient(to right, #007bff, #00d4ff);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 80px;
+    box-shadow: 1px 4px 6px rgb(197, 197, 197);
+
+}
+#dark-mode{
+        width: 60px;
+        height: 60px;
+        margin-left: 10px;
+        cursor: pointer;
+}
+.head h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+}
+
+
+.searcher {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+#searchplace{
+    padding: 8px 10px;
+    background-color: azure;
+    border: none;
+    border-radius: 4px;
+}
+
+
+.logo{
+    width: 60px;
+    height: 60px;
+}
+.head{
+    font-size: 34px;
+;
+}
+
+.filter{
+    display: flex;
+    gap:  10px;
+    
+}
+.filters{
+    text-decoration: none;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+}
+.filters:hover{
+    background-color: #ff4757;
+    color: white;
+    transform: scale(1.1);
+}
+.search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+.filters.active{
+    color: white;
+    background-color: rgb(3, 214, 3);
+    box-shadow: 0px 8px 16px rgba(179, 255, 0.5, 1);
+    font-size: larger;
+
+}
+.container {
+    display: flex;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    justify-content: center; 
+    align-items: start; 
+}
+.card{
+    width: 360px;
+    max-width: 100%;
+    background: rgb(238, 236, 236);
+    height: 440px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    border: dotted 4px ;
+    cursor: pointer;
+    padding: 1px;
+}
+.card.dark{
+    width: 360px;
+    max-width: 100%;
+    height: 440px;
+    background: rgb(58, 58, 58);
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(161, 158, 158, 0.1);
+    transition: all 0.3s ease-in-out;
+    border: dotted 4px ;
+    cursor: pointer;
+    padding: 1px;
+}
+
+
+.card:hover{
+    transform: scale(1.01);
+    transform: translateY(-5px);
+    box-shadow: -1px -1px 20px 5px #62a0d3;
+
+}
+.card-header{
+    width: 100%;
+    height: 180px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+}
+.card-content{
+    margin-top: 20px;
+    padding: 10px;
+}
+#news-source{
+    margin-block: 12px;
+}
+#news-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#news-source {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.news-desc {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .searcher {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .filter {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .card {
+        width: 48%; /* Adjust for two cards in one row */
+        min-height: 48%;
+    }
+    .container.active {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .card.dark {
+        width: 48%; /* Adjust for two cards in one row */
+        min-height: 48%;
+    }
+
+    .card-header {
+        height: 150px; /* Adjust image height */
+    }
+
+    .card-content {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div id="logos">
+            <img src="logo.png" alt="dsd" class="logo">
+            <img id="dark-mode" src="night.png" alt="">
+        </div>
+
+        <div class="head">
+            <h1>Beast News</h1>
+        </div>
+        <div class="searcher">
+            <div class="filter">
+                <button class="filters" id="programming" onclick="onNavItemClick('programming')">Programming</button>
+                <button class="filters" id="politics" onclick="onNavItemClick('politics')">Politics</button>
+                <button class="filters" id="Tech-World" onclick="onNavItemClick('Tech-World')">Tech World</button>
+            </div>
+            <div>
+                <input type="search" name="" id="searchplace">
+                <button id="search-button" class="search-button">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="cardscontainer">
+    </div>
+
+
+    
+    <template id="template-new">
+        <div class="card">
+
+            <div>
+                <img id="newsImage" class="card-header" src="" alt="dsad">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">This is the title</h3>
+                <h6 id="news-source">End gadhet etc etc</h6>
+                <p id="new-desc" class="news-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
+                    suscipit natus,
+                    vero earum perspiciatis asperiores blanditiis vel? Distinctio nobis modi quibusdam fugiat eaque.
+                    Quidem sequi facilis maiores possimus eum quam.</p>
+            </div>
+    </template>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
