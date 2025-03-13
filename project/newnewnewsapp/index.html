@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Summarizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>News Summarizer</h1>
+        <button id="summarize-button">Summarize</button>
+        <button id="dark-mode">
+            <img id="night-icon" src="night.png" alt="Dark Mode">
+        </button>
+    </header>
+
+    <div id="search-container">
+        <input type="text" id="searchplace" placeholder="Search News...">
+        <button id="search-button">Search</button>
+    </div>
+
+    <div id="cardscontainer"></div>
+
+    <!-- Template for News Cards -->
+    <template id="template-new">
+        <div class="card" data-url="">
+            <img id="newsImage" src="" alt="News Image">
+            <h3 id="news-title"></h3>
+            <p id="news-source"></p>
+            <p id="new-desc"></p>
+        </div>
+    </template>
+
+    <!-- Summary Modal -->
+    <div id="summary-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>News Summary</h2>
+            <p id="summary-text">Click on a news card to summarize...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -177,6 +177,63 @@ body.active{
     font-size: 14px;
 }
 
+
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Modal Styling */
+#summary-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    height: 90%;
+    z-index: 1001;
+    font-size: 50px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Dark mode modal */
+body.active #summary-modal {
+    background: #333;
+    color: white;
+}
+
+/* When modal is active */
+#summary-modal.active {
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Close button */
+.close-btn {
+    float: right;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    color: red;
+}
 @media screen and (max-width: 768px) {
     .nav {
         flex-direction: column;
