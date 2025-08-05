@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Reviewer - Intelligent Code Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Monaco Editor -->
+    <script src="https://unpkg.com/monaco-editor@0.44.0/min/vs/loader.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <h1 class="app-title">🤖 AI Code Reviewer</h1>
+                        <p class="app-subtitle">Intelligent code analysis powered by AI</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="app-layout">
+                    <!-- Code Input Section -->
+                    <section class="code-input-section">
+                        <div class="section-header">
+                            <h2>Code Input</h2>
+                            <div class="controls">
+                                <div class="language-selector">
+                                    <label for="language-select" class="form-label">Language:</label>
+                                    <select id="language-select" class="form-control">
+                                        <option value="javascript">JavaScript</option>
+                                        <option value="python">Python</option>
+                                        <option value="java">Java</option>
+                                        <option value="typescript">TypeScript</option>
+                                        <option value="cpp">C++</option>
+                                        <option value="csharp">C#</option>
+                                        <option value="go">Go</option>
+                                        <option value="rust">Rust</option>
+                                        <option value="php">PHP</option>
+                                        <option value="ruby">Ruby</option>
+                                    </select>
+                                </div>
+                                <div class="sample-code-selector">
+                                    <button id="load-sample-btn" class="btn btn--outline btn--sm">
+                                        📝 Load Sample Code
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="editor-container">
+                            <div id="monaco-editor" class="monaco-editor"></div>
+                        </div>
+                        
+                        <div class="action-section">
+                            <button id="analyze-btn" class="btn btn--primary btn--lg">
+                                <span class="btn-text">Analyze Code</span>
+                                <div class="loading-spinner hidden"></div>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Results Section -->
+                    <section class="results-section">
+                        <div id="analysis-results" class="analysis-results hidden">
+                            <div class="section-header">
+                                <h2>Analysis Results</h2>
+                                <div class="results-summary">
+                                    <span id="issues-count" class="status status--info">0 issues found</span>
+                                </div>
+                            </div>
+                            
+                            <div id="results-content" class="results-content">
+                                <!-- Results will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Placeholder when no analysis -->
+                        <div id="no-analysis" class="no-analysis">
+                            <div class="placeholder-content">
+                                <h3>Ready to analyze your code</h3>
+                                <p>Paste your code above and click "Analyze Code" to get AI-powered insights about code quality, potential bugs, security issues, and performance optimizations.</p>
+                                
+                                <div class="features-preview">
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🎯</span>
+                                        <span>Code Quality Analysis</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🐛</span>
+                                        <span>Bug Detection</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🔒</span>
+                                        <span>Security Scanning</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">⚡</span>
+                                        <span>Performance Optimization</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">✨</span>
+                                        <span>Best Practices</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sample Code Modal -->
+        <div id="sample-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Select Sample Code</h3>
+                    <button id="close-modal" class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="sample-options" class="sample-options">
+                        <!-- Sample options will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

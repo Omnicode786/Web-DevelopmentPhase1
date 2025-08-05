@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background gradient -->
+    <div class="background-gradient"></div>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <h1 class="header__title">Personal Dashboard</h1>
+        <div class="header__controls">
+            <button class="btn btn--outline btn--sm" id="themeToggle">
+                <span id="themeIcon">🌙</span>
+            </button>
+            <button class="btn btn--primary btn--sm" id="addWidgetBtn">
+                + Add Widget
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <div class="dashboard__grid" id="dashboardGrid">
+            <!-- Widgets will be dynamically added here -->
+        </div>
+    </main>
+
+    <!-- Add Widget Modal -->
+    <div class="modal hidden" id="addWidgetModal">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2>Add Widget</h2>
+                <button class="modal__close" id="closeAddModal">&times;</button>
+            </div>
+            <div class="modal__body">
+                <div class="widget-options" id="widgetOptions">
+                    <!-- Widget options will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

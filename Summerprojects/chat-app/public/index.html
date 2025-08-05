@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben 10 Secure Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-bubble bubble-1"></div>
+        <div class="floating-bubble bubble-2"></div>
+        <div class="floating-bubble bubble-3"></div>
+        <div class="floating-bubble bubble-4"></div>
+        <div class="floating-bubble bubble-5"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="glass-card header-card">
+            <h1 class="app-title">
+                <span class="ben10-text">BEN 10</span>
+                <span class="secure-text">SECURE CHAT</span>
+            </h1>
+            <div class="omnitrix-indicator"></div>
+        </header>
+
+        <!-- Connection Panel -->
+        <div class="connection-panel" id="connectionPanel">
+            <div class="glass-card connection-card">
+                <h2>Join the Secure Network</h2>
+                <div class="button-group">
+                    <button class="btn btn-primary" id="createRoomBtn">
+                        <span class="btn-icon">🛸</span>
+                        Create Room
+                    </button>
+                    <button class="btn btn-secondary" id="joinRoomBtn">
+                        <span class="btn-icon">🔗</span>
+                        Join Room
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div class="chat-interface hidden" id="chatInterface">
+            <!-- Room Info -->
+            <div class="glass-card room-info">
+                <div class="room-status">
+                    <span class="status-indicator active"></span>
+                    <div class="room-details">
+                        <span class="room-label">Room ID:</span>
+                        <span class="room-id" id="currentRoomId">-</span>
+                    </div>
+                </div>
+                <button class="btn btn-outline btn-sm" id="leaveRoomBtn">Leave Room</button>
+            </div>
+
+            <!-- Messages Container -->
+            <div class="glass-card messages-container">
+                <div class="messages-header">
+                    <h3>Encrypted Communications</h3>
+                    <div class="encryption-status">
+                        <span class="encryption-icon">🔒</span>
+                        <span>AES-256 Encrypted</span>
+                    </div>
+                </div>
+                <div class="messages-list" id="messagesList">
+                    <div class="system-message">
+                        <span class="system-icon">🛡️</span>
+                        End-to-end encryption activated. Your messages are secure.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Input -->
+            <div class="glass-card message-input-container">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="Type your encrypted message..."
+                        class="message-input"
+                        maxlength="500"
+                    >
+                    <button class="btn btn-primary send-btn" id="sendBtn">
+                        <span class="send-icon">⚡</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Room ID Input -->
+    <div class="modal hidden" id="joinRoomModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-card">
+            <h3>Enter Room ID</h3>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="roomIdInput" 
+                    placeholder="Enter room ID..."
+                    class="form-control"
+                >
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-outline" id="cancelJoinBtn">Cancel</button>
+                <button class="btn btn-primary" id="confirmJoinBtn">Connect</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room Created Modal -->
+    <div class="modal hidden" id="roomCreatedModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-card">
+            <h3>Room Created Successfully!</h3>
+            <div class="room-id-display">
+                <label>Share this Room ID:</label>
+                <div class="room-id-copy">
+                    <input type="text" id="createdRoomId" readonly class="form-control">
+                    <button class="btn btn-secondary" id="copyRoomIdBtn">Copy</button>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="enterRoomBtn">Enter Room</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

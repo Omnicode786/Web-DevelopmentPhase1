@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background gradient -->
+    <div class="background-gradient"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <h1 class="header__title">Personal Dashboard</h1>
+        <div class="header__controls">
+            <button class="btn btn--outline btn--sm" id="themeToggle">
+                <span id="themeIcon">🌙</span>
+            </button>
+            <button class="btn btn--outline btn--sm" id="settingsBtn">
+                ⚙️
+            </button>
+            <button class="btn btn--primary btn--sm" id="addWidgetBtn">
+                + Add Widget
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <div class="dashboard__grid" id="dashboardGrid">
+            <!-- Widgets will be dynamically added here -->
+        </div>
+    </main>
+
+    <!-- Add Widget Modal -->
+    <div class="modal hidden" id="addWidgetModal">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2>Add Widget</h2>
+                <button class="modal__close" id="closeAddModal">&times;</button>
+            </div>
+            <div class="modal__body">
+                <div class="widget-options" id="widgetOptions">
+                    <!-- Widget options will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal hidden" id="settingsModal">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2>Settings</h2>
+                <button class="modal__close" id="closeSettingsModal">&times;</button>
+            </div>
+            <div class="modal__body">
+                <div class="settings-section">
+                    <h3>API Keys</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="weatherApiKey">OpenWeatherMap API Key</label>
+                        <input type="text" class="form-control" id="weatherApiKey" placeholder="YOUR_OPENWEATHER_API_KEY_HERE">
+                        <small class="form-help">Get your free API key at <a href="https://openweathermap.org/api" target="_blank">openweathermap.org</a></small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newsApiKey">NewsAPI Key</label>
+                        <input type="text" class="form-control" id="newsApiKey" placeholder="YOUR_NEWS_API_KEY_HERE">
+                        <small class="form-help">Get your free API key at <a href="https://newsapi.org" target="_blank">newsapi.org</a></small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="geminiApiKey">Gemini API Key</label>
+                        <input type="text" class="form-control" id="geminiApiKey" placeholder="YOUR_GEMINI_API_KEY_HERE">
+                        <small class="form-help">Get your API key at <a href="https://aistudio.google.com" target="_blank">AI Studio</a></small>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>Dashboard</h3>
+                    <div class="form-group">
+                        <button class="btn btn--outline" id="exportConfig">Export Configuration</button>
+                        <button class="btn btn--outline" id="importConfig">Import Configuration</button>
+                        <button class="btn btn--secondary" id="resetDashboard">Reset Dashboard</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--primary" id="saveSettings">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for import -->
+    <input type="file" id="configFileInput" accept=".json" style="display: none;">
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💸 Smart Budget Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="background-gradient"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>💸 Smart Budget Tracker</h1>
+            <button class="btn btn-reset" id="resetBtn">
+                🗑️ Reset Data
+            </button>
+        </header>
+
+        <!-- API Key Section -->
+        <section class="glass-card api-section">
+            <h2>🔐 Gemini AI Configuration</h2>
+            <div class="form-group">
+                <label for="apiKey" class="form-label">API Key (Optional - for AI suggestions)</label>
+                <input type="password" id="apiKey" class="form-control" placeholder="Enter your Gemini API key here...">
+                <button class="btn btn-primary" id="saveApiKey">Save Key</button>
+            </div>
+            <div class="api-status" id="apiStatus"></div>
+        </section>
+
+        <!-- Add Expense Section -->
+        <section class="glass-card expense-form-section">
+            <h2>💸 Add New Expense</h2>
+            <form id="expenseForm" class="expense-form">
+                <div class="form-group">
+                    <label for="amount" class="form-label">Amount ($)</label>
+                    <input type="number" id="amount" class="form-control" step="0.01" min="0" required placeholder="0.00">
+                </div>
+                
+                <div class="form-group">
+                    <label for="category" class="form-label">Category</label>
+                    <select id="category" class="form-control" required>
+                        <option value="">Select a category</option>
+                        <option value="Food">🍔 Food</option>
+                        <option value="Travel">✈️ Travel</option>
+                        <option value="Entertainment">🎬 Entertainment</option>
+                        <option value="Shopping">🛍️ Shopping</option>
+                        <option value="Bills">📄 Bills</option>
+                        <option value="Others">📦 Others</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="note" class="form-label">Note (Optional)</label>
+                    <input type="text" id="note" class="form-control" placeholder="Add a note about this expense...">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full-width">
+                    ✨ Add Expense
+                </button>
+            </form>
+        </section>
+
+        <!-- AI Suggestions Section -->
+        <section class="glass-card ai-suggestions-section" id="aiSuggestionsSection">
+            <h2>🧠 AI Insights</h2>
+            <div class="ai-suggestions" id="aiSuggestions">
+                <div class="suggestion-placeholder">
+                    Add some expenses to get AI-powered insights about your spending patterns!
+                </div>
+            </div>
+            <div class="ai-loading hidden" id="aiLoading">
+                <div class="loading-spinner"></div>
+                <span>Analyzing your spending patterns...</span>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="chart-grid">
+                <div class="glass-card chart-container">
+                    <h3>📊 Spending by Category</h3>
+                    <div style="position: relative; height: 400px;">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="glass-card chart-container">
+                    <h3>📈 Monthly Spending Trend</h3>
+                    <div style="position: relative; height: 400px;">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="glass-card chart-container chart-full-width">
+                    <h3>📉 Expense Timeline</h3>
+                    <div style="position: relative; height: 400px;">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expenses List Section -->
+        <section class="glass-card expenses-list-section">
+            <h2>📋 Recent Expenses</h2>
+            <div class="expenses-header">
+                <div class="expenses-summary" id="expensesSummary">
+                    Total: $0.00
+                </div>
+            </div>
+            <div class="expenses-list" id="expensesList">
+                <div class="no-expenses">
+                    No expenses added yet. Start tracking your spending!
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Edit Expense Modal -->
+    <div class="modal hidden" id="editModal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h3>✏️ Edit Expense</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="editExpenseForm" class="expense-form">
+                <div class="form-group">
+                    <label for="editAmount" class="form-label">Amount ($)</label>
+                    <input type="number" id="editAmount" class="form-control" step="0.01" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editCategory" class="form-label">Category</label>
+                    <select id="editCategory" class="form-control" required>
+                        <option value="Food">🍔 Food</option>
+                        <option value="Travel">✈️ Travel</option>
+                        <option value="Entertainment">🎬 Entertainment</option>
+                        <option value="Shopping">🛍️ Shopping</option>
+                        <option value="Bills">📄 Bills</option>
+                        <option value="Others">📦 Others</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editNote" class="form-label">Note</label>
+                    <input type="text" id="editNote" class="form-control">
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

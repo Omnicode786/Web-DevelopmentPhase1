@@ -1,5 +1,5 @@
 const APIKEY = "0abd236991914684ae1b94a869a3e898";
-const GEMINI_API_KEY = "AIzaSyC1TMNn8H5q8mMUTBMyiZA9uB79f4HEPLI"; // Replace with your Gemini AI Key
+const GEMINI_API_KEY = "AIzaSyC1TMNn8H5q8mMUTBMyiZA9uB79f4HEPLI"; 
 const url = "https://newsapi.org/v2/everything?q=";
 
 window.addEventListener('load', () => fetchNews("Pakistan"));
@@ -42,13 +42,11 @@ function fillData(cardClone, article) {
     });
 }
 
-// Dark Mode
 const night = document.getElementById('dark-mode');
 night.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
 
-// Summary Modal
 const summarizeBtn = document.getElementById('summarize-button');
 const summaryModal = document.getElementById('summary-modal');
 const summaryText = document.getElementById('summary-text');

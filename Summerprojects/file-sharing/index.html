@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralized File Sharing</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- IPFS Helia and dependencies -->
+    <script src="https://unpkg.com/multiformats/dist/index.min.js"></script>
+    <script src="https://unpkg.com/@helia/unixfs/dist/index.min.js"></script>
+    <script src="https://unpkg.com/helia/dist/index.min.js"></script>
+    
+    <!-- QR Code generation -->
+    <script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js"></script>
+    
+    <!-- Crypto for blockchain hashing -->
+    <script src="https://unpkg.com/crypto-js@4.1.1/crypto-js.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌐 Decentralized File Sharing</h1>
+            <p>Upload, store, and share files without central servers using IPFS and P2P</p>
+            <div class="header-controls">
+                <button id="themeToggle" class="btn btn--outline btn--sm">🌙 Dark</button>
+                <div class="status-indicator" id="ipfsStatus">
+                    <span class="status-dot"></span>
+                    <span>IPFS: Connecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <button class="nav-btn active" data-tab="upload">📤 Upload</button>
+            <button class="nav-btn" data-tab="download">📥 Download</button>
+            <button class="nav-btn" data-tab="p2p">🔗 P2P Transfer</button>
+            <button class="nav-btn" data-tab="blockchain">⛓️ Blockchain</button>
+        </nav>
+
+        <!-- Upload Tab -->
+        <div class="tab-content active" id="upload">
+            <div class="card">
+                <div class="card__body">
+                    <h3>Upload Files to IPFS</h3>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <div class="upload-icon">📁</div>
+                            <p>Drag & drop files here or click to select</p>
+                            <button class="btn btn--primary" id="selectFiles">Select Files</button>
+                        </div>
+                        <input type="file" id="fileInput" multiple style="display: none;">
+                    </div>
+
+                    <div class="upload-options">
+                        <label class="form-label">
+                            <input type="checkbox" id="encryptFile"> Encrypt files before upload
+                        </label>
+                    </div>
+
+                    <div class="upload-results" id="uploadResults" style="display: none;">
+                        <h4>Upload Complete</h4>
+                        <div class="file-result" id="fileResult">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Tab -->
+        <div class="tab-content" id="download">
+            <div class="card">
+                <div class="card__body">
+                    <h3>Download Files from IPFS</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="cidInput">Enter Content ID (CID):</label>
+                        <div class="input-group">
+                            <input type="text" id="cidInput" class="form-control" placeholder="bafkreie4u2gxapjykqm2vhazgldxd7bejxdw3a2fz4igfwl5ej2s7p4fsi">
+                            <button class="btn btn--primary" id="downloadBtn">Download</button>
+                        </div>
+                    </div>
+
+                    <div class="download-progress" id="downloadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="downloadProgressBar"></div>
+                        </div>
+                        <p id="downloadStatus">Fetching file...</p>
+                    </div>
+
+                    <div class="file-preview" id="filePreview" style="display: none;">
+                        <!-- File preview will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- P2P Transfer Tab -->
+        <div class="tab-content" id="p2p">
+            <div class="card">
+                <div class="card__body">
+                    <h3>Peer-to-Peer File Transfer</h3>
+                    
+                    <div class="p2p-options">
+                        <button class="btn btn--primary" id="createRoom">Create Room</button>
+                        <div class="form-group">
+                            <label class="form-label" for="roomIdInput">Or join existing room:</label>
+                            <div class="input-group">
+                                <input type="text" id="roomIdInput" class="form-control" placeholder="Enter Room ID">
+                                <button class="btn btn--secondary" id="joinRoom">Join</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p2p-room" id="p2pRoom" style="display: none;">
+                        <div class="room-info">
+                            <h4>Room: <span id="currentRoomId"></span></h4>
+                            <div class="connection-status" id="connectionStatus">
+                                <span class="status-dot"></span>
+                                <span>Waiting for peer...</span>
+                            </div>
+                        </div>
+
+                        <div class="p2p-actions" style="display: none;" id="p2pActions">
+                            <div class="form-group">
+                                <input type="file" id="p2pFileInput" multiple>
+                                <button class="btn btn--primary" id="sendFiles">Send Files</button>
+                            </div>
+                        </div>
+
+                        <div class="p2p-transfers" id="p2pTransfers">
+                            <!-- Transfer progress will be shown here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blockchain Tab -->
+        <div class="tab-content" id="blockchain">
+            <div class="card">
+                <div class="card__body">
+                    <h3>Blockchain Transaction History</h3>
+                    <p>Immutable log of all file uploads</p>
+                    
+                    <div class="blockchain-stats">
+                        <div class="stat">
+                            <span class="stat-label">Total Blocks:</span>
+                            <span class="stat-value" id="totalBlocks">1</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Total Files:</span>
+                            <span class="stat-value" id="totalFiles">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Chain Valid:</span>
+                            <span class="stat-value status--success" id="chainValid">✅ Valid</span>
+                        </div>
+                    </div>
+
+                    <div class="blockchain-controls">
+                        <button class="btn btn--secondary" id="validateChain">Validate Chain</button>
+                        <button class="btn btn--outline" id="exportChain">Export Chain</button>
+                    </div>
+
+                    <div class="blockchain-list" id="blockchainList">
+                        <!-- Blockchain blocks will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal hidden" id="qrModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share File</h3>
+                <button class="modal-close" id="closeQrModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="qr-container" id="qrContainer">
+                    <!-- QR code will be generated here -->
+                </div>
+                <div class="share-info">
+                    <p><strong>CID:</strong></p>
+                    <div class="copy-field">
+                        <input type="text" id="shareCid" class="form-control" readonly>
+                        <button class="btn btn--outline btn--sm" id="copyCid">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
