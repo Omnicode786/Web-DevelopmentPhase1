@@ -1,0 +1,301 @@
+
+
+
+/* Additional styles for real data integration */
+
+.integration-badge {
+    background: linear-gradient(135deg, var(--success-color), #45a049);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    box-shadow: var(--shadow-sm);
+}
+
+.real-data-badge {
+    background: linear-gradient(135deg, var(--success-color), #45a049);
+    color: white;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+}
+
+.security-note {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.security-note h4 {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.security-note ul {
+    margin: 0;
+    padding-left: var(--spacing-lg);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.security-note li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.scraping-info {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.scraping-info p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.scraping-info i {
+    color: var(--primary-color);
+    width: 16px;
+}
+
+.form-group small {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-xs);
+    display: block;
+}
+
+.data-source {
+    padding: var(--spacing-md);
+    background: var(--background-color);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+    border-left: 3px solid var(--success-color);
+}
+
+.data-source p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.data-source p:last-child {
+    margin-bottom: 0;
+}
+
+.data-source i {
+    color: var(--success-color);
+    width: 16px;
+}
+
+/* Backend connection status */
+.connection-status {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.8rem;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.connection-status.connected {
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.connection-status.disconnected {
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+
+.connection-status i {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Loading states for real data */
+.loading-shimmer-real {
+    background: linear-gradient(
+        90deg,
+        var(--border-color),
+        rgba(25, 118, 210, 0.1),
+        var(--border-color)
+    );
+    background-size: 200% 100%;
+    animation: shimmer-real 2s infinite;
+}
+
+@keyframes shimmer-real {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Enhanced login form for real data */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    border-left: 3px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-left-color: var(--success-color);
+    background: rgba(25, 118, 210, 0.02);
+}
+
+/* Real data indicators */
+.real-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    color: var(--success-color);
+    font-weight: 500;
+}
+
+.real-indicator::before {
+    content: "●";
+    color: var(--success-color);
+    animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Error states for backend issues */
+.backend-error {
+    background: rgba(244, 67, 54, 0.1);
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.backend-error i {
+    font-size: 1.2rem;
+}
+
+/* Success states for real data fetch */
+.data-success {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.data-success i {
+    font-size: 1.2rem;
+}
+
+/* Mobile optimizations for real data features */
+@media (max-width: 768px) {
+    .scraping-info {
+        padding: var(--spacing-md);
+    }
+
+    .security-note {
+        padding: var(--spacing-md);
+    }
+
+    .security-note ul {
+        padding-left: var(--spacing-md);
+    }
+
+    .connection-status {
+        bottom: 80px; /* Above bottom nav */
+        left: 10px;
+        right: 10px;
+        justify-content: center;
+    }
+
+    .real-data-badge {
+        font-size: 0.6rem;
+        padding: 1px 6px;
+    }
+}
+
+/* Dark theme adjustments */
+body.dark .security-note {
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+}
+
+body.dark .data-source {
+    background: var(--dark-surface);
+}
+
+body.dark .scraping-info {
+    border-color: var(--dark-border);
+}
+
+/* Additional enhancements */
+.version-info {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    background: var(--surface-color);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.version-info::before {
+    content: "v2.0 - Real Data";
+}

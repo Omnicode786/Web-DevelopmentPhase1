@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enchanting Pakistan - Discover the Land of Pure Beauty</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-text">ENCHANTING PAKISTAN</div>
+            <div class="loader-progress">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img width="120px" src="logo.png" alt="">
+            </div>
+            <div class="nav-links">
+                <a href="#destinations" class="nav-link">Destinations</a>
+                <a href="#attractions" class="nav-link">Attractions</a>
+                <a href="#experiences" class="nav-link">Experiences</a>
+                <a href="#culture" class="nav-link">Culture</a>
+                <a href="#plan-trip" class="nav-link btn--primary">Plan Your Trip</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-video-container">
+            <div class="hero-bg-image"></div>
+            <div class="hero-video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="hero-title-line">ENCHANTING</span>
+                    <span class="hero-title-line">PAKISTAN</span>
+                </h1>
+                <p class="hero-subtitle">Discover the Land of Pure Beauty</p>
+                <p class="hero-description">From the towering peaks of K2 to the ancient forts of Punjab, experience Pakistan's incredible diversity</p>
+                <button class="hero-cta btn--primary">Explore Now</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">DESTINATIONS</h2>
+                <p class="section-subtitle">for every bucket list</p>
+            </div>
+            
+            <div class="destinations-slider">
+                <div class="destination-slide active">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/c3ec0c09fb56fc38ec5dde4c523da7ec6ecbd332.png" alt="Hunza Valley" class="destination-bg">
+                    <div class="destination-content">
+                        <h3 class="destination-title">HUNZA VALLEY</h3>
+                        <p class="destination-subtitle">Crown Jewel of the North</p>
+                        <p class="destination-description">Breathtaking mountain vistas and autumn colors</p>
+                    </div>
+                </div>
+                <div class="destination-slide">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754778038/pplx_project_search_images/6214a01efe0a8b6c16922fc1bce4ea11a4c0d95e.png" alt="Fairy Meadows" class="destination-bg">
+                    <div class="destination-content">
+                        <h3 class="destination-title">FAIRY MEADOWS</h3>
+                        <p class="destination-subtitle">Gateway to Nanga Parbat</p>
+                        <p class="destination-description">Paradise at the base of the killer mountain</p>
+                    </div>
+                </div>
+                <div class="destination-slide">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/8c8ff4e837bd6c708b2225ce504687953d4290f4.png" alt="Skardu Lakes" class="destination-bg">
+                    <div class="destination-content">
+                        <h3 class="destination-title">SKARDU LAKES</h3>
+                        <p class="destination-subtitle">Jewels of Gilgit-Baltistan</p>
+                        <p class="destination-description">Crystal clear waters reflecting mighty peaks</p>
+                    </div>
+                </div>
+                <div class="destination-slide">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/bb63af0c3e4030e19dd9983cd81e359a6943b441.png" alt="K2 Base Camp" class="destination-bg">
+                    <div class="destination-content">
+                        <h3 class="destination-title">K2 BASE CAMP</h3>
+                        <p class="destination-subtitle">Savage Mountain Adventure</p>
+                        <p class="destination-description">Journey to the world's second highest peak</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-navigation">
+                <button class="slider-btn prev-btn">❮</button>
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+                <button class="slider-btn next-btn">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section class="attractions" id="attractions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ATTRACTIONS</h2>
+                <p class="section-subtitle">worth a thousand stories</p>
+            </div>
+            
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/5e07449a651eed0f17d132c5337db45590377b20.png" alt="Lahore Fort" loading="lazy">
+                        <div class="attraction-overlay">
+                            <h3>Lahore Fort</h3>
+                            <p>Lahore • Mughal era fortress and UNESCO World Heritage</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778038/pplx_project_search_images/5b94578a58d84c622da8f567211bcd4aa4cb2ce9.png" alt="Badshahi Mosque" loading="lazy">
+                        <div class="attraction-overlay">
+                            <h3>Badshahi Mosque</h3>
+                            <p>Lahore • 17th century Mughal architectural marvel</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778038/pplx_project_search_images/ee1bfebdc659d12296350919edb10f3fbf9c2801.png" alt="Minar-e-Pakistan" loading="lazy">
+                        <div class="attraction-overlay">
+                            <h3>Minar-e-Pakistan</h3>
+                            <p>Lahore • National monument symbolizing independence</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card large">
+                    <div class="attraction-image">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/a04a3e4a298fd13a5e84e0b6b00f12e9568c69b4.png" alt="K2 Mountain" loading="lazy">
+                        <div class="attraction-overlay">
+                            <h3>K2 Mountain</h3>
+                            <p>Karakoram Range • The Savage Mountain</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/e1be3d7e920d78941db56d72084661c11d6d09e3.png" alt="Skardu" loading="lazy">
+                        <div class="attraction-overlay">
+                            <h3>Skardu Valley</h3>
+                            <p>Gilgit-Baltistan • Gateway to mighty peaks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section class="experiences" id="experiences">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">EXPERIENCES</h2>
+                <p class="section-subtitle">create unforgettable memories</p>
+            </div>
+            
+            <div class="experiences-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">🏔️</div>
+                    <h3>Mountain Trekking</h3>
+                    <p class="experience-category">Adventure</p>
+                    <p>Trek through the world's highest mountain ranges including K2, Nanga Parbat, and the Karakoram</p>
+                    <div class="experience-details">
+                        <span>7-14 days</span>
+                        <span>Moderate to Challenging</span>
+                    </div>
+                </div>
+                
+                <div class="experience-card">
+                    <div class="experience-icon">🏛️</div>
+                    <h3>Cultural Heritage Tours</h3>
+                    <p class="experience-category">Culture</p>
+                    <p>Explore centuries of Islamic and Mughal architecture from Lahore to Thatta</p>
+                    <div class="experience-details">
+                        <span>3-7 days</span>
+                        <span>Easy</span>
+                    </div>
+                </div>
+                
+                <div class="experience-card">
+                    <div class="experience-icon">🏜️</div>
+                    <h3>Desert Safari</h3>
+                    <p class="experience-category">Adventure</p>
+                    <p>Experience the vast Cholistan and Thar deserts with camel treks and fort visits</p>
+                    <div class="experience-details">
+                        <span>2-3 days</span>
+                        <span>Easy to Moderate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Heritage Section -->
+    <section class="culture" id="culture">
+        <div class="culture-bg"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CULTURAL HERITAGE</h2>
+                <p class="section-subtitle">rich traditions spanning centuries</p>
+            </div>
+            
+            <div class="culture-content">
+                <div class="culture-crafts">
+                    <h3>Traditional Crafts & Arts</h3>
+                    <div class="crafts-grid">
+                        <div class="craft-item">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1754778038/pplx_project_search_images/638e19d4c45bd1f54a1ae47aa3ac38eceeba8df2.png" alt="Traditional Pottery" loading="lazy">
+                            <h4>Ceramic Pottery</h4>
+                            <p>Hand-painted traditional vessels with vibrant colors</p>
+                        </div>
+                        <div class="craft-item">
+                            <div class="craft-placeholder">🧵</div>
+                            <h4>Traditional Carpets</h4>
+                            <p>Intricate hand-woven Persian and Bokhara style carpets</p>
+                        </div>
+                        <div class="craft-item">
+                            <div class="craft-placeholder">⚒️</div>
+                            <h4>Metalwork</h4>
+                            <p>Exquisite brass and copper work from Moradabad</p>
+                        </div>
+                        <div class="craft-item">
+                            <div class="craft-placeholder">🧶</div>
+                            <h4>Textile Arts</h4>
+                            <p>Traditional embroidery and mirror work fabrics</p>
+                        </div>
+                        <div class="craft-item">
+                            <div class="craft-placeholder">🪵</div>
+                            <h4>Wood Carving</h4>
+                            <p>Intricate wooden furniture and decorative pieces</p>
+                        </div>
+                        <div class="craft-item">
+                            <div class="craft-placeholder">💎</div>
+                            <h4>Gemstone Jewelry</h4>
+                            <p>Beautiful jewelry featuring local precious stones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Section -->
+    <section class="food" id="food">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CULINARY DELIGHTS</h2>
+                <p class="section-subtitle">taste the flavors of Pakistan</p>
+            </div>
+            
+            <div class="food-grid">
+                <div class="food-item">
+                    <div class="food-icon">🍚</div>
+                    <h3>Biryani</h3>
+                    <p>Aromatic basmati rice with tender meat and spices</p>
+                </div>
+                <div class="food-item">
+                    <div class="food-icon">🍖</div>
+                    <h3>Karahi</h3>
+                    <p>Sizzling meat curry cooked in a traditional wok</p>
+                </div>
+                <div class="food-item">
+                    <div class="food-icon">🍲</div>
+                    <h3>Nihari</h3>
+                    <p>Rich, slow-cooked stew perfect for breakfast</p>
+                </div>
+                <div class="food-item">
+                    <div class="food-icon">🥩</div>
+                    <h3>Chapli Kebab</h3>
+                    <p>Spiced ground meat patties from Peshawar</p>
+                </div>
+                <div class="food-item">
+                    <div class="food-icon">🥞</div>
+                    <h3>Halwa Puri</h3>
+                    <p>Traditional breakfast with sweet semolina and bread</p>
+                </div>
+                <div class="food-item">
+                    <div class="food-icon">🥛</div>
+                    <h3>Lassi</h3>
+                    <p>Refreshing yogurt drink with sweet or salty flavors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan Your Trip Section -->
+    <section class="plan-trip" id="plan-trip">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">PLAN YOUR TRIP</h2>
+                <p class="section-subtitle">let us help you create the perfect journey</p>
+            </div>
+            
+            <div class="trip-planner">
+                <div class="planner-form">
+                    <div class="form-group">
+                        <label for="destination">Choose Destination</label>
+                        <select id="destination" class="form-control">
+                            <option value="">Select a destination</option>
+                            <option value="northern">Northern Areas (Hunza, Skardu, K2)</option>
+                            <option value="punjab">Punjab Heritage (Lahore, Multan)</option>
+                            <option value="sindh">Sindh Culture (Karachi, Thatta)</option>
+                            <option value="balochistan">Balochistan Adventure (Quetta, Gwadar)</option>
+                            <option value="kpk">Khyber Pakhtunkhwa (Peshawar, Swat)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="duration">Trip Duration</label>
+                        <select id="duration" class="form-control">
+                            <option value="">Select duration</option>
+                            <option value="3-5">3-5 days (Short Break)</option>
+                            <option value="7-10">7-10 days (Extended Tour)</option>
+                            <option value="14+">14+ days (Complete Experience)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Experience Type</label>
+                        <select id="experience" class="form-control">
+                            <option value="">Select experience</option>
+                            <option value="adventure">Adventure (Trekking, Mountaineering)</option>
+                            <option value="culture">Cultural (Heritage, Architecture)</option>
+                            <option value="nature">Nature (Lakes, Valleys, Wildlife)</option>
+                            <option value="luxury">Luxury (Premium Hotels, Fine Dining)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn--primary btn--full-width plan-btn">Plan My Trip</button>
+                </div>
+                
+                <div class="trip-highlights">
+                    <h3>Why Visit Pakistan?</h3>
+                    <ul>
+                        <li>Home to 5 of the world's 14 eight-thousander peaks</li>
+                        <li>6 UNESCO World Heritage Sites</li>
+                        <li>Rich Mughal and Islamic architecture spanning centuries</li>
+                        <li>Diverse landscapes from glaciers to deserts to coastlines</li>
+                        <li>Warm hospitality and vibrant culture</li>
+                        <li>Authentic cuisine with regional specialties</li>
+                        <li>Adventure activities from K2 base camp to river rafting</li>
+                        <li>Ancient civilizations including Gandhara and Indus Valley</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Enchanting Pakistan</h3>
+                    <p>Discover the land of pure beauty and endless adventure. From the mighty peaks of the Karakoram to the historic streets of Lahore.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#attractions">Attractions</a></li>
+                        <li><a href="#experiences">Experiences</a></li>
+                        <li><a href="#culture">Culture</a></li>
+                        <li><a href="#plan-trip">Plan Your Trip</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📧 info@enchantingpakistan.com</p>
+                    <p>📞 +92 51 123 4567</p>
+                    <p>🏢 Tourism Development Corporation</p>
+                    <p>📍 Islamabad, Pakistan</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Instagram</a>
+                        <a href="#" target="_blank">Twitter</a>
+                        <a href="#" target="_blank">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Enchanting Pakistan. All rights reserved. | Promoting sustainable tourism in Pakistan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

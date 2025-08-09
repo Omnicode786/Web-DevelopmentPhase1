@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NED Student Portal - Real Data Integration</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Loading Overlay for Real Scraping -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="ned-logo">
+                <i class="fas fa-university"></i>
+                <span>NED</span>
+            </div>
+            <div class="loading-spinner"></div>
+            <h3 id="loadingTitle">Connecting to NED Portal...</h3>
+            <p id="loadingMessage">Please wait while we fetch your real academic data</p>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <button id="cancelLogin" class="cancel-btn">Cancel</button>
+            <div class="scraping-info">
+                <p><i class="fas fa-robot"></i> Using automated web scraping to fetch your data</p>
+                <p><i class="fas fa-shield-alt"></i> Your credentials are processed securely</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Section -->
+    <div id="loginSection" class="login-section">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="ned-logo">
+                    <i class="fas fa-university"></i>
+                    <span>NED</span>
+                </div>
+                <h1>NED University Portal</h1>
+                <p>Real-time Student Information System</p>
+                <div class="integration-badge">
+                    <i class="fas fa-link"></i>
+                    <span>Connected to pl.neduet.edu.pk</span>
+                </div>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">NED Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your actual NED username">
+                    <small>Use your official NED University login credentials</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your NED password">
+                    <small>Your password is processed securely and never stored</small>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Keep me logged in
+                    </label>
+                    <a href="https://pl.neduet.edu.pk" target="_blank" class="forgot-password">NED Portal <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <button type="submit" id="loginBtn" class="login-btn">
+                    <span>Fetch My Data</span>
+                    <i class="fas fa-download"></i>
+                </button>
+
+                <div class="login-info">
+                    <div class="security-note">
+                        <h4><i class="fas fa-shield-alt"></i> How It Works</h4>
+                        <ul>
+                            <li>Your credentials are sent securely to our backend server</li>
+                            <li>Our server logs into the official NED portal on your behalf</li>
+                            <li>CAPTCHA is solved automatically using AI services</li>
+                            <li>Your real academic data is extracted and displayed here</li>
+                            <li>No credentials are stored - only session tokens</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Portal Section (same as before but with real data) -->
+    <div id="portalSection" class="portal-section hidden">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <div class="ned-logo">
+                    <i class="fas fa-university"></i>
+                    <span>NED</span>
+                </div>
+                <h2>Student Portal</h2>
+                <div class="real-data-badge">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Real Data</span>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button id="themeToggle" class="icon-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="refreshData" class="icon-btn" title="Refresh data from NED Portal">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <div class="user-menu">
+                    <button id="userMenuBtn" class="user-btn">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span id="userName">Loading...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="userDropdown" class="user-dropdown">
+                        <a href="#profile" onclick="switchSection('profile')">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <a href="#settings" onclick="switchSection('settings')">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                        <hr>
+                        <a href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" onclick="switchSection('dashboard')">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#results" class="nav-item" onclick="switchSection('results')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Academic Results</span>
+                </a>
+                <a href="#fees" class="nav-item" onclick="switchSection('fees')">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Fee Management</span>
+                </a>
+                <a href="#timetable" class="nav-item" onclick="switchSection('timetable')">
+                    <i class="fas fa-calendar"></i>
+                    <span>Timetable</span>
+                </a>
+                <a href="#profile" class="nav-item" onclick="switchSection('profile')">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboardSection" class="content-section active">
+                <div class="section-header">
+                    <h2>Dashboard</h2>
+                    <span id="lastSync" class="last-sync">Last synced: Loading...</span>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon cgpa-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="studentCGPA">Loading...</h3>
+                            <p>Current CGPA</p>
+                            <small id="cgpaChange">From NED Portal</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon credits-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3><span id="completedCredits">0</span>/<span id="totalCredits">0</span></h3>
+                            <p>Credit Hours</p>
+                            <small id="creditsProgress">Loading...</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon rank-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="studentRank">Loading...</h3>
+                            <p>Class Rank</p>
+                            <small id="rankInfo">Loading...</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon fees-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="feeStatus">Loading...</h3>
+                            <p>Fee Status</p>
+                            <small id="feeDetails">From NED Portal</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Live Notifications</h3>
+                            <span class="notification-badge" id="notificationCount">0</span>
+                        </div>
+                        <div class="notifications-list" id="notificationsList">
+                            <div class="loading-placeholder">Loading real notifications...</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-btn" onclick="switchSection('results')">
+                                <i class="fas fa-chart-line"></i>
+                                <span>View Results</span>
+                            </button>
+                            <button class="action-btn" onclick="switchSection('fees')">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Pay Fees</span>
+                            </button>
+                            <button class="action-btn" onclick="downloadTranscript()">
+                                <i class="fas fa-download"></i>
+                                <span>Download Transcript</span>
+                            </button>
+                            <button class="action-btn" onclick="switchSection('timetable')">
+                                <i class="fas fa-calendar"></i>
+                                <span>View Schedule</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="content-section">
+                <div class="section-header">
+                    <h2>Academic Results</h2>
+                    <div class="section-actions">
+                        <select id="semesterFilter" class="filter-select">
+                            <option value="current">Current Semester</option>
+                            <option value="all">All Semesters</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="results-grid">
+                    <div class="results-card">
+                        <div class="card-header">
+                            <h3>Current Semester (Live Data)</h3>
+                            <span class="semester-gpa">GPA: <span id="currentGPA">Loading...</span></span>
+                        </div>
+                        <div class="subjects-table">
+                            <table id="subjectsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Subject Code</th>
+                                        <th>Subject Name</th>
+                                        <th>Credits</th>
+                                        <th>Grade</th>
+                                        <th>Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="subjectsTableBody">
+                                    <tr>
+                                        <td colspan="5" class="loading-row">Loading real subjects from NED Portal...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="results-card">
+                        <div class="card-header">
+                            <h3>CGPA History (Real Data)</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="cgpaChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fees Section -->
+            <section id="feesSection" class="content-section">
+                <div class="section-header">
+                    <h2>Fee Management (Live Data)</h2>
+                </div>
+
+                <div class="fees-grid">
+                    <div class="fee-status-card">
+                        <div class="fee-overview">
+                            <h3>Live Fee Status</h3>
+                            <div class="fee-amounts">
+                                <div class="amount-item">
+                                    <label>Total Fees</label>
+                                    <span id="totalFees">Loading...</span>
+                                </div>
+                                <div class="amount-item">
+                                    <label>Paid Amount</label>
+                                    <span id="paidAmount" class="paid">Loading...</span>
+                                </div>
+                                <div class="amount-item">
+                                    <label>Due Amount</label>
+                                    <span id="dueAmount" class="due">Loading...</span>
+                                </div>
+                            </div>
+                            <button id="payNowBtn" class="pay-btn" onclick="payFees()">
+                                <i class="fas fa-credit-card"></i>
+                                Pay on NED Portal
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="fee-history-card">
+                        <div class="card-header">
+                            <h3>Payment History (Real Data)</h3>
+                        </div>
+                        <div class="payment-history" id="paymentHistory">
+                            <div class="loading-placeholder">Loading real payment history...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timetable Section -->
+            <section id="timetableSection" class="content-section">
+                <div class="section-header">
+                    <h2>Class Timetable (Live Data)</h2>
+                </div>
+
+                <div class="timetable-container">
+                    <div class="timetable-grid" id="timetableGrid">
+                        <div class="loading-placeholder">Loading real class schedule from NED Portal...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profileSection" class="content-section">
+                <div class="section-header">
+                    <h2>Student Profile (Live Data)</h2>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="profile-info">
+                                <h3 id="profileName">Loading...</h3>
+                                <p id="profileId">Loading...</p>
+                                <span class="status-badge" id="profileStatus">Active</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-details">
+                            <div class="detail-group">
+                                <label>Department</label>
+                                <span id="profileDepartment">Loading...</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Batch</label>
+                                <span id="profileBatch">Loading...</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Current Semester</label>
+                                <span id="profileSemester">Loading...</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Email</label>
+                                <span id="profileEmail">Loading...</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Phone</label>
+                                <span id="profilePhone">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div class="data-source">
+                            <p><i class="fas fa-database"></i> Data source: pl.neduet.edu.pk</p>
+                            <p><i class="fas fa-clock"></i> Last updated: <span id="lastUpdateTime">Loading...</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#dashboard" class="nav-item active" onclick="switchSection('dashboard')">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#results" class="nav-item" onclick="switchSection('results')">
+                <i class="fas fa-chart-line"></i>
+                <span>Results</span>
+            </a>
+            <a href="#fees" class="nav-item" onclick="switchSection('fees')">
+                <i class="fas fa-credit-card"></i>
+                <span>Fees</span>
+            </a>
+            <a href="#timetable" class="nav-item" onclick="switchSection('timetable')">
+                <i class="fas fa-calendar"></i>
+                <span>Schedule</span>
+            </a>
+            <a href="#profile" class="nav-item" onclick="switchSection('profile')">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
