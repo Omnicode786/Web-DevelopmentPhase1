@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder - Glassmorphism</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Background geometric shapes -->
+        <div class="bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <h1 class="app-title">🍳 Recipe Finder</h1>
+                <p class="app-subtitle">Discover delicious recipes with our enhanced ingredient selection</p>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-card glass-card">
+                    <div class="search-form">
+                        <!-- Enhanced Ingredient Selection -->
+                        <div class="ingredient-section">
+                            <label class="filter-label">Add Ingredients</label>
+                            <div class="ingredient-input-group">
+                                <input 
+                                    type="text" 
+                                    id="ingredientInput" 
+                                    class="form-control glass-input" 
+                                    placeholder="Type an ingredient (e.g., chicken, tomatoes)"
+                                    autocomplete="off"
+                                >
+                                <button type="button" id="addIngredientBtn" class="btn btn--primary add-ingredient-btn">
+                                    Add
+                                </button>
+                            </div>
+                            
+                            <!-- Ingredient Suggestions -->
+                            <div id="ingredientSuggestions" class="ingredient-suggestions hidden"></div>
+                            
+                            <!-- Selected Ingredients Tags -->
+                            <div id="selectedIngredients" class="selected-ingredients">
+                                <!-- Ingredient tags will be added here -->
+                            </div>
+                        </div>
+                        
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label for="mealType" class="filter-label">Meal Type</label>
+                                <select id="mealType" class="form-control glass-select">
+                                    <option value="">Any Meal Type</option>
+                                    <option value="breakfast">Breakfast</option>
+                                    <option value="lunch">Lunch</option>
+                                    <option value="dinner">Dinner</option>
+                                    <option value="snack">Snack</option>
+                                    <option value="appetizer">Appetizer</option>
+                                    <option value="dessert">Dessert</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="dietary" class="filter-label">Dietary</label>
+                                <select id="dietary" class="form-control glass-select">
+                                    <option value="">Any Diet</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="gluten free">Gluten-Free</option>
+                                    <option value="ketogenic">Keto</option>
+                                    <option value="paleo">Paleo</option>
+                                    <option value="mediterranean">Mediterranean</option>
+                                    <option value="dairy free">Dairy-Free</option>
+                                    <option value="whole30">Whole30</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button id="searchBtn" class="btn btn--primary glass-btn search-btn">
+                            <span class="btn-text">Generate Recipes</span>
+                            <span class="btn-loader hidden">
+                                <div class="spinner"></div>
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Advanced Filters (Collapsible) -->
+                    <div class="advanced-filters">
+                        <button type="button" id="toggleFilters" class="toggle-filters-btn">
+                            <span>Advanced Filters</span>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        
+                        <div id="advancedFiltersPanel" class="filters-panel hidden">
+                            <div class="filter-row">
+                                <div class="filter-group">
+                                    <label for="cuisine" class="filter-label">Cuisine</label>
+                                    <select id="cuisine" class="form-control glass-select">
+                                        <option value="">Any Cuisine</option>
+                                        <option value="american">American</option>
+                                        <option value="asian">Asian</option>
+                                        <option value="italian">Italian</option>
+                                        <option value="mediterranean">Mediterranean</option>
+                                        <option value="mexican">Mexican</option>
+                                        <option value="indian">Indian</option>
+                                        <option value="chinese">Chinese</option>
+                                        <option value="french">French</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="filter-group">
+                                    <label for="maxReadyTime" class="filter-label">Max Cook Time</label>
+                                    <select id="maxReadyTime" class="form-control glass-select">
+                                        <option value="">Any Time</option>
+                                        <option value="15">Under 15 min</option>
+                                        <option value="30">Under 30 min</option>
+                                        <option value="45">Under 45 min</option>
+                                        <option value="60">Under 1 hour</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button id="clearFilters" class="btn btn--secondary">Clear All Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Status Notice -->
+                <div id="apiNotice" class="api-notice glass-card">
+                    <h3>🔧 API Configuration Required</h3>
+                    <p>To use live recipe data, please add your Spoonacular API key to the JavaScript file.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section">
+            <div class="container">
+                <div id="loadingState" class="loading-state hidden">
+                    <div class="glass-card loading-card">
+                        <div class="spinner-large"></div>
+                        <p>Searching for delicious recipes...</p>
+                    </div>
+                </div>
+
+                <div id="errorState" class="error-state hidden">
+                    <div class="glass-card error-card">
+                        <h3>🔍 No recipes found</h3>
+                        <p id="errorMessage">Try adjusting your ingredients or filters</p>
+                        <div class="suggestions">
+                            <p><strong>Suggestions:</strong></p>
+                            <ul>
+                                <li>Try fewer ingredients</li>
+                                <li>Remove some dietary restrictions</li>
+                                <li>Search for popular ingredients like "chicken" or "pasta"</li>
+                                <li>Check your internet connection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="resultsGrid" class="results-grid hidden">
+                    <!-- Recipe cards will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipe Modal -->
+        <div id="recipeModal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content glass-card">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Recipe Title</h2>
+                    <button type="button" id="closeModal" class="close-btn">&times;</button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="recipe-image-container">
+                        <img id="modalImage" src="" alt="Recipe Image" class="recipe-image">
+                    </div>
+                    
+                    <div class="recipe-info">
+                        <div class="recipe-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">⏱️ Ready in:</span>
+                                <span id="modalReadyTime">0 min</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">🍽️ Servings:</span>
+                                <span id="modalServings">1</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">❤️ Health Score:</span>
+                                <span id="modalHealthScore">0</span>
+                            </div>
+                        </div>
+                        
+                        <div id="modalTags" class="recipe-tags">
+                            <!-- Tags will be inserted here -->
+                        </div>
+                        
+                        <div class="recipe-description">
+                            <p id="modalDescription">Recipe description</p>
+                        </div>
+                        
+                        <div class="recipe-ingredients">
+                            <h3>🥗 Ingredients</h3>
+                            <ul id="modalIngredients">
+                                <!-- Ingredients will be inserted here -->
+                            </ul>
+                        </div>
+                        
+                        <div class="recipe-instructions">
+                            <h3>📝 Instructions</h3>
+                            <div id="modalInstructions">
+                                <!-- Instructions will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="recipe-source">
+                            <a id="modalSourceLink" href="#" target="_blank" class="btn btn--primary">
+                                View Original Recipe
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

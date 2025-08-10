@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Reviewer - Professional Code Analysis with Gemini AI</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Monaco Editor -->
+    <script src="https://unpkg.com/monaco-editor@0.44.0/min/vs/loader.js"></script>
+    <!-- Google Generative AI SDK -->
+    <script type="importmap">
+    {
+        "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <h1 class="app-title">AI Code Reviewer</h1>
+                        <p class="app-subtitle">Professional code analysis powered by BEAST Gemini AI</p>
+                    </div>
+                    <div class="header-actions">
+                        <button id="settings-btn" class="btn btn--outline btn--sm">
+                            ⚙️ Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- API Key Setup Banner -->
+        <div id="api-key-banner" class="api-key-banner">
+            <div class="container">
+                <div class="banner-content">
+                    <div class="banner-info">
+                        <span class="banner-icon">🔑</span>
+                        <div>
+                            <strong>API Key Required</strong>
+                            <p>Enter your Google Gemini API key to start analyzing code with real AI</p>
+                        </div>
+                    </div>
+                    <button id="setup-api-btn" class="btn btn--primary btn--sm">
+                        Setup API Key
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="app-layout">
+                    <!-- Code Input Section -->
+                    <section class="code-input-section">
+                        <div class="section-header">
+                            <h2>Code Input</h2>
+                            <div class="controls">
+                                <div class="language-selector">
+                                    <label for="language-select" class="form-label">Language:</label>
+                                    <select id="language-select" class="form-control">
+                                        <option value="javascript">JavaScript</option>
+                                        <option value="typescript">TypeScript</option>
+                                        <option value="python">Python</option>
+                                        <option value="java">Java</option>
+                                        <option value="cpp">C++</option>
+                                        <option value="csharp">C#</option>
+                                        <option value="go">Go</option>
+                                        <option value="rust">Rust</option>
+                                        <option value="php">PHP</option>
+                                        <option value="ruby">Ruby</option>
+                                        <option value="swift">Swift</option>
+                                        <option value="kotlin">Kotlin</option>
+                                    </select>
+                                </div>
+                                <div class="sample-code-selector">
+                                    <button id="load-sample-btn" class="btn btn--outline btn--sm">
+                                        📝 Load Sample Code
+                                    </button>
+                                </div>
+                                <div class="file-upload">
+                                    <input type="file" id="file-input" accept=".js,.ts,.py,.java,.cpp,.c,.cs,.go,.rs,.php,.rb,.swift,.kt,.txt" class="hidden">
+                                    <button id="upload-btn" class="btn btn--outline btn--sm">
+                                        📁 Upload File
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="editor-container">
+                            <div id="monaco-editor" class="monaco-editor"></div>
+                            <div class="editor-stats">
+                                <span id="lines-count">0 lines</span>
+                                <span id="chars-count">0 characters</span>
+                                <span id="selected-language">JavaScript</span>
+                            </div>
+                        </div>
+                        
+                        <div class="action-section">
+                            <button id="analyze-btn" class="btn btn--primary btn--lg" disabled>
+                                <span class="btn-text">🔍 Analyze Code with Gemini AI</span>
+                                <div class="loading-spinner hidden"></div>
+                            </button>
+                            <div class="analysis-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="deep-analysis" checked>
+                                    <span class="checkmark"></span>
+                                    Deep Analysis
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="security-focus">
+                                    <span class="checkmark"></span>
+                                    Security Focus
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Results Section -->
+                    <section class="results-section">
+                        <div id="analysis-results" class="analysis-results hidden">
+                            <div class="section-header">
+                                <h2>Analysis Results</h2>
+                                <div class="results-summary">
+                                    <span id="issues-count" class="status status--info">0 issues found</span>
+                                    <span id="overall-rating" class="overall-rating"></span>
+                                    <div class="results-actions">
+                                        <button id="export-btn" class="btn btn--outline btn--sm">
+                                            📄 Export Results
+                                        </button>
+                                        <button id="copy-results-btn" class="btn btn--outline btn--sm">
+                                            📋 Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="results-content" class="results-content">
+                                <!-- Results will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Placeholder when no analysis -->
+                        <div id="no-analysis" class="no-analysis">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">🔍</div>
+                                <h3>Ready to analyze your code</h3>
+                                <p>Paste your code above, upload a file, or load a sample. Then click "Analyze Code" to get comprehensive AI-powered insights.</p>
+                                
+                                <div class="features-preview">
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🐛</span>
+                                        <span>Bug Detection</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🔒</span>
+                                        <span>Security Analysis</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">⚡</span>
+                                        <span>Performance Review</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🎯</span>
+                                        <span>Code Quality</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🔧</span>
+                                        <span>Maintainability</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">💡</span>
+                                        <span>Best Practices</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Settings</h3>
+                    <button id="close-settings" class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="settings-section">
+                        <h4>🔑 Google Gemini API Configuration</h4>
+                        <div class="form-group">
+                            <label for="api-key-input" class="form-label">
+                                API Key
+                                <span class="required">*</span>
+                            </label>
+                            <div class="api-key-input-container">
+                                <input type="password" id="api-key-input" class="form-control" placeholder="Enter your Gemini API key">
+                                <button id="toggle-api-key" class="btn btn--outline btn--sm">👁️</button>
+                            </div>
+                            <div class="form-help">
+                                Get your free API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>
+                            </div>
+                        </div>
+                        <div class="api-status">
+                            <div id="api-status-indicator" class="status-indicator status-indicator--disconnected">
+                                <span class="status-dot"></span>
+                                <span class="status-text">Not configured</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h4>⚙️ Analysis Settings</h4>
+                        <div class="form-group">
+                            <label for="analysis-depth" class="form-label">Analysis Depth</label>
+                            <select id="analysis-depth" class="form-control">
+                                <option value="standard">Standard</option>
+                                <option value="comprehensive" selected>Comprehensive</option>
+                                <option value="expert">Expert</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="include-suggestions" checked>
+                                <span class="checkmark"></span>
+                                Include Code Suggestions
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="include-examples" checked>
+                                <span class="checkmark"></span>
+                                Include Fixed Code Examples
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button id="test-api-btn" class="btn btn--outline">Test API Connection</button>
+                        <button id="save-settings-btn" class="btn btn--primary">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Code Modal -->
+        <div id="sample-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Select Sample Code</h3>
+                    <button id="close-modal" class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="sample-options" class="sample-options">
+                        <!-- Sample options will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="loading-content">
+                <div class="loading-spinner-large"></div>
+                <p>Analyzing your code with Gemini AI...</p>
+                <div class="loading-progress">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Toast -->
+        <div id="error-toast" class="toast toast--error hidden">
+            <div class="toast-content">
+                <span class="toast-icon">❌</span>
+                <span id="error-message" class="toast-message"></span>
+                <button id="close-toast" class="toast-close">&times;</button>
+            </div>
+        </div>
+
+        <!-- Success Toast -->
+        <div id="success-toast" class="toast toast--success hidden">
+            <div class="toast-content">
+                <span class="toast-icon">✅</span>
+                <span id="success-message" class="toast-message"></span>
+                <button id="close-success-toast" class="toast-close">&times;</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
